@@ -24,11 +24,11 @@ The purpose of MOLTO-IT is to provide a fast and robust mission design environme
 ### NLP SOLVERS
 Two different NLP solvers can be used with DMG solver:
  * [IPOPT](https://projects.coin-or.org/Ipopt): Interior Point Solver. It is an opensource package for solving large scale nonlinear optimization problems. Precompiled binaries for Macosx, Windows (32 and 64 bits), and Linux are included within the DMG solver distribution. They are located in *NLPsolvers/IPOPT*
- * [SNOPT](https://web.stanford.edu/group/SOL/snopt.htm): Sequential Quadratic Solver. It is a propietary software. A license can be pruchased [here](https://ccom.ucsd.edu/~optimizers/downloads/). Copy and Paste the required libraries and mex files in the folder *NLPsolvers/SNOPT*
+ * [SNOPT](https://web.stanford.edu/group/SOL/snopt.htm): Sequential Quadratic Solver. It is a propietary software. A license can be purchased [here](https://ccom.ucsd.edu/~optimizers/downloads/). Copy and Paste the required libraries and mex files in the folder *NLPsolvers/SNOPT*
 
 
 ## Installation Guide
-Installation requires simply that you download [DMG](https://github.com/uc3m-aerospace/DMG). Then, you have the *DMGSetup.m* file. It includes all the necesaary path to your root base directory. The file only need to be run once.
+Installation requires simply that you download [DMG](https://github.com/uc3m-aerospace/DMG). Then, you have the *DMGSetup.m* file. It includes all the necessary path to your root base directory. The file only need to be run once.
 
 Make sure that the *DMG* directory is your working directory.
 
@@ -38,27 +38,21 @@ In order to optimize a mission, the user needs to call the main function *molto_
 
 ```matlab
 % INPUT STRUCTURE FOR DMG SOLVER
-        input.problem_name  = 'example'; % Problem name
-        input.problem_type  = 'flyby'; % Type of mission: condition at arrival planet (flyby/rendezvous)
-        input.planet_dep    = '3';     % Departure planet using space nomenclature (e.g. 3==Earth)
-        input.planet_arr    = '5';     % Arrival planet using space nomenclature (e.g. 5==Jupiter)
-        input.vinf0_max     =  2;      % Hyperbolic excess velocity at departure planet (km/s)
-        input.planet_fb     = [{'4'},{'3'},{'2'}]; % List of available planets to flyby in spice nomenclature
-        input.rfb_min       = 200;     % minimum flyby altitude (km)
-        input.n_fb          = [0,3];   % minimum/maximum number of possible flybys
-        input.rev           = [0,0];   % minimum/maximum number of possible revolutions
-        input.ToF           = [50  50  50  50;  % minimum/maximum transfer time per leg (days)
-                          500 500 500 1000];
-        input.Initial_Date  = [{'2029 Jan 01 00:00:00'},{'2030 Dec 31 00:00:00'}]; % minimum/maximum Launch date (Gregorian Date)
-        input.init_file     = [];      % Init population File name (if not provided, random initial population)
-        input.output_file   = ['example','.txt']; % Solution population File name
-        input.plot          = 0;       % plotting option (recomended = 0, option =1 is under development)
-        input.useParallel   = 'yes';   % yes/no for parallel execution of the genetic algorithm
-        input.maxGen        = 200;     % maximum number of generations
-        input.popsize       = 200;     % Population Size
-        input.spice_dir     =  '/home/MOLTO-IT/spice' % The spice directory folder
-        
-% RUN MOLTO-IT ALGORITHM
-        molto_it(input)
+input.name        = 'ProblemName';      % name of the problem
+input.funcs.cost  = 'CostFunctionName'; % name of the Cost Function
+input.funcs.dae   = 'DaeFunction';      % name of the Differential Algebrais System
+input.funcs.event = 'EventFunction';    % name of the Event function
+input.funcs.link  = 'LinkFUnction';     % name of the Link function
+input.limits      = limits;             % Struture containing limits
+input.guess       = guess;              % Structure containing Initial Guess
+input.linkages    = linkages;           % Structure containing Linkages Values
+input.derivatives = 'automatic';        % Method for computing gradients and jacobians: automatic/numerical/complex/analytical
+input.parallel    = 'no';               % Multicore computation of numerical and complex differentiation: yes/no
+input.autoscale   = 'off';              % Automatic Scaling: yes/no
+input.solver      = 'ipopt';            % NonLinear Programming Solver: ipopr/snopt
+input.method      = 'collocation';      % Transcription method: collocation/pseudospectral
+
+% RUN DMG SOLVER
+output  = DMG(input)
 ```
 **NOTE**: Ensure that all the folders and subfolders are in the matlab path.
