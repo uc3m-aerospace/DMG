@@ -1,0 +1,1 @@
+versión limitada a 300 variables, usando la interface snoptA
