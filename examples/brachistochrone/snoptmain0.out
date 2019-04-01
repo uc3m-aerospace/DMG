@@ -78,30 +78,30 @@
  
 
    Itns Major Minors    Step   nObj Feasible  Optimal      Objective     L+U BSwap     nS  condHz
-      0     0      0              1          (1.5E-07) 1.0000001E+00       1                      _  r   c
+      0     0      0              1          (2.0E-07) 1.0000000E+00       1                      _  r   c
  
 
    Itns Major Minors    Step   nObj Feasible  Optimal      Objective     L+U BSwap     nS  condHz
-      0     0      0              1          (8.6E-09) 1.0000001E+00       1                      _  r   c
+      0     0      0              1          (6.1E-08) 1.0000000E+00       1                      _  r   c
 1
  
  SNOPTA EXIT   0 -- finished successfully
  SNOPTA INFO   1 -- optimality conditions satisfied
 
  Problem name
- No. of iterations                   0   Objective value      1.0000000687E+00
+ No. of iterations                   0   Objective value      1.0000000485E+00
  No. of major iterations             0   Linear objective     0.0000000000E+00
- Penalty parameter           0.000E+00   Nonlinear objective  1.0000000687E+00
+ Penalty parameter           0.000E+00   Nonlinear objective  1.0000000485E+00
  No. of calls to funobj              4   No. of calls to funcon              4
  Calls with modes 1,2 (known g)      1   Calls with modes 1,2 (known g)      1
  Calls for forward differencing      1   Calls for forward differencing      1
  Calls for central differencing      2   Calls for central differencing      2
  No. of degenerate steps             0   Percentage                       0.00
- Max x                       1 1.7E-08   Max pi                      1 1.0E+00
- Max Primal infeas           0 0.0E+00   Max Dual infeas             1 1.7E-08
+ Max x                       1 1.2E-07   Max pi                      1 1.0E+00
+ Max Primal infeas           0 0.0E+00   Max Dual infeas             1 1.2E-07
 1
  
- Name                                    Objective Value      1.0000000687E+00
+ Name                                    Objective Value      1.0000000485E+00
 
  Status         Optimal Soln             Iteration      0    Superbasics     0
 

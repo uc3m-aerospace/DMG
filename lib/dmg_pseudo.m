@@ -1,45 +1,13 @@
 function output = dmg_pseudo(setup)
 %------------------------------------------------------------------%
-%       GPOPS:  Gauss Pseudopsectral Optimal Control Program       %
+%       DMG:  Direct Transcription Method 
+%       Using Gauss Pseudospectral Collocaiton Method
 %------------------------------------------------------------------%
-%  GPOPS is a MATLAB(R) program for solving non-sequential         %
-%  multiple-phase optimal control problems. GPOPS uses the Gauss   %
-%  pseudospectral method (GPM) where orthogonal collocation is     %
-%  performed at the Legendre-Gauss points.  GPOPS is based         %
-%  entirely on mathematical theory that has been published in the  %
-%  open literature.  Specifically, a good portion of the theory    %
-%  of the Gauss pseudospectral method can be found in the          %
-%  publications:                                                   %
-%                                                                  %
-%  [1] Benson, D. A., Huntington, G. T., Thorvaldsen, T. P., and   %
-%      Rao, A. V., "Direct Trajectory Optimization and Costate     %
-%      Estimation via an Orthogonal Collocation Method," Journal   %
-%      of Guidance, Control, and Dynamics, Vol. 29, No. 6,         %
-%      November-December 2006, pp. 1435-1440.                      %
-%                                                                  %
-%  [2] Benson, D. A., "A Gauss Pseudospectral Transcription for    %
-%      Optimal Control," Ph.D. Thesis, Dept. of Aeronautics and    %
-%      Astronautics, Massachusetts Institute of Technology,        %
-%      February  2005.                                             %
-%                                                                  %  
-%  [3] Huntington, G. T., "Advancement and Analysis of a Gauss     %
-%      Pseudospectral Transcription for Optimal Control,"          %
-%      Ph.D. Thesis, Dept. of Aeronautics and Astronautics,        $
-%      Massachusetts Institute of Technology, May 2007.            %
-%                                                                  %
-%  [4] Rao, A. V., Benson, D. A., Huntington, G. T., Francolin, C. %
-%      Darby, C. L., and Patterson, M. A., "User's Manual for      %
-%      GPOPS:  A MATLAB Package for Dynamic Optimization Using the %
-%      Gauss Pseudospectral Method, University of Florida, Report, %
-%      August 2008.                                                %
-%                                                                  %
-%  Further information about the pseudoespectral theory used in    %
-%  GPOPS and the applications of this theory to various problems   %
-%  of interest can be found at Anil V. Rao's website at            %
-%  http://fdol.mae.ufl.edu.                                        %
+% DMG Copyright (c) David Morante González                         %
+% GPOPS Copyright (c) Anil V. Rao, Geoffrey T. Huntington, David   %
+% Benson, Michael Patterson, Christopher Darby, & Camila Francolin %
 %------------------------------------------------------------------%
-global mysetup ;
-
+global mysetup;
 clear snoptcmex;
 %------------------------------------------------------------------%
 %    Check input for backwards compatability                       %

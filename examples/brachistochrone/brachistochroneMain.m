@@ -80,18 +80,17 @@ setup.funcs.dae = 'brachistochroneDae';
 setup.limits = limits;
 setup.guess = guess;
 setup.linkages = [];
-setup.derivatives = 'numerical';
+setup.derivatives = 'automatic';
 setup.parallel    = 'no';
 setup.autoscale = 'off';
 setup.parallel  = 'no';
 setup.solver ='ipopt';
-setup.method ='pseudospectral';
+setup.method ='collocation';
 
 setup.CONSTANTS = CONSTANTS;
 output = DMG(setup);
 solution = output.solution;
 
-if 0,
 t = solution.time;
 x = solution.state(:,1);
 u = solution.state(:,2);
@@ -118,5 +117,4 @@ set(xl,'FontName','Times','FontSize',16);
 set(yl,'FontName','Times','FontSize',16);
 set(gca,'FontName','Times','FontSize',16);
 grid on;
-end;
 

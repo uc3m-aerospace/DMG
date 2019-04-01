@@ -3,6 +3,10 @@ function[J]=dmg_jacobian_AN(x,mysetup)
 % Compute jacobian of constraints function for IPOPT when 
 % Aanalytical derivatives are provided            
 %------------------------------------------------------------------%
+% DMG Copyright (c) David Morante González                         %
+% GPOPS Copyright (c) Anil V. Rao, Geoffrey T. Huntington, David   %
+% Benson, Michael Patterson, Christopher Darby, & Camila Francolin %
+%------------------------------------------------------------------%
 % Unscale the decision variables
 y   = x./mysetup.column_scales;
 [~,Jac] = mysetup.constraints(y,mysetup);

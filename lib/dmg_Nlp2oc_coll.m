@@ -2,6 +2,7 @@ function setup = gpopsNlp2oc_coll(setup);
 %------------------------------------------------------------------%
 % Convert the NLP solution to trajectory format                    %
 %------------------------------------------------------------------%
+% DMG Copyright (c) David Morante González                         %
 % GPOPS Copyright (c) Anil V. Rao, Geoffrey T. Huntington, David   %
 % Benson, Michael Patterson, Christopher Darby, & Camila Francolin %
 %------------------------------------------------------------------%

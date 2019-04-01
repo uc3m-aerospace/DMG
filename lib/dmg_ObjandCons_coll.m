@@ -1,5 +1,8 @@
-function [C] = gpopsObjandCons_coll(x)
-
+function [C] = dmg_ObjandCons_coll(x)
+% DMG Copyright (c) David Morante González                         %
+% GPOPS Copyright (c) Anil V. Rao, Geoffrey T. Huntington, David   %
+% Benson, Michael Patterson, Christopher Darby, & Camila Francolin %
+%------------------------------------------------------------------%
 global mysetup
 
 C = constraints_coll(x,mysetup);

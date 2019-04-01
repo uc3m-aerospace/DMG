@@ -3,7 +3,9 @@ function setup = dmg_GetGuess_coll(setup)
 % Get the guess used by the NLP solver in a non-sequential         %
 % multiple-phase optimal control problem.                          %
 %------------------------------------------------------------------%
-
+% DMG Copyright   (c) David Morante González                       %
+% GPOPS Copyright (c) Anil V. Rao, Geoffrey T. Huntington, David   %
+% Benson, Michael Patterson, Christopher Darby, & Camila Francolin %
 %------------------------------------------------------------------%
 
 guess = setup.guess;

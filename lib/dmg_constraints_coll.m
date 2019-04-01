@@ -3,7 +3,10 @@ function[C,J]=dmg_constraints_coll(x,mysetup)
 %------------------------------------------------------------------%
 %Compute the linear and nonlinear constraints and objective function%
 %------------------------------------------------------------------%
-
+% DMG Copyright   (c) David Morante González                       %
+% GPOPS Copyright (c) Anil V. Rao, Geoffrey T. Huntington, David   %
+% Benson, Michael Patterson, Christopher Darby, & Camila Francolin %
+%------------------------------------------------------------------%
 Cons = cell(mysetup.numphases,1);
 
 if nargout == 2

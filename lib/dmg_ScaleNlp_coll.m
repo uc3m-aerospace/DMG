@@ -3,6 +3,10 @@ function setup = dmg_ScaleNlp_coll(setup)
 % Determine the row and column scales for a non-sequential         %
 % multiple-phase optimal control problem                           %
 %------------------------------------------------------------------%
+% DMG Copyright (c) David Morante González                         %
+% GPOPS Copyright (c) Anil V. Rao, Geoffrey T. Huntington, David   %
+% Benson, Michael Patterson, Christopher Darby, & Camila Francolin %
+%------------------------------------------------------------------%
 nodes = setup.nodes;
 sizes = setup.sizes;
 constraint_indices = setup.constraint_indices;

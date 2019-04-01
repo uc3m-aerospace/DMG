@@ -2,6 +2,10 @@ function[C,J]=dmg_constraints(x,mysetup)
 %-----------------------------------------------------------------  -%
 % Compute the nonlinear constraints function for IPOPT               %
 %------------------------------------------------------------------  %
+% DMG Copyright   (c) David Morante González                       %
+% GPOPS Copyright (c) Anil V. Rao, Geoffrey T. Huntington, David   %
+% Benson, Michael Patterson, Christopher Darby, & Camila Francolin %
+%------------------------------------------------------------------%
 [ncon, nvar] = size(mysetup.sparsity_all);
 J = zeros(ncon,nvar);
 
