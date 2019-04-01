@@ -1,5 +1,7 @@
-# DMG
-This is a General Purpose Software for solving Multi-phase Optimal Control Problems based on GPOPS.
+# DMG SOLVER
+**D**irect **M**ethod based on **G**POPS usign Matlab.
+
+This is a General Purpose Software for solving Multi-phase Optimal Control Problems.
 
 This distribution is a derived work from "GPOPS" (Gauss Pseudospectral Optimization Software).
 The original GPOPS distribution can be downloaded from [here](https://es.mathworks.com/matlabcentral/fileexchange/21729-gpops) and is published under the Simple Public License.
