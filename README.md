@@ -16,4 +16,4 @@ The new features DMG includes:
 
  * Implements Hermite Simpson Collocation Method for Transcribing the continuous optimal control problem into an Nonlinear Optimization Problem.
  * Interfaces with IPOPT
- * Multi-core computation of Forward numerical derivatives.
+ * Multi-core computation of Forward numerical derivatives and Complex Step differentiation.
