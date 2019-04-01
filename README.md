@@ -42,10 +42,11 @@ input.name        = 'ProblemName';      % name of the problem
 input.funcs.cost  = 'CostFunctionName'; % name of the Cost Function
 input.funcs.dae   = 'DaeFunction';      % name of the Differential Algebrais System
 input.funcs.event = 'EventFunction';    % name of the Event function
-input.funcs.link  = 'LinkFUnction';     % name of the Link function
-input.limits      = limits;             % Struture containing limits
-input.guess       = guess;              % Structure containing Initial Guess
-input.linkages    = linkages;           % Structure containing Linkages Values
+input.funcs.link  = 'LinkFunction';     % name of the Link function
+input.limits      = limits;             % Struture containing States, Controls, Parameters lower and Upper bounds as well as
+                                          Path and Event constraints Lower and Upper bounds.
+input.guess       = guess;              % Struture containing initial guess for the States, Controls and Parameters
+input.linkages    = linkages;           % Structure containing the desired values for the 'LinkFunction'
 input.derivatives = 'automatic';        % Method for computing gradients and jacobians: automatic/numerical/complex/analytical
 input.parallel    = 'no';               % Multicore computation of numerical and complex differentiation: yes/no
 input.autoscale   = 'off';              % Automatic Scaling: yes/no
