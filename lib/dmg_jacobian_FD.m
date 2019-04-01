@@ -1,5 +1,8 @@
-function[J]=jacobian_FD(x,mysetup)
-
+function[J]=dmg_jacobian_FD(x,mysetup)
+%------------------------------------------------------------------%
+% Compute jacobian of constraints function for IPOPT when 
+% Forward Finite DIfferences is used             
+%------------------------------------------------------------------%
 %--------------------------------%
 % Unscale the decision variables %
 %--------------------------------%

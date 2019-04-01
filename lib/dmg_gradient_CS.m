@@ -1,5 +1,8 @@
-function[G]=gradient_CS(x,mysetup)
-
+function[G]=dmg_gradient_CS(x,mysetup)
+%------------------------------------------------------------------%
+% Compute gradient of objective function for IPOPT when 
+% complex Step differentiation is used             
+%------------------------------------------------------------------%
 %--------------------------------%
 % Unscale the decision variables %
 %--------------------------------%
@@ -9,19 +12,19 @@ y = x./mysetup.column_scales;
 %-----------------------------------------------------------------%
 G = mysetup.Gzeros;
 
-if strcmp(mysetup.parallel,'yes');
+if strcmp(mysetup.parallel,'yes')
     
-        parfor k=1:mysetup.numvars;
+        parfor k=1:mysetup.numvars
             ypert = y + mysetup.deltaxmat(:,k);
             G(:,k) = mysetup.objective(ypert,mysetup);
-        end;
+        end
         
 else
     
-        for k=1:mysetup.numvars;
+        for k=1:mysetup.numvars
             ypert = y + mysetup.deltaxmat(:,k);
             G(:,k) = mysetup.objective(ypert,mysetup);
-        end;
+        end
       
 end
 

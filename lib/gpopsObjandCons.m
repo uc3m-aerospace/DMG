@@ -1,10 +1,10 @@
 function [C,J] = gpopsObjandCons(x)
-%------------------------------------------------------------------%
-% Compute the nonlinear constraints and objective function         %
-%------------------------------------------------------------------%
-% GPOPS Copyright (c) Anil V. Rao, Geoffrey T. Huntington, David   %
-% Benson, Michael Patterson, Christopher Darby, & Camila Francolin %
-%------------------------------------------------------------------%
+%-----------------------------------------------------------------  -%
+% Compute the nonlinear constraints and objective function for SNOPT %
+%------------------------------------------------------------------  %
+% GPOPS Copyright (c) Anil V. Rao, Geoffrey T. Huntington, David     %
+% Benson, Michael Patterson, Christopher Darby, & Camila Francolin   %
+%------------------------------------------------------------------  %
 
 global mysetup;
 

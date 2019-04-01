@@ -1,4 +1,4 @@
-function[C,J]=constraints_coll(x,mysetup)
+function[C,J]=dmg_constraints_coll(x,mysetup)
 
 %------------------------------------------------------------------%
 %Compute the linear and nonlinear constraints and objective function%

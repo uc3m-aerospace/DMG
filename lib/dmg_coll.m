@@ -1,4 +1,4 @@
-function output = gpops_coll(setup)
+function output = dmg_coll(setup)
 %------------------------------------------------------------------%
 %       DMOC:  Direct Transcription Method 
 %       Using Third-degree Hermite interpolant
@@ -17,7 +17,7 @@ setup = gpopsGetSizes(setup);
 %------------------------------------------------------------------%
 %    Get the bounds in each phase of the optimal control problem   %
 %------------------------------------------------------------------%
-setup = gpopsGetBounds_coll(setup);
+setup = dmg_GetBounds_coll(setup);
 %------------------------------------------------------------------%
 %        Print a description of the optimal control problem        %
 %------------------------------------------------------------------%
@@ -25,15 +25,11 @@ gpopsPrint(setup);
 %------------------------------------------------------------------%
 %               Get the initial guess for the NLP                  %
 %------------------------------------------------------------------%
-setup = gpopsGetGuess_coll(setup); 
+setup = dmg_GetGuess_coll(setup); 
 %------------------------------------------------------------------%
 %                  Scale the nonlinear program                     %
 %------------------------------------------------------------------%
-setup = gpopsScaleNlp_coll(setup);
-%------------------------------------------------------------------%
-%            Determine the sparsity pattern of the NLP             %
-%------------------------------------------------------------------%
-%setup = gpopsSparsity(setup);
+setup = dmg_ScaleNlp_coll(setup);
 %------------------------------------------------------------------%
 %           Lower and upper bounds on the NLP variables            %
 %------------------------------------------------------------------%
@@ -70,19 +66,17 @@ if isfield(setup,'autoscale')
             disp('WARNING!!! Automatic Scaling may not work with infinite bounds')
             disp(' ')
         end
-    elseif isequal(setup.autoscale,'off'),
+    elseif isequal(setup.autoscale,'off')
         setup.column_scales = ones(size(setup.column_scales));
         setup.row_scales = ones(size(setup.row_scales));
         disp('Automatic Scaling Turned Off');
     else
       error('setup.autoscale not set correctly');
-    end;
+    end
 else
     setup.column_scales = ones(size(setup.column_scales));
     setup.row_scales = ones(size(setup.row_scales));
-end;
-%Alinear = sparse(Alinear);
-%setup.Alinear = Alinear;
+end
 %------------------------------------------------------------------%
 % Setup diagonal matrices containing the scale factors computed by %
 % the automatic scaling routine.                                   %
@@ -118,7 +112,7 @@ setup.initlincons = zeros(numlin,size(init,2));
 mysetup=setup;
 
 
-if isfield(setup,'solver'),
+if isfield(setup,'solver')
     
     if isequal(setup.solver,'ipopt')
 %------------------------------------------------------------------%
@@ -129,19 +123,12 @@ options.cl = [clow;setup.Alinmin];
 options.cu = [cupp;setup.Alinmax];
 options.lb = xlow;
 options.ub = xupp;
-%options.ipopt.mu_strategy      = 'adaptive';
-%options.ipopt.nlp_scaling_method='gradient-based';
-%options.ipopt.nlp_scaling_max_gradient= 1;
-%options.ipopt.bound_mult_init_val = 0.01;
-%options.ipopt.nlp_scaling_min_value = 1e-1;
 options.ipopt.tol=1e-6;
 options.ipopt.bound_push = 1e-6;
 options.ipopt.mu_init= 1e-2;
-%options.ipopt.max_iter = 0;
-%options.dual_inf_tol    = 0.1;
 options.ipopt.hessian_approximation = 'limited-memory';
 
-if isfield(setup,'derivatives'),
+if isfield(setup,'derivatives')
     deropt = lower(setup.derivatives);
     if isequal(deropt,'automatic')
         %---------------------------------------------------%
@@ -151,36 +138,48 @@ if isfield(setup,'derivatives'),
         if isempty(which('ad.m'))
             error('Built-in automatic differentiator not found or installed incorrectly')
         end
-        funcs.gradient =@gradient_AD;
-        funcs.jacobian =@jacobian_AD;
-        disp('Objective Gradient Being Estimated via Built-In Automatic Differentiation');        
+        funcs.gradient =@dmg_gradient_AD;
+        funcs.jacobian =@dmg_jacobian_AD;
+                disp('------------------------------------------------------------------');
+        disp('Objective Gradient Being Estimated via Built-In Automatic Differentiation'); 
+                disp('------------------------------------------------------------------');
         disp('Constraint Jacobian Being Estimated via Built-In Automatic Differentiation');
+                disp('------------------------------------------------------------------');
         
-    elseif isequal(deropt,'numerical'),
+    elseif isequal(deropt,'numerical')
         mysetup.hpert = 1e-7;
         mysetup.deltaxmat = mysetup.hpert*speye(setup.numvars);
         mysetup.Jaczeros = zeros(setup.numnonlin+setup.numlin,setup.numvars);
         mysetup.Gzeros   = zeros(1,setup.numvars);
-        funcs.gradient =@gradient_FD;
-        funcs.jacobian =@jacobian_FD;
-        disp('Objective Gradient Being Estimated via Finite Differencing');        
+        funcs.gradient =@dmg_gradient_FD;
+        funcs.jacobian =@dmg_jacobian_FD;
+                disp('------------------------------------------------------------------');
+        disp('Objective Gradient Being Estimated via Finite Differencing');
+                disp('------------------------------------------------------------------');
         disp('Constraint Jacobian Being Estimated via Finite Differencing');
+                disp('------------------------------------------------------------------');
         
-    elseif isequal(deropt,'complex'),
+    elseif isequal(deropt,'complex')
         mysetup.hpert = 1e-20;
         mysetup.deltaxmat = sqrt(-1)*mysetup.hpert*speye(setup.numvars);
         mysetup.Jaczeros = zeros(setup.numnonlin+setup.numlin,setup.numvars);
         mysetup.Gzeros   = zeros(1,setup.numvars);
-        funcs.gradient =@gradient_CS;
-        funcs.jacobian =@jacobian_CS;
-        disp('Objective Gradient Being Estimated via Complex Differentiation');        
+        funcs.gradient =@dmg_gradient_CS;
+        funcs.jacobian =@dmg_jacobian_CS;
+                disp('------------------------------------------------------------------');
+        disp('Objective Gradient Being Estimated via Complex Differentiation');
+                disp('------------------------------------------------------------------');
         disp('Constraint Jacobian Being Estimated via Complex Differentiation');
+                disp('------------------------------------------------------------------');
         
-    elseif isequal(deropt,'analytic'),
-        funcs.gradient =@gradient_AN;
-        funcs.jacobian =@jacobian_AN;
+    elseif isequal(deropt,'analytic')
+        funcs.gradient =@dmg_gradient_AN;
+        funcs.jacobian =@dmg_jacobian_AN;
+                disp('------------------------------------------------------------------');
         disp('Objective Gradient Being Estimated via Analytic Differentiation');
+                disp('------------------------------------------------------------------');
         disp('Constraint Jacobian Being Estimated via Analytic Differentiation');
+                disp('------------------------------------------------------------------');
         
     else
         error(['Unknown derivative option "%s" in setup.derivatives\n',...
@@ -193,19 +192,20 @@ if isfield(setup,'derivatives'),
         
     end
 end
-
+%
 mysetup.Alinear_augmented = zeros(setup.numnonlin+setup.numlin,setup.numvars);
-funcs.constraints =@constraints_coll;
-funcs.jacobianstructure =@jacobianstructure_coll;
-funcs.objective =@objective_coll;
-
-mysetup.constraints = @constraints_coll;
-mysetup.objective   = @objective_coll;
-
-
-options.auxdata = mysetup;
-
+funcs.constraints         = @dmg_constraints_coll;
+funcs.jacobianstructure   = @dmg_jacobianstructure_coll;
+funcs.objective           = @dmg_objective_coll;
+mysetup.constraints       = @dmg_constraints_coll;
+mysetup.objective         = @dmg_objective_coll;
+options.auxdata           = mysetup;
+%
 [x,info]= ipopt_auxdata(init,funcs,options);
+%
+% Save lagrange multipliers information
+%
+result.Fmul=info.lambda;
 
     elseif isequal(setup.solver,'snopt')
 %------------------------------------------------------------------%
@@ -215,7 +215,7 @@ Flow = [-Inf; clow; setup.Alinmin];
 Fupp = [ Inf; cupp; setup.Alinmax];
 snscreen on
 
-if isfield(setup,'derivatives'),
+if isfield(setup,'derivatives')
     deropt = lower(setup.derivatives);
     if isequal(deropt,'automatic')
         %---------------------------------------------------%
@@ -226,8 +226,11 @@ if isfield(setup,'derivatives'),
             error('Built-in automatic differentiator not found or installed incorrectly')
         end
         userfun = 'gpopsuserfunAD';
-        disp('Objective Gradient Being Estimated via Built-In Automatic Differentiation');        
+                disp('------------------------------------------------------------------');
+        disp('Objective Gradient Being Estimated via Built-In Automatic Differentiation'); 
+                disp('------------------------------------------------------------------');
         disp('Constraint Jacobian Being Estimated via Built-In Automatic Differentiation');
+                disp('------------------------------------------------------------------');
         
     elseif isequal(deropt,'numerical')
         mysetup.hpert = 1e-8;
@@ -235,8 +238,11 @@ if isfield(setup,'derivatives'),
         mysetup.Jaczeros = zeros(setup.numnonlin+setup.numlin+1,setup.numvars);
         mysetup.Gzeros   = zeros(1,setup.numvars);
         userfun = 'gpopsuserfunFD';
-        disp('Objective Gradient Being Estimated via Finite Differencing');        
+                disp('------------------------------------------------------------------');
+        disp('Objective Gradient Being Estimated via Finite Differencing'); 
+                disp('------------------------------------------------------------------');
         disp('Constraint Jacobian Being Estimated via Finite Differencing');
+                disp('------------------------------------------------------------------');
         
     elseif isequal(deropt,'complex')
         mysetup.hpert = 1e-20;
@@ -244,8 +250,11 @@ if isfield(setup,'derivatives'),
         mysetup.Jaczeros = zeros(setup.numnonlin+setup.numlin+1,setup.numvars);
         mysetup.Gzeros   = zeros(1,setup.numvars);
         userfun = 'gpopsuserfunCS';
-        disp('Objective Gradient Being Estimated via Complex Differentiation');        
+                disp('------------------------------------------------------------------');
+        disp('Objective Gradient Being Estimated via Complex Differentiation');   
+                disp('------------------------------------------------------------------');
         disp('Constraint Jacobian Being Estimated via Complex Differentiation');
+                disp('------------------------------------------------------------------');
         
             elseif isequal(deropt,'analytic')
         %-----------------------------------------------------------%
@@ -254,8 +263,11 @@ if isfield(setup,'derivatives'),
         %-----------------------------------------------------------%
         userfun = 'gpopsuserfunAN';
         snseti('Derivative Option',1);
+        disp('------------------------------------------------------------------');
         disp('Objective Gradient Being Estimated via Analytic Differentiation');
+        disp('------------------------------------------------------------------');
         disp('Constraint Jacobian Being Estimated via Analytic Differentiation');
+        disp('------------------------------------------------------------------');
     else
         error(['Unknown derivative option "%s" in setup.derivatives\n',...
             'Valid options are:',...
@@ -282,21 +294,14 @@ end
 %------------------------------------------------------------------%
 %                Unscale the NLP (Decision) Variables              %
 %------------------------------------------------------------------%
-
 result.x = x./setup.column_scales;
-
-setup = mysetup;
+setup    = mysetup;
 setup.result = result;
-
-%------------------------------------------------------------------%
-%               Record the SNOPT info result                       %
-%------------------------------------------------------------------%
-%setup.SNOPT_info = info;
 %------------------------------------------------------------------%
 %         Untranscribe the NLP (i.e., convert the optimal          %
 %         control problem back to optimal control format)          %
 %------------------------------------------------------------------%
-setup = gpopsNlp2oc_coll(setup);
+setup = dmg_Nlp2oc_coll(setup);
 %------------------------------------------------------------------%
 %         Clear fields in the SETUP structure that are not         %
 %         needed by the user (i.e., remove all fields that         %

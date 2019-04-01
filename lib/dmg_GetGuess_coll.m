@@ -1,10 +1,9 @@
-function setup = gpopsGetGuess_coll(setup);
+function setup = dmg_GetGuess_coll(setup)
 %------------------------------------------------------------------%
 % Get the guess used by the NLP solver in a non-sequential         %
 % multiple-phase optimal control problem.                          %
 %------------------------------------------------------------------%
-% GPOPS Copyright (c) Anil V. Rao, Geoffrey T. Huntington, David   %
-% Benson, Michael Patterson, Christopher Darby, & Camila Francolin %
+
 %------------------------------------------------------------------%
 
 guess = setup.guess;
@@ -12,14 +11,14 @@ numphases = setup.numphases;
 if length(guess)<numphases
     error('Number of phases in Guess is less than number of phases in limits')
 end
-if length(guess)>numphases,
+if length(guess)>numphases
     guess = guess(1:numphases);
-end;
+end
 sizes = setup.sizes;
 nodes = setup.nodes;
 init = cell(numphases,1);
 
-for iphase=1:numphases;
+for iphase=1:numphases
     %--------------------------------------------%
     % Get the guess in each phase of the problem %
     %--------------------------------------------%
@@ -30,16 +29,16 @@ for iphase=1:numphases;
     nevents = sizes(iphase,5);
     tinit    = guess(iphase).time;
     xinit    = guess(iphase).state;
-    if isfield(guess(iphase),'control'),
+    if isfield(guess(iphase),'control')
         uinit    = guess(iphase).control;
     else
         uinit = [];
-    end;
-    if isfield(guess(iphase),'parameter'),
+    end
+    if isfield(guess(iphase),'parameter')
         pinit    = guess(iphase).parameter;
     else
         pinit = [];
-    end;
+    end
     %-------------------------------%
     % Check guess for proper format %
     %-------------------------------%
@@ -98,15 +97,15 @@ for iphase=1:numphases;
         end
     else
         error('Must Specify a Cost Function for Problem');
-    end;
+    end
     %---------------------------------------------------------%
     % Check Differential-Algebraic function for proper format %
     %---------------------------------------------------------%
-    if isfield(setup.funcs','dae'),
-        if ~isempty(setup.funcs.dae),
+    if isfield(setup.funcs','dae')
+        if ~isempty(setup.funcs.dae)
             if ~(isa(setup.funcs.dae,'char') || isa(setup.funcs.dae,'function_handle'))
                 error('Invalid Dae function in setup.funcs.dae')
-            end;
+            end
         end
         clear sol
         sol.time      = tinit;
@@ -124,15 +123,15 @@ for iphase=1:numphases;
             error('Dae function "%s" returned invalid number of rows using guess in phase %i',setup.funcs.dae,iphase)
         end
     else 
-        if (nstates>0),
+        if (nstates>0)
             error('Must Specify a Differential-Algebraic Function When # of States is Nonzero');
-        end;
-    end;
+        end
+    end
     % ---------------------------------------%
     % Check Event function for proper format %
     % ---------------------------------------%
-    if (nevents > 0) || isfield(setup.funcs,'event'),
-        if ~isempty(setup.funcs.event),
+    if (nevents > 0) || isfield(setup.funcs,'event')
+        if ~isempty(setup.funcs.event)
             if ~(isa(setup.funcs.event,'char') || isa(setup.funcs.event,'function_handle'))
                 error('Invalid Event function in setup.funcs.event')
             end
@@ -154,10 +153,10 @@ for iphase=1:numphases;
                 error('Event function "%s" returned invalid number of events using guess in phase %i',setup.funcs.event,iphase)
             end
         else
-            if (nevents>0),
+            if (nevents>0)
                 error('Must Specify Event Function When # of Events is Nonzero');
-            end;
-        end;
+            end
+        end
     end
     % ------------------%
     % Interpolate guess %
@@ -172,20 +171,20 @@ for iphase=1:numphases;
     
     tinterp  = (tfinit-t0init)*t+t0init;
     
-    if nstates>0,
+    if nstates>0
         xinterp = interp1(tinit,xinit,tinterp,'spline');
     else
         xinterp = [];
-    end;
-    if ncontrols>0,
+    end
+    if ncontrols>0
         
         uinterp = interp1(tinit,uinit,tinterp,'linear');
         
     else
         uinterp = [];
-    end;
+    end
     init{iphase,1} = [xinterp(:); uinterp(:); t0init; tfinit; pinit];
-end;
+end
 init_vector = vertcat(init{:,1});
 setup.init_vector = init_vector;
 
@@ -196,10 +195,10 @@ numlinks = setup.numlinks;
 linkages = setup.linkages;
 numlinkpairs = setup.numlinkpairs;
 if numlinks > 0 
-    if ~(ischar(setup.funcs.link) || isa(setup.funcs.link,'function_handle')),
+    if ~(ischar(setup.funcs.link) || isa(setup.funcs.link,'function_handle'))
         error('Invalid Linkage function in setup.funcs.link')
     end
-    for ipair = 1:numlinkpairs;
+    for ipair = 1:numlinkpairs
         leftPhase = linkages(ipair).left.phase;
         rightPhase = linkages(ipair).right.phase;
         nlink = length(setup.linkages(ipair).min);
@@ -226,11 +225,11 @@ if numlinks > 0
         end
     end
 else
-    if isfield(setup.funcs,'link'),
-        if ~isempty(setup.funcs.link),
+    if isfield(setup.funcs,'link')
+        if ~isempty(setup.funcs.link)
             if ischar(setup.funcs.link) || isa(setup.funcs.link,'function_handle')
                 error('Phase-connect function defined in setup.funcs.link with no connections')
             end
-        end;
-    end;
+        end
+    end
 end

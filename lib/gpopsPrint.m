@@ -7,30 +7,17 @@ function gpopsPrint(setup);
 % Benson, Michael Patterson, Christopher Darby, & Camila Francolin % 
 %------------------------------------------------------------------%
 
-sizes = setup.sizes;
+sizes  = setup.sizes;
 limits = setup.limits;
 numphases = setup.numphases;
 filename = strcat([setup.name,'.txt']);
 fid = fopen(filename,'w');
 fprintf(fid,'\n');
-fprintf(fid,'\n');
-fprintf(fid,'\n');
-fprintf(fid,'\n');                                    
-fprintf(fid,'%s\n','   ____ ______   ____ ______  ______');
-fprintf(fid,'%s\n','  / ___\\____ \ /  _ \\____ \/  ___/');
-fprintf(fid,'%s\n',' / /_/  >  |_> >  <_> )  |_> >___ \ ');
-fprintf(fid,'%s\n',' \___  /|   __/ \____/|   __/____  >');
-fprintf(fid,'%s\n','/_____/ |__|          |__|       \/ ');
-fprintf(fid,'\n');
-fprintf(fid,'-----------------------------------------------------------------------------------\n');
-fprintf(fid,'GPOPS Version 2.2 beta: A MATLAB Implementation of the Gauss Pseudospectral Method\n');
-fprintf(fid,'-----------------------------------------------------------------------------------\n');
-fprintf(fid,'\n');
 ssfilename = strcat(['Summary of Problem Written to File: ',filename]);
 strdashed = '';
 for k=1:length(ssfilename)
     strdashed = strcat([strdashed,'-']);
-end;
+end
 disp(strdashed);
 disp(ssfilename);
 disp(strdashed);

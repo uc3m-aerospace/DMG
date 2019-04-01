@@ -1,4 +1,4 @@
-function setup = gpopsScaleNlp_coll(setup);
+function setup = dmg_ScaleNlp_coll(setup)
 %------------------------------------------------------------------%
 % Determine the row and column scales for a non-sequential         %
 % multiple-phase optimal control problem                           %
@@ -17,7 +17,9 @@ numphases = setup.numphases;
 colscales     = ones(numvars,1);
 rowscales     = ones(numnonlin,1);
 dependencies  = cell(1,numphases);
-% only run if using autoscale
+%
+%Oonly run if using autoscale
+%
 if isfield(setup,'autoscale') && isequal(setup.autoscale,'on')
     % ---------------------------
     % Get the column scales first
@@ -85,24 +87,24 @@ if isfield(setup,'autoscale') && isequal(setup.autoscale,'on')
         % ------------------------------------------------
         randtime = rand(ntrials,1);
         trand = randtime*tupp+(1-randtime)*tlow;
-        if nstates>0,
+        if nstates>0
             randstate = rand(nstates,ntrials).';
             xrand = randstate.*repmat(xupp,ntrials,1)+(1-randstate).*repmat(xlow,ntrials,1);
         else
             xrand = [];
-        end;
-        if ncontrols>0,
+        end
+        if ncontrols>0
             randcontrol = rand(ncontrols,ntrials).';
             urand = randcontrol.*repmat(uupp,ntrials,1)+(1-randcontrol).*repmat(ulow,ntrials,1);
         else
             urand = [];
-        end;
-        if nparameters>0,
+        end
+        if nparameters>0
             randparameters = rand(nparameters,ntrials).';
             prand = randparameters.*repmat(pupp,ntrials,1)+(1-randparameters).*repmat(plow,ntrials,1);
         else
             prand = [];
-        end;
+        end
         % ---------------------%
         % Initialize variables %
         % ---------------------%
@@ -113,21 +115,21 @@ if isfield(setup,'autoscale') && isequal(setup.autoscale,'on')
         extras.nstates = nstates;
         extras.ncontrols = ncontrols;
         extras.nparameters = nparameters;
-        for j=1:ntrials;
+        for j=1:ntrials
             % ----------------------------------%
             % Evaluate the Jacobian of the DAEs %
             % ----------------------------------%
             t = trand(j);
             xup = zeros(nstates+ncontrols+nparameters,1);
-            if nstates>0,
+            if nstates>0
                 xup(1:nstates) = xrand(j,:).';
-            end;
-            if ncontrols>0,
+            end
+            if ncontrols>0
                 xup(nstates+1:nstates+ncontrols) = urand(j,:).';
-            end;
-            if nparameters>0,
+            end
+            if nparameters>0
                 xup(nstates+ncontrols+1:nstates+ncontrols+nparameters) = prand(j,:).';
-            end;
+            end
             xuptot(:,j) = xup;
             % ---------------------------------------%
             % Evaluate Jacobian using random numbers %
@@ -146,43 +148,43 @@ if isfield(setup,'autoscale') && isequal(setup.autoscale,'on')
                     initevent = [t; xrand(j,:).'];
                     termevent = [t; xrand(j,:).'];
                     xupevent(1:2+2*nstates) = [initevent; termevent];
-                end;
+                end
                 if nparameters>0
                     xupevent(2+2*nstates+1:end) = prand(j,:).';
-                end;
+                end
                 fty = feval('gpopsEventWrapper',t,xupevent,extras);
                 thresh = 1e-6*ones(size(xupevent));
                 [eventjac] = numjac('gpopsEventWrapper',t,xupevent,fty,thresh,[],0,[],[],extras);
                 event_norm(:,j) = sqrt(dot(eventjac,eventjac,2));
-            end;
-        end;
+            end
+        end
         xupall{iphase} = xuptot;
         
         if (nstates+npaths)>0
             dae_norm_average = mean(dae_norm,2);
-        end;
+        end
         if nstates>0
             ode_norm_matrix = state_scales_matrix;
         else
             ode_norm_matrix = [];
-        end;
+        end
         if npaths>0
             path_norm_average = dae_norm_average(nstates+1:end);
             path_norm_average(logical(path_norm_average<eps)) = 1;
             path_norm_matrix = repmat(path_norm_average,1,nodes(iphase)).';
         else
             path_norm_matrix = [];
-        end;
+        end
         dae_norm_vector = [ode_norm_matrix(:); path_norm_matrix(:)];
         if nevents>0
             event_norm_vector = mean(event_norm,2);
             event_norm_vector(logical(event_norm_vector<eps)) = 1;
         else
             event_norm_vector = [];
-        end;
+        end
         rowscales(constraint_indices{1,iphase}) = [dae_norm_vector; event_norm_vector];
         phasecons(iphase) = (nodes(iphase)-1)*nstates+nodes(iphase)*npaths+nevents;
-    end;
+    end
     % -----------------------------
     % Determine the linkage scales
     % -----------------------------
@@ -209,7 +211,7 @@ if isfield(setup,'autoscale') && isequal(setup.autoscale,'on')
         extras.right.nstates     = nstates_right;
         extras.right.nparameters = nparameters_right;
         link_norm                = zeros(nlinks,ntrials);
-        for j=1:ntrials;
+        for j=1:ntrials
             xupleft  = xupall{left_phase}(:,ipair);
             xupright = xupall{right_phase}(:,ipair);
             xleft = xupleft(1:nstates_left);
@@ -221,11 +223,11 @@ if isfield(setup,'autoscale') && isequal(setup.autoscale,'on')
             thresh = 1e-6*ones(size(xplink));
             [linkjac] = numjac('gpopsLinkWrapper',t,xplink,fty,thresh,[],0,[],[],extras);
             link_norm(:,j) = sqrt(dot(linkjac,linkjac,2));
-        end;
+        end
         link_norm_average = mean(link_norm,2);
         link_norm_average(logical(link_norm_average<eps)) = 1;
         link_scales = [link_scales; link_norm_average];
-    end;
+    end
     rowscales(linkage_indices) = link_scales;
 end     %isfield(setup,'autoscale') && isequal(setup.autoscale,'on')
 setup.column_scales = 1./colscales;
@@ -248,7 +250,7 @@ if ~isfield(setup,'dependencies')
 else
     % use user defined dependencies
     fprintf('\nUsing User Defined Sparsity\n')
-    for iphase=1:numphases;
+    for iphase=1:numphases
         if isempty(setup.dependencies{iphase})
             setup.dependencies{iphase} = dependencies{iphase};
         else

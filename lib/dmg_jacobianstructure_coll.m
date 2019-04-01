@@ -1,4 +1,4 @@
-function[Jacs]=jacobianstructure_coll(mysetup)
+function[Jacs]=dmg_jacobianstructure_coll(mysetup)
 
 Jacs= sparse(mysetup.sparsity);
 

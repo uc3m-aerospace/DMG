@@ -1,5 +1,7 @@
-function[C,J]=constraints(x,mysetup)
-%
+function[C,J]=dmg_constraints(x,mysetup)
+%-----------------------------------------------------------------  -%
+% Compute the nonlinear constraints function for IPOPT               %
+%------------------------------------------------------------------  %
 [ncon, nvar] = size(mysetup.sparsity_all);
 J = zeros(ncon,nvar);
 

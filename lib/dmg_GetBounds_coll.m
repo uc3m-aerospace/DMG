@@ -1,9 +1,8 @@
-function setup = gpopsGetBounds_coll(setup);
+function setup = dmg_GetBounds_coll(setup)
 %------------------------------------------------------------------%
 % Get all bounds in a multiple-phase optimal control problem       %
 %------------------------------------------------------------------%
-% GPOPS Copyright (c) Anil V. Rao, Geoffrey T. Huntington, David   %
-% Benson, Michael Patterson, Christopher Darby, & Camila Francolin %
+%
 %------------------------------------------------------------------%
 
 limits = setup.limits;
@@ -20,7 +19,7 @@ variable_indices = cell(1,numphases);
 constraint_indices = cell(1,numphases);
 indices = repmat(struct('state',[],'control',[],'time',[],'parameter',[]),numphases,1);
 
-for iphase=1:numphases;
+for iphase=1:numphases
     % ---------------------------------------------------------
     % Get the lower and upper limits on the initial and terminal
     % time in the current phase
@@ -42,7 +41,7 @@ for iphase=1:numphases;
     % -------------------------------------------------------------------
     state_matrix_min = zeros(nodes(iphase),sizes(iphase,1));
     state_matrix_max = zeros(nodes(iphase),sizes(iphase,1));
-    if ~isequal(sizes(iphase,1),0),
+    if ~isequal(sizes(iphase,1),0)
         state0Min = limits(iphase).state.min(:,1);
         stateMin = limits(iphase).state.min(:,2);
         statefMin = limits(iphase).state.min(:,3);
@@ -67,11 +66,11 @@ for iphase=1:numphases;
     else
         state_matrix_min = [];
         state_matrix_max = [];
-    end;
+    end
     % -------------------------------------------------------------------
     % Get the lower and upper limits on the controls in the current phase
     % -------------------------------------------------------------------
-    if ~isequal(sizes(iphase,2),0),
+    if ~isequal(sizes(iphase,2),0)
         controlMin = limits(iphase).control.min;
         controlMax = limits(iphase).control.max;
         control_matrix_min = repmat(controlMin,1,nodes(iphase)).';
@@ -88,12 +87,12 @@ for iphase=1:numphases;
     else
         control_matrix_min = [];
         control_matrix_max = [];
-    end;
+    end
     
     % ----------------------------------------------------------------------------
     % Get the lower and upper limits on the static parameters in the current phase
     % ----------------------------------------------------------------------------
-    if ~isequal(sizes(iphase,3),0),
+    if ~isequal(sizes(iphase,3),0)
         parameter_min = limits(iphase).parameter.min;
         parameter_max = limits(iphase).parameter.max;
         % -------------------------------------------------------------------
@@ -108,11 +107,11 @@ for iphase=1:numphases;
     else
         parameter_min = [];
         parameter_max = [];
-    end;
+    end
     % ---------------------------------------------------------------------------
     % Get the lower and upper limits on the path constraints in the current phase
     % ---------------------------------------------------------------------------
-    if ~isequal(sizes(iphase,4),0),
+    if ~isequal(sizes(iphase,4),0)
         pathMin = limits(iphase).path.min;
         pathMax = limits(iphase).path.max;
         path_matrix_min = repmat(pathMin,1,nodes(iphase)).';
@@ -129,11 +128,11 @@ for iphase=1:numphases;
     else
         path_matrix_min = [];
         path_matrix_max = [];
-    end;
+    end
     % ----------------------------------------------------------------------------
     % Get the lower and upper limits on the event constraints in the current phase
     % ----------------------------------------------------------------------------
-    if ~isequal(sizes(iphase,5),0),
+    if ~isequal(sizes(iphase,5),0)
         event_vector_min = limits(iphase).event.min;
         event_vector_max = limits(iphase).event.max;
         % -------------------------------------------------------------------
@@ -148,7 +147,7 @@ for iphase=1:numphases;
     else
         event_vector_min = [];
         event_vector_max = [];
-    end;
+    end
     state_vector_min = state_matrix_min(:);
     state_vector_max = state_matrix_max(:);
     control_vector_min = control_matrix_min(:);
@@ -173,11 +172,11 @@ for iphase=1:numphases;
     nparameters = sizes(iphase,3);
     state_indices = 1:(nodes(iphase))*nstates;
     control_indices = state_indices(end)+1:state_indices(end)+nodes(iphase)*ncontrols;
-    if ~isempty(control_indices),
+    if ~isempty(control_indices)
         t0_index = control_indices(end)+1;
     else
         t0_index = state_indices(end)+1;
-    end;
+    end
     tf_index = t0_index+1;
     parameter_indices = tf_index+1:tf_index+nparameters;
     indices(iphase).state = state_indices;
@@ -186,15 +185,15 @@ for iphase=1:numphases;
     indices(iphase).parameter = parameter_indices;
     variable_offset = variable_offset+variables(iphase);
     constraint_offset = constraint_offset+constraints(iphase);
-end;
+end
 numlinkpairs = length(linkages);
 linkMinTot = [];
 linkMaxTot = [];
-for ipair=1:numlinkpairs;
+for ipair=1:numlinkpairs
     % ------------------------------------------------------------%
     % Check the lower and upper limits on the linkage constraints %
     % ------------------------------------------------------------%
-    if ~isfield(linkages(ipair),'min') || ~isfield(linkages(ipair),'max'),
+    if ~isfield(linkages(ipair),'min') || ~isfield(linkages(ipair),'max')
         error('Must Specify Both Lower and Upper Bounds on Linkage Constraints');
     else
         linkMin = linkages(ipair).min;
@@ -202,11 +201,11 @@ for ipair=1:numlinkpairs;
         if ~isequal(size(linkMin),size(linkMax))
             error('Linkage Upper and Lower Bound Vector Must Be Same Size');
         end
-        if ~isequal(size(linkMin,2), 1),
+        if ~isequal(size(linkMin,2), 1)
             errStr = 'Linkage Lower Bound Vector Must Be Column Vector: Number_Links x 1';
             error('%s, in Linkage Pair %i',errStr,ipair)
         end
-        if ~isequal(size(linkMax,2), 1),
+        if ~isequal(size(linkMax,2), 1)
             errStr = 'Linkage Upper Lower Bound Vector Must Be Column Vector: Number_Links x 1';
             error('%s, in Linkage Pair %i',errStr,ipair)
         end
@@ -216,22 +215,22 @@ for ipair=1:numlinkpairs;
         if any(isnan(linkMin)) || any(isnan(linkMax))
             error('Linkage bounds NaN in Linkage Pair %i',ipair)
         end
-    end;
-    if ~isfield(linkages(ipair),'left') || ~isfield(linkages(ipair),'right'),
+    end
+    if ~isfield(linkages(ipair),'left') || ~isfield(linkages(ipair),'right')
         error('Must Specify Both Phases To be Linked');
     else
         leftPhase = linkages(ipair).left.phase;
         rightPhase = linkages(ipair).right.phase;
-        if ~isequal(size(leftPhase),[1 1]) || ~isequal(size(rightPhase),[1 1]),
+        if ~isequal(size(leftPhase),[1 1]) || ~isequal(size(rightPhase),[1 1])
             error('Left and Right Phase Numbers Must be Integers\n\t');
-        end;
-    end;
-    if isequal(leftPhase,rightPhase) || (leftPhase <= 0) || (rightPhase > numphases) || (rightPhase <= 0) || (rightPhase > numphases) || ~isequal(leftPhase,round(leftPhase)) || ~isequal(rightPhase,round(rightPhase)),
+        end
+    end
+    if isequal(leftPhase,rightPhase) || (leftPhase <= 0) || (rightPhase > numphases) || (rightPhase <= 0) || (rightPhase > numphases) || ~isequal(leftPhase,round(leftPhase)) || ~isequal(rightPhase,round(rightPhase))
         error('Invalid Linkage phase numbers in connection: %i',ipair)
     end
     linkMinTot = [linkMinTot; linkMin];
     linkMaxTot = [linkMaxTot; linkMax];
-end;
+end
 numlinks = length(linkMinTot);
 varbounds_min = vertcat(nlplimits{:,1});
 varbounds_max = vertcat(nlplimits{:,2});
@@ -264,61 +263,61 @@ Alinmax = zeros(numphases+numlinkpairs,1);
 % ---------------------------------------------
 % Part 1:  Monotonicity of Independent Variable
 % ---------------------------------------------
-for iphase=1:numphases;
+for iphase=1:numphases
     nstates = sizes(iphase,1);
     ncontrols = sizes(iphase,2);
-    if ~isequal(iphase,1),
+    if ~isequal(iphase,1)
         ishift = variable_indices{iphase-1}(end);
     else
         ishift =0;
-    end;
+    end
     t0_index = ishift+(nodes(iphase))*nstates+nodes(iphase)*ncontrols+1;
     tf_index = t0_index+1;
     Alinear(iphase,t0_index) = -1;
     Alinear(iphase,tf_index) = 1;
-    if isfield(limits(iphase),'duration'),
+    if isfield(limits(iphase),'duration')
         % Check if only ONE of the lower and upper bounds on the phase duration are specified
-        if (isfield(limits(iphase).duration,'min') && ~ isfield(limits(iphase).duration,'max')) || (~isfield(limits(iphase).duration,'min') && isfield(limits(iphase).duration,'max')),
+        if (isfield(limits(iphase).duration,'min') && ~ isfield(limits(iphase).duration,'max')) || (~isfield(limits(iphase).duration,'min') && isfield(limits(iphase).duration,'max'))
             error('Must Specify Both Lower and Upper Bounds on Phase Duration');
         else 
-            if isempty(limits(iphase).duration.min) && isempty(limits(iphase).duration.max),
+            if isempty(limits(iphase).duration.min) && isempty(limits(iphase).duration.max)
                 % Neither Minimum nor Maximum Duration Specified
                 Alinmin(iphase) = 0;
                 Alinmax(iphase) = Inf;
-            elseif ~isempty(limits(iphase).duration.min) && isempty(limits(iphase).duration.max),
+            elseif ~isempty(limits(iphase).duration.min) && isempty(limits(iphase).duration.max)
                 % Minimum Duration Specified But Maximum Duration Unspecified
-                if isequal(size(limits(iphase).duration.min),[1 1]), 
+                if isequal(size(limits(iphase).duration.min),[1 1]) 
                     Alinmin(iphase) = limits(iphase).duration.min;
                     Alinmax(iphase) = Inf;
-                end;
-            elseif isempty(limits(iphase).duration.min) && ~isempty(limits(iphase).duration.max),
+                end
+            elseif isempty(limits(iphase).duration.min) && ~isempty(limits(iphase).duration.max)
                 % Minimum Duration Unspecified But Maximum Duration Specified
-                if isequal(size(limits(iphase).duration.max),[1 1]), 
+                if isequal(size(limits(iphase).duration.max),[1 1])
                     Alinmin(iphase) = 0;
                     Alinmin(iphase) = limits(iphase).duration.max;
-                end;
+                end
             else
                 % Both Minimum and Maximum Duration Specified
-                if ~(isequal(size(limits(iphase).duration.min),[1 1]) && isequal(size(limits(iphase).duration.max),[1 1])),
+                if ~(isequal(size(limits(iphase).duration.min),[1 1]) && isequal(size(limits(iphase).duration.max),[1 1]))
                     errStr1 = 'Lower and Upper Bounds on Phase Duration in Phase ';
                     errStr2 = ' Must be Scalars';
                     error('%s, in Linkage Pair %i %s',errStr1,ipair,errStr2)
                 else
                     Alinmin(iphase) = limits(iphase).duration.min;
                     Alinmax(iphase) = limits(iphase).duration.max;
-                end;
-            end;
-        end;
+                end
+            end
+        end
     else
         Alinmin(iphase) = 0;
         Alinmax(iphase) = Inf;
-    end;
-end;
+    end
+end
 istart = numphases;
 % --------------------------------------
 % Part 2:  Linkage of Time Across Phases
 % --------------------------------------
-for ipair=1:numlinkpairs;
+for ipair=1:numlinkpairs
     left_phase = linkages(ipair).left.phase;
     right_phase = linkages(ipair).right.phase;
     nparameters_left = sizes(left_phase,3);
@@ -329,7 +328,7 @@ for ipair=1:numlinkpairs;
     Alinear(istart+ipair,t0_index_right) = 1;
     Alinmin(istart+ipair) = 0;
     Alinmax(istart+ipair) = 0;
-end;
+end
 setup.numnonlin = setup.numnonlin;
 setup.numvars   = numvars;
 setup.numlin    = length(Alinmin);

@@ -1,5 +1,8 @@
-function[J]=jacobian_CS(x,mysetup)
-
+function[J]=dmg_jacobian_CS(x,mysetup)
+%------------------------------------------------------------------%
+% Compute jacobian of constraints function for IPOPT when 
+% Complex Step Differenciation is used             
+%------------------------------------------------------------------%
 %--------------------------------%
 % Unscale the decision variables %
 %--------------------------------%
