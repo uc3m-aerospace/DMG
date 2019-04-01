@@ -22,10 +22,15 @@ The new features DMG includes:
 The purpose of MOLTO-IT is to provide a fast and robust mission design environment that allows the user to quickly and inexpensively perform trade studies of various mission configurations and conduct low-fidelity analysis. 
 
 ### NLP SOLVERS
+Two different NLP solvers can be used with DMG solver:
+ * [IPOPT](https://projects.coin-or.org/Ipopt): Interior Point Solver. It is an opensource package for solving large scale nonlinear optimization problems. Precompiled binaries for Macosx, Windows (32 and 64 bits), and Linux are included within the DMG solver distribution. They are located in *NLPsolvers/IPOPT*
+ * [SNOPT](https://web.stanford.edu/group/SOL/snopt.htm): Sequential Quadratic Solver. It is a propietary software. A license can be pruchased [here](https://ccom.ucsd.edu/~optimizers/downloads/). Copy and Paste the required libraries and mex files in the folder *NLPsolvers/SNOPT*
 
 
 ## Installation Guide
-Installation requires simply that you download [MOLTO-IT](https://github.com/uc3m-aerospace/MOLTO-IT/) and add the base directory to your Matlab path.
+Installation requires simply that you download [DMG](https://github.com/uc3m-aerospace/DMG). Then, you have the *DMGSetup.m* file. It includes all the necesaary path to your root base directory. The file only need to be run once.
+
+Make sure that the *DMG* directory is your working directory.
 
 ## Quick Usage Guide
 
