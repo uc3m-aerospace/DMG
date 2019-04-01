@@ -21,6 +21,9 @@ The new features DMG includes:
 ### Goal
 The purpose of MOLTO-IT is to provide a fast and robust mission design environment that allows the user to quickly and inexpensively perform trade studies of various mission configurations and conduct low-fidelity analysis. 
 
+### NLP SOLVERS
+
+
 ## Installation Guide
 Installation requires simply that you download [MOLTO-IT](https://github.com/uc3m-aerospace/MOLTO-IT/) and add the base directory to your Matlab path.
 
@@ -29,7 +32,7 @@ Installation requires simply that you download [MOLTO-IT](https://github.com/uc3
 In order to optimize a mission, the user needs to call the main function *molto_it.m* providing an input structure. Here you vae an example:
 
 ```matlab
-% FLYBY MISSION TO JUPITER WITH UP TO 3 FLYBYS
+% INPUT STRUCTURE FOR DMG SOLVER
         input.problem_name  = 'example'; % Problem name
         input.problem_type  = 'flyby'; % Type of mission: condition at arrival planet (flyby/rendezvous)
         input.planet_dep    = '3';     % Departure planet using space nomenclature (e.g. 3==Earth)
