@@ -63,8 +63,7 @@ output  = DMG(input)
 Any use of DMG Tool must comply with the GPOPS license
 
 ## Disclaimer
-This software is provided 'as is' and free-of-charge.  Neither the
-authors nor their employers assume any responsibility for any harm
-resulting from the use of this software.  The authors do, however,
+This software is provided 'as is' and free-of-charge. The authors do not assume any responsibility for any harm
+resulting from the use of this software. The authors do, however,
 hope that users will find this software useful for research and other
 purposes.
