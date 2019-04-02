@@ -51,7 +51,7 @@ input.linkages    = linkages;           % Structure containing the desired value
 input.derivatives = 'automatic';        % Method for computing gradients and jacobians: automatic/numerical/complex/analytical
 input.parallel    = 'no';               % Multicore computation of numerical and complex differentiation: yes/no
 input.autoscale   = 'off';              % Automatic Scaling: yes/no
-input.solver      = 'ipopt';            % NonLinear Programming Solver: ipopr/snopt
+input.solver      = 'ipopt';            % NonLinear Programming Solver: ipopt/snopt
 input.method      = 'collocation';      % Transcription method: collocation/pseudospectral
 
 % RUN DMG SOLVER
