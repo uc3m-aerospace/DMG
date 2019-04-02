@@ -14,12 +14,12 @@ The main GPOPS features are:
 
 The new features DMG includes:
 
- * Implements Hermite Simpson Collocation Method for Transcribing the continuous optimal control problem into an Nonlinear Optimization Problem.
+ * Implements Hermite Simpson Collocation Method for Transcribing the continuous optimal control problem into a Nonlinear Optimization Problem.
  * Interfaces with IPOPT
  * Multi-core computation of Forward numerical derivatives and Complex Step differentiation.
 
 ### Goal
-The purpose of MOLTO-IT is to provide a fast and robust mission design environment that allows the user to quickly and inexpensively perform trade studies of various mission configurations and conduct low-fidelity analysis. 
+The purpose of DMG solver is to provide an open-source tool for solving Optimal Control Problems. Given that the original version of GPOPS is coded to work with the NLP solver SNOPT, which is a propietary software, we have modefied the code in such a way that now is able to work with the open-sourde solver IPOPT.  
 
 ### NLP SOLVERS
 Two different NLP solvers can be used with DMG solver:
