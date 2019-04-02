@@ -19,7 +19,7 @@ The new features DMG includes:
  * Multi-core computation of Forward numerical derivatives and Complex Step differentiation.
 
 ### Goal
-The purpose of DMG solver is to provide a Matlab open-source tool for solving Optimal Control Problems. Given that the original version of GPOPS is coded to work with the NLP solver SNOPT, which is a propietary software, we have modefied the code in such a way that now is able to work with the open-sourde solver IPOPT.  
+The purpose of DMG tool is to provide a Matlab open-source tool for solving Optimal Control Problems. Given that the original version of GPOPS is coded to work with the NLP solver SNOPT, which is a propietary software, we have modefied the code in such a way that now is able to work with the open-sourde solver IPOPT.  
 
 ### NLP SOLVERS
 Two different NLP solvers can be used with DMG solver:
