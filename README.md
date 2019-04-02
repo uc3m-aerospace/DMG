@@ -58,3 +58,6 @@ input.method      = 'hermite-simpson';  % Transcription method: hermite-simpson/
 output  = DMG(input)
 ```
 **NOTE**: Ensure that all the folders and subfolders are in the matlab path.
+
+## Important Note
+Any use of DMG Tool must comply with the GPOPS license
