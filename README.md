@@ -39,24 +39,27 @@ In order to optimize an Optimal Control Problem, the user needs to call the main
 
 ```matlab
 % INPUT STRUCTURE FOR DMG SOLVER
-input.name        = 'ProblemName';      % name of the problem
-input.funcs.cost  = 'CostFunctionName'; % name of the Cost Function
-input.funcs.dae   = 'DaeFunction';      % name of the Differential Algebrais System
-input.funcs.event = 'EventFunction';    % name of the Event function
-input.funcs.link  = 'LinkFunction';     % name of the Link function
-input.limits      = limits;             % Struture containing States, Controls, Parameters lower and Upper bounds as well as
+input.name        = 'ProblemName';      % A string containing the name of the problem
+input.funcs.cost  = 'CostFunctionName'; % A string containing the name of the user-defined Cost Function
+input.funcs.dae   = 'DaeFunction';      % A string containing the name of the user-defined Differential Algebrais System
+input.funcs.event = 'EventFunction';    % A string containing the name of the user-defined Event function
+input.funcs.link  = 'LinkFunction';     % A string containing the name of the user-defined Link function
+input.limits      = limits;             % An array of structures containing States, Controls, Parameters lower and Upper bounds as well as
                                         % Path and Event constraints Lower and Upper bounds.
-input.guess       = guess;              % Struture containing initial guess for the States, Controls and Parameters
-input.linkages    = linkages;           % Structure containing the desired values for the 'LinkFunction'
-input.derivatives = 'automatic';        % Method for computing gradients and jacobians: automatic/numerical/complex/analytical
-input.parallel    = 'no';               % Multicore computation of numerical and complex differentiation: yes/no
-input.autoscale   = 'off';              % Automatic Scaling: yes/no
-input.solver      = 'ipopt';            % NonLinear Programming Solver: ipopt/snopt
-input.method      = 'hermite-simpson';  % Transcription method: hermite-simpson/pseudospectral
+input.guess       = guess;              % An array of strutures containing initial guess for the States, Controls and Parameters
+input.linkages    = linkages;           % An array of structures containing the desired values for the 'LinkFunction'
+input.derivatives = 'automatic';        % A string containing the method for computing gradients and jacobians:              automatic/numerical/complex/analytical
+input.parallel    = 'no';               % A string containing the option for multicore computation of numerical and complex differentiation: yes/no
+input.autoscale   = 'off';              % A string that indicates wether automatic Scaling is used or not: yes/no
+input.solver      = 'ipopt';            % A string contyaining the NonLinear Programming Solver to be used: ipopt/snopt
+input.method      = 'hermite-simpson';  % A string containing the transcription method to be used: hermite-simpson/pseudospectral
 
 % RUN DMG TOOL
 output  = DMG(input)
 ```
+
+
+
 **NOTE**: Ensure that all the folders and subfolders are in the matlab path.
 
 ## Important Note
