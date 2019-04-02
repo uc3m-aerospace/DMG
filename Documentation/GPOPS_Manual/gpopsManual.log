@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.9.22)  1 APR 2019 20:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.9.22)  2 APR 2019 14:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -513,7 +513,7 @@ Package color Info: Driver file: pdftex.def on input line 142.
 
 
 Writing index file gpopsManual.idx
-No file gpopsManual.aux.
+(./gpopsManual.aux)
 \openout1 = `gpopsManual.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 141.
@@ -532,6 +532,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 141.
 LaTeX Font Info:    ... okay on input line 141.
 \AtBeginShipoutBox=\box62
 Package hyperref Info: Link coloring ON on input line 141.
+
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -543,6 +544,8 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 141.
 LaTeX Info: Redefining \pageref on input line 141.
 LaTeX Info: Redefining \nameref on input line 141.
+
+(./gpopsManual.out) (./gpopsManual.out)
 \@outlinefile=\write5
 \openout5 = `gpopsManual.out'.
 
@@ -638,15 +641,10 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <24.88> not available
 ] [3
 
 ]
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 184.
-
-
-LaTeX Warning: Citation 'Gill1' on page 4 undefined on input line 184.
-
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 202.
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 202.
+
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -655,14 +653,21 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ] [5
 
 ]
-No file ../LICENSE..
+File: ../../LICENSE.GPOPS  (verbatim)
+
 [6
 
 ]
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 224.
+ [7] [8] [9] (./gpopsManual.toc
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 1.
+)
 \tf@toc=\write6
 \openout6 = `gpopsManual.toc'.
 
- [7
+ [10
 
 ]
 Chapter 1.
@@ -685,11 +690,7 @@ LaTeX Warning: Command \textcircled invalid in math mode on input line 235.
 
 LaTeX Warning: Command \textcircled invalid in math mode on input line 235.
 
-
-LaTeX Warning: Reference `fig: linkages' on page 8 undefined on input line 277.
-
-
-<linkages.pdf, id=51, 496.87762pt x 257.4669pt>
+<linkages.pdf, id=210, 496.87762pt x 257.4669pt>
 File: linkages.pdf Graphic file (type pdf)
  <use linkages.pdf>
 Package pdftex.def Info: linkages.pdf used on input line 280.
@@ -712,72 +713,15 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 288.
 
-
-LaTeX Warning: Citation 'Benson1' on page 8 undefined on input line 293.
-
-
-LaTeX Warning: Citation 'Benson2' on page 8 undefined on input line 293.
-
-
-LaTeX Warning: Citation 'Huntington6' on page 8 undefined on input line 293.
-
-
-LaTeX Warning: Citation 'Huntington1' on page 8 undefined on input line 295.
-
-
-LaTeX Warning: Citation 'Huntington2' on page 8 undefined on input line 295.
-
-
-LaTeX Warning: Citation 'Huntington3' on page 8 undefined on input line 295.
-
-
-LaTeX Warning: Citation 'Huntington4' on page 8 undefined on input line 295.
-
-
-LaTeX Warning: Citation 'Benson2' on page 8 undefined on input line 299.
-
-[8
+[11
 
 ]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 317.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 317.
-
-
-LaTeX Warning: Reference `bolza_time_cost' on page 9 undefined on input line 32
-3.
-
-
-LaTeX Warning: Reference `bolza_path' on page 9 undefined on input line 323.
-
-
-LaTeX Warning: Reference `bolza_time_cost' on page 9 undefined on input line 32
-5.
-
-
-LaTeX Warning: Reference `bolza_path' on page 9 undefined on input line 325.
-
-
-LaTeX Warning: Reference `Bolza prob' on page 9 undefined on input line 336.
-
-
-LaTeX Warning: Reference `bolza_time_cost' on page 9 undefined on input line 33
-7.
-
-
-LaTeX Warning: Reference `bolza_path' on page 9 undefined on input line 337.
-
-
-Overfull \hbox (3.00017pt too wide) in paragraph at lines 335--343
-\OT1/ppl/m/n/10 and tran-scribe Eqs. ([])--([]) to a non-lin-ear pro-gram-ming 
-prob-lem (NLP). The Gauss pseu-dospec-tral method,
- []
-
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 343.
-[9pdfTeX warning (ext4): destination with the same identifier (name{figure.1.1}
-) has been already used, duplicate ignored
+ [12pdfTeX warning (ext4): destination with the same identifier (name{figure.1.
+1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -790,133 +734,7 @@ ls $\OML/cmm/m/it/10 L[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^\\OT1/cmr/m/n/10 )\
 OML/cmm/m/it/10 ;  \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 i \OT1/cmr/m/n/10 =
  []
 
-
-LaTeX Warning: Reference `lagrange for state' on page 10 undefined on input lin
-e 365.
-
-
-LaTeX Warning: Reference `lagrange control' on page 10 undefined on input line 
-365.
-
-
-LaTeX Warning: Reference `state approximation gauss' on page 10 undefined on in
-put line 376.
-
-
-LaTeX Warning: Citation 'Elnagar1' on page 10 undefined on input line 405.
-
-
-LaTeX Warning: Citation 'Elnagar2' on page 10 undefined on input line 405.
-
-
-LaTeX Warning: Citation 'Davis1' on page 10 undefined on input line 410.
-
-
-LaTeX Warning: Reference `bolza_time_cost' on page 10 undefined on input line 4
-16.
-
-
-LaTeX Warning: Citation 'Davis1' on page 10 undefined on input line 417.
-
-[10]
-
-LaTeX Warning: Reference `bolza_time_bound' on page 11 undefined on input line 
-422.
-
-
-LaTeX Warning: Reference `bolza_path' on page 11 undefined on input line 427.
-
-
-LaTeX Warning: Reference `diff_dis_cost' on page 11 undefined on input line 433
-.
-
-
-LaTeX Warning: Reference `diff_dis_dyn' on page 11 undefined on input line 434.
-
-
-
-LaTeX Warning: Reference `gauss quadrature of xf' on page 11 undefined on input
- line 435.
-
-
-LaTeX Warning: Reference `diff_dis_bound' on page 11 undefined on input line 43
-5.
-
-
-LaTeX Warning: Reference `diff_dis_path' on page 11 undefined on input line 436
-.
-
-
-LaTeX Warning: Reference `section: NLP' on page 11 undefined on input line 474.
-
-
-[11]
-
-LaTeX Warning: Reference `bolza_time_cost' on page 12 undefined on input line 5
-75.
-
-
-LaTeX Warning: Reference `bolza_path' on page 12 undefined on input line 575.
-
-
-LaTeX Warning: Reference `Bolza prob' on page 12 undefined on input line 576.
-
-
-LaTeX Warning: Citation 'Pontryagin1' on page 12 undefined on input line 577.
-
-
-LaTeX Warning: Citation 'Kirk1' on page 12 undefined on input line 578.
-
-[12]
-
-LaTeX Warning: Reference `variational cond' on page 13 undefined on input line 
-650.
-
-
-LaTeX Warning: Reference `costate approximation' on page 13 undefined on input 
-line 674.
-
-
-LaTeX Warning: Reference `necc_cond' on page 13 undefined on input line 676.
-
-
-LaTeX Warning: Reference `state approximation gauss' on page 13 undefined on in
-put line 678.
-
-
-LaTeX Warning: Reference `control approximation' on page 13 undefined on input 
-line 678.
-
-
-LaTeX Warning: Reference `costate approximation' on page 13 undefined on input 
-line 681.
-
-
-LaTeX Warning: Reference `necc_cond' on page 13 undefined on input line 682.
-
-
-LaTeX Warning: Reference `necc_cond' on page 13 undefined on input line 699.
-
-[13]
-
-LaTeX Warning: Reference `dis_ness_state' on page 14 undefined on input line 76
-5.
-
-
-LaTeX Warning: Reference `dis_ness_costate_bound' on page 14 undefined on input
- line 765.
-
-
-LaTeX Warning: Reference `KKT Disc Cond' on page 14 undefined on input line 775
-.
-
-
-LaTeX Warning: Reference `Disc Nec Cond' on page 14 undefined on input line 775
-.
-
-
-LaTeX Warning: Citation 'Benson1' on page 14 undefined on input line 777.
-
+[13] [14] [15] [16]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <10> not available
 (Font)              Font shape `OT1/ppl/b/it' tried instead on input line 782.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <12> not available
@@ -926,92 +744,19 @@ Overfull \hbox (0.96541pt too wide) in paragraph at lines 783--791
 []\OT1/ppl/m/it/10 The Karush-Kuhn-Tucker (KKT)
  []
 
-[14]
-
-LaTeX Warning: Reference `costate equivalence' on page 15 undefined on input li
-ne 803.
-
-
-LaTeX Warning: Reference `kkt 1' on page 15 undefined on input line 804.
-
-
-LaTeX Warning: Reference `kkt 12' on page 15 undefined on input line 804.
-
-
-LaTeX Warning: Reference `dis_ness_state' on page 15 undefined on input line 80
-5.
-
-
-LaTeX Warning: Reference `dis_ness_costate_bound' on page 15 undefined on input
- line 805.
-
-
-LaTeX Warning: Reference `cmp_thm' on page 15 undefined on input line 807.
-
-
-LaTeX Warning: Reference `diff_flow_fig' on page 15 undefined on input line 810
-.
-
-<diff_flow.pdf, id=152, 558.74193pt x 437.69221pt>
+[17] <diff_flow.pdf, id=345, 558.74193pt x 437.69221pt>
 File: diff_flow.pdf Graphic file (type pdf)
  <use diff_flow.pdf>
 Package pdftex.def Info: diff_flow.pdf used on input line 814.
 (pdftex.def)             Requested size: 391.11668pt x 306.38246pt.
 
-
-LaTeX Warning: Reference `diff_dis_dyn' on page 15 undefined on input line 822.
-
-
-
-LaTeX Warning: Reference `gauss quadrature of xf' on page 15 undefined on input
- line 823.
-
-
-LaTeX Warning: Reference `diff_dis_cost' on page 15 undefined on input line 823
-.
-
-
-LaTeX Warning: Reference `diff_dis_bound' on page 15 undefined on input line 82
-3.
-
-
-LaTeX Warning: Reference `diff_dis_path' on page 15 undefined on input line 824
-.
-
-
-LaTeX Warning: Citation 'Huntington5' on page 15 undefined on input line 844.
-
-[15pdfTeX warning (ext4): destination with the same identifier (name{figure.1.2
+[18pdfTeX warning (ext4): destination with the same identifier (name{figure.1.2
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.845 
-       <./diff_flow.pdf>]
-
-LaTeX Warning: Reference `minimum principle' on page 16 undefined on input line
- 865.
-
-
-LaTeX Warning: Reference `minimum principle' on page 16 undefined on input line
- 878.
-
-
-LaTeX Warning: Reference `Hamiltonian continuous' on page 16 undefined on input
- line 885.
-
-
-LaTeX Warning: Reference `diff_dis_path' on page 16 undefined on input line 894
-.
-
-
-LaTeX Warning: Reference `modified minimum principle 2' on page 16 undefined on
- input line 920.
-
-
-LaTeX Warning: Reference `modified minimum principle 2' on page 16 undefined on
- input line 922.
-
+       <./diff_flow.pdf>] [19]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 934.
@@ -1020,7 +765,6 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 934.
 
-[16]
 
 LaTeX Warning: Command \textregistered invalid in math mode on input line 963.
 
@@ -1030,7 +774,7 @@ LaTeX Warning: Command \textcircled invalid in math mode on input line 963.
 
 LaTeX Warning: Command \textcircled invalid in math mode on input line 963.
 
-[17]
+[20]
 Chapter 2.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -1048,48 +792,10 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 996.
 
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 1005.
-
-LaTeX Warning: Reference `sect: structure syntax' on page 18 undefined on input
- line 1005.
-
-
-LaTeX Warning: Reference `sect: output' on page 18 undefined on input line 1009
-.
-
-
-LaTeX Warning: Reference `sect:_Func_Names' on page 18 undefined on input line 
-1020.
-
-
-LaTeX Warning: Reference `sect: limits' on page 18 undefined on input line 1023
-.
-
-[18
+[21
 
 ]
 
-LaTeX Warning: Reference `sect: guess' on page 19 undefined on input line 1026.
-
-
-
-LaTeX Warning: Reference `sect: linkages' on page 19 undefined on input line 10
-31.
-
-
-LaTeX Warning: Reference `sect:_scaling' on page 19 undefined on input line 103
-7.
-
-
-LaTeX Warning: Reference `sect:_derivatives' on page 19 undefined on input line
- 1038.
-
-
-LaTeX Warning: Reference `sect:_derivatives' on page 19 undefined on input line
- 1039.
-
-
 LaTeX Font Warning: Command \sl invalid in math mode on input line 1049.
 
 
@@ -1113,7 +819,7 @@ LaTeX Font Warning: Command \sl invalid in math mode on input line 1052.
 
 LaTeX Font Warning: Command \sl invalid in math mode on input line 1052.
 
-[19] [20]
+[22] [23]
 Overfull \hbox (11.20178pt too wide) in paragraph at lines 1179--1184
 \OT1/ppl/m/n/10 and up-per lim-its on the event con-straints in phase $\OML/cmm
 /m/it/10 p \OMS/cmsy/m/n/10 2 \OT1/cmr/m/n/10 [1\OML/cmm/m/it/10 ; [] ; P\OT1/c
@@ -1121,57 +827,18 @@ mr/m/n/10 ]$\OT1/ppl/m/n/10 . The col-umn vec-tors []\OT1/ppl/b/n/10 limits($\O
 ML/cmm/m/it/10 p$\OT1/ppl/b/n/10 ).event.min[]
  []
 
-[21]
+[24]
 Overfull \vbox (5.3901pt too high) detected at line 1383
  []
 
-[22] [23] [24]
-
-LaTeX Warning: Reference `integrand correct syntax zero' on page 25 undefined o
-n input line 1474.
-
-[25] [26] [27] [28] [29]
-
-LaTeX Warning: Citation 'Betts1' on page 30 undefined on input line 1855.
-
-[30]
+[25] [26] [27] [28] [29] [30] [31] [32] [33]
 Overfull \hbox (3.28006pt too wide) in paragraph at lines 1885--1888
 [][]\OT1/ppl/m/sl/10 setup[]\OT1/ppl/m/n/10 .[]\OT1/ppl/b/n/10 derivatives[]\OT
 1/ppl/m/n/10 =``automatic-INTLAB'': au-to-matic dif-fer-en-ti-a-tion us-ing the
  third-party pro-gram \OT1/ppl/m/it/10 INT-
  []
 
-
-LaTeX Warning: Citation 'Martins1' on page 31 undefined on input line 1913.
-
-
-Overfull \hbox (28.59262pt too wide) in paragraph at lines 1905--1920
-\OT1/ppl/m/n/10 dif-fer-en-ti-a-tion (see Ref. \OT1/ppl/b/n/10 ? \OT1/ppl/m/n/1
-0 and the URL [][]$\OT1/pcr/m/n/10 http : / / mdolab . utias . utoronto . ca / 
-resources / complex-[]step /
- []
-
-[31]
-
-LaTeX Warning: Reference `sect:_Cost_syntax' on page 32 undefined on input line
- 1931.
-
-[32]
-
-LaTeX Warning: Reference `sect:_Dae_syntax' on page 33 undefined on input line 
-2015.
-
-[33] [34]
-
-LaTeX Warning: Reference `sect:_Event_syntax' on page 35 undefined on input lin
-e 2129.
-
-[35] [36]
-
-LaTeX Warning: Reference `sect:_Link_syntax' on page 37 undefined on input line
- 2227.
-
-[37]
+[34] [35] [36] [37] [38] [39] [40]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 2266.
@@ -1188,7 +855,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 2299.
 
-[38] [39]
+[41] [42]
 Chapter 3.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -1198,33 +865,30 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 2337.
 
-
-LaTeX Warning: Citation 'Rao1' on page 40 undefined on input line 2363.
-
 No file ../examples/hyperSensitive/hyperSensitiveMain.m.
 No file ../examples/hyperSensitive/hyperSensitiveCost.m.
 No file ../examples/hyperSensitive/hyperSensitiveDae.m.
-<xvst.pdf, id=342, 516.93124pt x 404.51125pt>
+<xvst.pdf, id=548, 516.93124pt x 404.51125pt>
 File: xvst.pdf Graphic file (type pdf)
  <use xvst.pdf>
 Package pdftex.def Info: xvst.pdf used on input line 2385.
 (pdftex.def)             Requested size: 323.24687pt x 252.94499pt.
 
-<lambdavst.pdf, id=343, 526.96875pt x 408.52625pt>
+<lambdavst.pdf, id=549, 526.96875pt x 408.52625pt>
 File: lambdavst.pdf Graphic file (type pdf)
  <use lambdavst.pdf>
 Package pdftex.def Info: lambdavst.pdf used on input line 2390.
 (pdftex.def)             Requested size: 326.28304pt x 252.94499pt.
- [40
+ [43
 
 ]
-<Hamvst_hyper.pdf, id=353, 518.93875pt x 424.58624pt>
+<Hamvst_hyper.pdf, id=557, 518.93875pt x 424.58624pt>
 File: Hamvst_hyper.pdf Graphic file (type pdf)
  <use Hamvst_hyper.pdf>
 Package pdftex.def Info: Hamvst_hyper.pdf used on input line 2395.
 (pdftex.def)             Requested size: 309.15643pt x 252.94499pt.
 
-[41pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1
+[44pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1236,12 +900,9 @@ l.2398
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.2398 
-        <./xvst.pdf> <./lambdavst.pdf>]
-
-LaTeX Warning: Citation 'Bryson2' on page 42 undefined on input line 2427.
-
-[42pdfTeX warning (ext4): destination with the same identifier (name{figure.3.3
-}) has been already used, duplicate ignored
+        <./xvst.pdf> <./lambdavst.pdf>] [45pdfTeX warning (ext4): destination w
+ith the same identifier (name{figure.3.3}) has been already used, duplicate ign
+ored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -1250,47 +911,47 @@ l.2442 \begin{shadedframe}
 No file ../examples/brysonDenham/brysonDenhamMain.m.
 No file ../examples/brysonDenham/brysonDenhamCost.m.
 No file ../examples/brysonDenham/brysonDenhamDae.m.
-<x1vstBrysonDenham.pdf, id=388, 524.96124pt x 404.51125pt>
+<x1vstBrysonDenham.pdf, id=590, 524.96124pt x 404.51125pt>
 File: x1vstBrysonDenham.pdf Graphic file (type pdf)
 
 <use x1vstBrysonDenham.pdf>
 Package pdftex.def Info: x1vstBrysonDenham.pdf used on input line 2453.
 (pdftex.def)             Requested size: 328.26819pt x 252.94499pt.
 
-<x2vstBrysonDenham.pdf, id=389, 534.99875pt x 408.52625pt>
+<x2vstBrysonDenham.pdf, id=591, 534.99875pt x 408.52625pt>
 File: x2vstBrysonDenham.pdf Graphic file (type pdf)
 
 <use x2vstBrysonDenham.pdf>
 Package pdftex.def Info: x2vstBrysonDenham.pdf used on input line 2458.
 (pdftex.def)             Requested size: 331.25496pt x 252.94499pt.
 
-<x3vstBrysonDenham.pdf, id=390, 524.96124pt x 408.52625pt>
+<x3vstBrysonDenham.pdf, id=592, 524.96124pt x 408.52625pt>
 File: x3vstBrysonDenham.pdf Graphic file (type pdf)
 
 <use x3vstBrysonDenham.pdf>
 Package pdftex.def Info: x3vstBrysonDenham.pdf used on input line 2463.
 (pdftex.def)             Requested size: 325.04005pt x 252.94499pt.
- [43pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+ [46pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.2465 \end{figure}
                     <./x1vstBrysonDenham.pdf>]
-<lambda1vstBrysonDenham.pdf, id=400, 523.9575pt x 404.51125pt>
+<lambda1vstBrysonDenham.pdf, id=602, 523.9575pt x 404.51125pt>
 File: lambda1vstBrysonDenham.pdf Graphic file (type pdf)
 
 <use lambda1vstBrysonDenham.pdf>
 Package pdftex.def Info: lambda1vstBrysonDenham.pdf used on input line 2469.
 (pdftex.def)             Requested size: 327.64052pt x 252.94499pt.
 
-<lambda2vstBrysonDenham.pdf, id=401, 512.91624pt x 408.52625pt>
+<lambda2vstBrysonDenham.pdf, id=603, 512.91624pt x 408.52625pt>
 File: lambda2vstBrysonDenham.pdf Graphic file (type pdf)
 
 <use lambda2vstBrysonDenham.pdf>
 Package pdftex.def Info: lambda2vstBrysonDenham.pdf used on input line 2474.
 (pdftex.def)             Requested size: 317.58215pt x 252.94499pt.
- [44pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+ [47pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1303,20 +964,20 @@ l.2476 \end{figure}
                                                   \fi \fi 
 l.2476 \end{figure}
                     <./x2vstBrysonDenham.pdf> <./x3vstBrysonDenham.pdf>]
-<lambda3vstBrysonDenham.pdf, id=418, 512.91624pt x 408.52625pt>
+<lambda3vstBrysonDenham.pdf, id=619, 512.91624pt x 408.52625pt>
 File: lambda3vstBrysonDenham.pdf Graphic file (type pdf)
 
 <use lambda3vstBrysonDenham.pdf>
 Package pdftex.def Info: lambda3vstBrysonDenham.pdf used on input line 2479.
 (pdftex.def)             Requested size: 317.58215pt x 252.94499pt.
 
-<uvstBrysonDenham.pdf, id=419, 512.91624pt x 408.52625pt>
+<uvstBrysonDenham.pdf, id=620, 512.91624pt x 408.52625pt>
 File: uvstBrysonDenham.pdf Graphic file (type pdf)
 
 <use uvstBrysonDenham.pdf>
 Package pdftex.def Info: uvstBrysonDenham.pdf used on input line 2484.
 (pdftex.def)             Requested size: 317.58215pt x 252.94499pt.
- [45pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+ [48pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 7}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1329,12 +990,8 @@ l.2486 \end{figure}
                                                   \fi \fi 
 l.2486 \end{figure}
                     <./lambda1vstBrysonDenham.pdf> <./lambda2vstBrysonDenham.pd
-f>]
-
-LaTeX Warning: Citation 'Benson1' on page 46 undefined on input line 2494.
-
-[46pdfTeX warning (ext4): destination with the same identifier (name{figure.3.9
-}) has been already used, duplicate ignored
+f>] [49pdfTeX warning (ext4): destination with the same identifier (name{figure
+.3.9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -1347,14 +1004,157 @@ he same identifier (name{figure.3.10}) has been already used, duplicate ignored
                                                   \fi \fi 
 l.2496 \subsection
                   {Vehicle Properties} <./lambda3vstBrysonDenham.pdf> <./uvstBr
-ysonDenham.pdf>]
+ysonDenham.pdf>] [50pdfTeX warning (ext4): destination with the same identifier
+ (name{table.3.1}) has been already used, duplicate ignored
 
-LaTeX Warning: Reference `table: launch vehicle properties' on page 47 undefine
-d on input line 2514.
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2583 
+       ] [51pdfTeX warning (ext4): destination with the same identifier (name{t
+able.3.2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2676 \end{equation}
+                     ]
+No file ../examples/launch/launchMain.m.
+No file ../examples/launch/launchCost.m.
+No file ../examples/launch/launchDae.m.
+No file ../examples/launch/launchEvent.m.
+No file ../examples/launch/launchrv2oe.m.
+No file ../examples/launch/launchoe2rv.m.
+<altitudevstLaunch.pdf, id=688, 527.9725pt x 404.51125pt>
+File: altitudevstLaunch.pdf Graphic file (type pdf)
+
+<use altitudevstLaunch.pdf>
+Package pdftex.def Info: altitudevstLaunch.pdf used on input line 2710.
+(pdftex.def)             Requested size: 330.15118pt x 252.94499pt.
+
+<speedvstLaunch.pdf, id=689, 536.0025pt x 404.51125pt>
+File: speedvstLaunch.pdf Graphic file (type pdf)
+
+<use speedvstLaunch.pdf>
+Package pdftex.def Info: speedvstLaunch.pdf used on input line 2715.
+(pdftex.def)             Requested size: 335.17249pt x 252.94499pt.
+ <uvstLaunch.pdf, id=690, 524.96124pt x 404.51125pt>
+File: uvstLaunch.pdf Graphic file (type pdf)
+
+<use uvstLaunch.pdf>
+Package pdftex.def Info: uvstLaunch.pdf used on input line 2720.
+(pdftex.def)             Requested size: 328.26819pt x 252.94499pt.
+ [52pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+11}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2722 \end{figure}
+                    <./altitudevstLaunch.pdf>] [53pdfTeX warning (ext4): destin
+ation with the same identifier (name{figure.3.12}) has been already used, dupli
+cate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2735 
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.3.13}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2735 
+        <./speedvstLaunch.pdf> <./uvstLaunch.pdf>]
+No file ../examples/minimumClimb/minimumClimbMain.m.
+No file ../examples/minimumClimb/minimumClimbCost.m.
+No file ../examples/minimumClimb/minimumClimbDae.m.
+No file ../examples/minimumClimb/minimumClimbDae.m.
+<hvstMinClimb.pdf, id=720, 507.04703pt x 393.94476pt>
+File: hvstMinClimb.pdf Graphic file (type pdf)
+ <use hvstMinClimb.pdf>
+Package pdftex.def Info: hvstMinClimb.pdf used on input line 2776.
+(pdftex.def)             Requested size: 325.56894pt x 252.94499pt.
+
+<fpavstMinClimb.pdf, id=721, 507.8751pt x 390.93051pt>
+File: fpavstMinClimb.pdf Graphic file (type pdf)
+
+<use fpavstMinClimb.pdf>
+Package pdftex.def Info: fpavstMinClimb.pdf used on input line 2781.
+(pdftex.def)             Requested size: 328.61148pt x 252.94499pt.
+ [54]
+<nvstMinClimb.pdf, id=730, 506.9113pt x 390.93051pt>
+File: nvstMinClimb.pdf Graphic file (type pdf)
+ <use nvstMinClimb.pdf>
+Package pdftex.def Info: nvstMinClimb.pdf used on input line 2786.
+(pdftex.def)             Requested size: 327.98787pt x 252.94499pt.
+
+[55pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1
+4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2789 
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.3.15}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2789 
+        <./hvstMinClimb.pdf> <./fpavstMinClimb.pdf>] [56pdfTeX warning (ext4): 
+destination with the same identifier (name{figure.3.16}) has been already used,
+ duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2812 \begin{thebibliography}{}
+                                 <./nvstMinClimb.pdf>] [57
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2919.
+ [58]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2919.
+
+(./gpopsManual.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2919.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2919.
+
+Package rerunfilecheck Info: File `gpopsManual.out' has not changed.
+(rerunfilecheck)             Checksum: A769D14B1DE84BEBFDBB7C4408216E76;2436.
 
 
-./gpopsManual.tex:2519: LaTeX Error: Unknown float option `d'.
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...        
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2919.
+ ) 
+Here is how much of TeX's memory you used:
+ 9099 strings out of 493089
+ 129111 string characters out of 6134842
+ 238092 words of memory out of 5000000
+ 12138 multiletter control sequences out of 15000+600000
+ 48851 words of font info for 149 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 36i,20n,45p,819b,456s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2015/t
+exmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/texmf
+-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/texmf-dist/f
+onts/type1/urw/palatino/uplbi8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
+ype1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/ur
+w/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palat
+ino/uplri8a.pfb>
+Output written on gpopsManual.pdf (59 pages, 682190 bytes).
+PDF statistics:
+ 880 PDF objects out of 1000 (max. 8388607)
+ 756 compressed objects within 8 object streams
+ 215 named destinations out of 1000 (max. 500000)
+ 323 words of extra memory for PDF output out of 10000 (max. 10000000)
+

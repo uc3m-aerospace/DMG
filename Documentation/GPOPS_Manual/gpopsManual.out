@@ -1,0 +1,29 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction to Gauss Pseudospectral Optimization Software \(GPOPS \)}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Gauss Pseudospectral Method Employed by GPOPS }{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Gauss Pseudospectral Discretization of Continuous Bolza Problem }{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{KKT Conditions of the NLP}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{First-Order Optimality Conditions of Continuous Bolza Problem }{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.5}{Gauss Pseudospectral Discretized Necessary Conditions}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.6}{Costate Estimate}{chapter.1}% 7
+\BOOKMARK [1][-]{section.1.7}{Computation of Boundary Controls}{chapter.1}% 8
+\BOOKMARK [1][-]{section.1.8}{Organization of GPOPS }{chapter.1}% 9
+\BOOKMARK [1][-]{section.1.9}{Notation Used Throughout Remainder of This Manual}{chapter.1}% 10
+\BOOKMARK [0][-]{chapter.2}{Constructing an Optimal Control Problem in GPOPS }{}% 11
+\BOOKMARK [1][-]{section.2.1}{Preliminary Information}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.2}{Call to GPOPS }{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.3}{Syntax for Setup Structure }{chapter.2}% 14
+\BOOKMARK [1][-]{section.2.4}{Specifying Function Names Used in Optimal Control Problem}{chapter.2}% 15
+\BOOKMARK [1][-]{section.2.5}{Syntax for limits Structure }{chapter.2}% 16
+\BOOKMARK [1][-]{section.2.6}{Syntax for linkages Array of Structures }{chapter.2}% 17
+\BOOKMARK [1][-]{section.2.7}{Syntax of Each Function in Optimal Control Problem}{chapter.2}% 18
+\BOOKMARK [1][-]{section.2.8}{Specifying an Initial Guess of The Solution }{chapter.2}% 19
+\BOOKMARK [1][-]{section.2.9}{Scaling of Optimal Control Problem}{chapter.2}% 20
+\BOOKMARK [1][-]{section.2.10}{Different Options for Specification of Derivatives}{chapter.2}% 21
+\BOOKMARK [1][-]{section.2.11}{Output of Execution of GPOPS }{chapter.2}% 22
+\BOOKMARK [1][-]{section.2.12}{Useful Information for Debugging a GPOPS Problem}{chapter.2}% 23
+\BOOKMARK [0][-]{chapter.3}{Examples of Using GPOPS }{}% 24
+\BOOKMARK [1][-]{section.3.1}{Hyper-Sensitive Problem}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.2}{Bryson-Denham Problem}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.3}{Multiple-Stage Launch Vehicle Ascent Problem}{chapter.3}% 27
+\BOOKMARK [1][-]{section.3.4}{Minimum Time-to-Climb of a Supersonic Aircraft}{chapter.3}% 28
+\BOOKMARK [1][-]{section.3.5}{Some Concluding Remarks}{chapter.3}% 29

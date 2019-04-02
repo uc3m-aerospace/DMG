@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.9.22)  2 APR 2019 13:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.9.22)  2 APR 2019 13:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -656,26 +656,17 @@ LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10> not available
  [4
 
 ]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 209.
-
- (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-File: ../../LICENSE.GPOPS  (verbatim)
-
+No file ../../LICENSE.GPOPS.
 [5
 
-]
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 209.
- [6] [7] [8] (./dmgManual.toc
+] (./dmgManual.toc
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 1.
 )
 \tf@toc=\write6
 \openout6 = `dmgManual.toc'.
 
- [9
+ [6
 
 ]
 Chapter 1.
@@ -692,7 +683,7 @@ LaTeX Warning: Command \textcircled invalid in math mode on input line 251.
 
 LaTeX Warning: Command \textcircled invalid in math mode on input line 251.
 
-[10
+[7
 
 ]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <10> not available
@@ -706,7 +697,9 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 276.
 
-[11]
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 319.
+[8]
 
 LaTeX Font Warning: Command \sl invalid in math mode on input line 332.
 
@@ -731,7 +724,11 @@ LaTeX Font Warning: Command \sl invalid in math mode on input line 335.
 
 LaTeX Font Warning: Command \sl invalid in math mode on input line 335.
 
-[12] [13]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 351.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+) [9] [10]
 Overfull \hbox (11.20178pt too wide) in paragraph at lines 461--466
 \OT1/ppl/m/n/10 and up-per lim-its on the event con-straints in phase $\OML/cmm
 /m/it/10 p \OMS/cmsy/m/n/10 2 \OT1/cmr/m/n/10 [1\OML/cmm/m/it/10 ; [] ; P\OT1/c
@@ -739,21 +736,21 @@ mr/m/n/10 ]$\OT1/ppl/m/n/10 . The col-umn vec-tors []\OT1/ppl/b/n/10 limits($\O
 ML/cmm/m/it/10 p$\OT1/ppl/b/n/10 ).event.min[]
  []
 
-[14]
+[11]
 Overfull \vbox (5.3901pt too high) detected at line 665
  []
 
-[15] [16] [17] [18] [19] [20] [21] [22]
+[12] [13] [14] [15] [16] [17] [18] [19]
 
-LaTeX Warning: Citation 'Betts1' on page 23 undefined on input line 1136.
+LaTeX Warning: Citation 'Betts1' on page 20 undefined on input line 1136.
 
-[23]
+[20]
 
-LaTeX Warning: Citation 'Martins1' on page 24 undefined on input line 1179.
+LaTeX Warning: Citation 'Martins1' on page 21 undefined on input line 1179.
 
-[24] [25] [26] [27] [28] [29] [30]
+[21] [22] [23] [24] [25] [26] [27]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1564.
- [31]
+ [28]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 1564.
  (./dmgManual.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1564.
@@ -768,13 +765,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1564.
  ) 
 Here is how much of TeX's memory you used:
- 8648 strings out of 493089
- 122220 string characters out of 6134842
- 230220 words of memory out of 5000000
- 11879 multiletter control sequences out of 15000+600000
- 41697 words of font info for 125 fonts, out of 8000000 for 9000
+ 8630 strings out of 493089
+ 121941 string characters out of 6134842
+ 230217 words of memory out of 5000000
+ 11864 multiletter control sequences out of 15000+600000
+ 38393 words of font info for 111 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,15n,43p,807b,457s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,15n,43p,807b,441s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/tex
@@ -791,10 +788,10 @@ ype1/urw/palatino/uplbi8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/u
 rw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/pala
 tino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/up
 lri8a.pfb>
-Output written on dmgManual.pdf (32 pages, 267023 bytes).
+Output written on dmgManual.pdf (29 pages, 257979 bytes).
 PDF statistics:
- 341 PDF objects out of 1000 (max. 8388607)
- 289 compressed objects within 3 object streams
- 78 named destinations out of 1000 (max. 500000)
+ 328 PDF objects out of 1000 (max. 8388607)
+ 279 compressed objects within 3 object streams
+ 75 named destinations out of 1000 (max. 500000)
  113 words of extra memory for PDF output out of 10000 (max. 10000000)
 
