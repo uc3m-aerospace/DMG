@@ -18,10 +18,10 @@ The new features DMG includes:
  * Interfaces with IPOPT
  * Multi-core computation of Forward numerical derivatives and Complex Step differentiation.
 
-## GOAL
+## Goal
 The purpose of DMG tool is to provide a Matlab open-source tool for solving Optimal Control Problems. Given that the original version of GPOPS is coded to work with the NLP solver SNOPT, which is a propietary software, we have modified the code in such a way that now is able to work with the open-source solver IPOPT.  
 
-## NLP SOLVERS
+## NLP Solvers
 Two different NLP solvers can be used with DMG solver:
  * [IPOPT](https://projects.coin-or.org/Ipopt): Interior Point Solver. It is an opensource package for solving large scale nonlinear optimization problems. Precompiled binaries for Macosx, Windows (32 and 64 bits), and Linux are included within the DMG solver distribution. They are located in *NLPsolvers/IPOPT*
  * [SNOPT](https://web.stanford.edu/group/SOL/snopt.htm): Sequential Quadratic Solver. It is a propietary software. A license can be purchased [here](https://ccom.ucsd.edu/~optimizers/downloads/). Copy and Paste the required libraries and mex files in the folder *NLPsolvers/SNOPT*
