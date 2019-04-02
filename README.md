@@ -28,7 +28,7 @@ Two different NLP solvers can be used with DMG solver:
 
 
 ## Installation Guide
-Installation requires simply that you download [DMG](https://github.com/uc3m-aerospace/DMG). Then, you have the *DMGSetup.m* file. It includes all the necessary path to your root base directory. The file only need to be run once.
+Installation requires simply that you download [DMG](https://github.com/uc3m-aerospace/DMG). Then, you have to run the *DMGSetup.m* file. It includes all the necessary path to your root base directory. The file only need to be run once.
 
 Make sure that the *DMG* directory is your working directory.
 
