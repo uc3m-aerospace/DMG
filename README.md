@@ -3,8 +3,8 @@
 
 This is a Matlab implementation of a General Purpose Software for solving Multi-phase Optimal Control Problems.
 
-This distribution is a derived work from "GPOPS" (Gauss Pseudospectral Optimization Software).
-The original version of GPOPS can be downloaded from [here](https://es.mathworks.com/matlabcentral/fileexchange/21729-gpops). It has been developed at MIT, Draper Laboratory, and The University of Florida, and is published under the Simple Public License.
+This distribution is a derived work from "GPOPS 2.2 beta" (Gauss Pseudospectral Optimization Software).
+This version of GPOPS was downloaded in 2009 from [SourceForge](https://sourceforge.net/projects/gpops/). It was developed at MIT, Draper Laboratory, and The University of Florida, and is published under the Simple Public License.
 
 The main GPOPS features are:
 
