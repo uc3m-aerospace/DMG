@@ -3,7 +3,7 @@ function[Jacs]=dmg_jacobianstructure(mysetup)
 % GPOPS Copyright (c) Anil V. Rao, Geoffrey T. Huntington, David   %
 % Benson, Michael Patterson, Christopher Darby, & Camila Francolin %
 %------------------------------------------------------------------%
-Jacs= (mysetup.sparsity);
+Jacs= sparse(mysetup.sparsity);
 
 
 

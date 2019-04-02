@@ -251,11 +251,18 @@ if isfield(setup,'derivatives')
     end
 end
       
-funcs.constraints       = @constraints_ipopt;
-funcs.jacobianstructure = @jacobianstructure;
-funcs.objective         = @objective;
-mysetup.constraints     = @constraints;
-mysetup.objective       = @objective;
+funcs.constraints       = @dmg_constraints_ipopt;
+funcs.jacobianstructure = @dmg_jacobianstructure;
+funcs.objective         = @dmg_objective;
+mysetup.constraints     = @dmg_constraints;
+mysetup.objective       = @dmg_objective;
+
+
+JAC = feval(funcs.jacobian,init,mysetup);
+
+mysetup.sparsity = ones(size(JAC));
+
+
 
 options.auxdata = mysetup;
 
