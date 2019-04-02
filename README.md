@@ -1,4 +1,4 @@
-# DMG SOLVER
+# DMG Tool
 **D**irect **M**ethod based on **G**POPS.
 
 This is a Matlab implementation of a General Purpose Software for solving Multi-phase Optimal Control Problems.
@@ -35,7 +35,7 @@ Installation requires simply to follow the next steps:
 
 ## Quick Usage Guide
 
-In order to optimize a mission, the user needs to call the main function *molto_it.m* providing an input structure. Here you vae an example:
+In order to optimize an Optimal Control Problem, the user needs to call the main function *DMG.m* providing an input structure. Here you have an example:
 
 ```matlab
 % INPUT STRUCTURE FOR DMG SOLVER
