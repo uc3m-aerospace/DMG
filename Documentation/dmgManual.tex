@@ -1,0 +1,1564 @@
+\documentclass[10pt,final]{report}
+
+\usepackage{framed,fancybox}
+\usepackage{multicol,verbatim}
+\usepackage[pdftex,colorlinks]{hyperref}
+\hypersetup{%
+colorlinks=true,
+linkcolor=black,
+urlcolor=cyan
+}%
+\usepackage{epsfig,enumerate,amsmath,amsfonts,latexsym,graphics,graphicx,theorem,graphics}
+\usepackage{fancyhdr,subfigure}
+\usepackage{makeidx,amssymb,myfloat,longtable}
+\usepackage[dcu]{harvard}
+\usepackage[caption2]{ccaption}
+\usepackage[bf]{caption2}
+\usepackage{palatino}
+\newcommand{\hs}[1]{\hspace*{ #1 mm}}
+\renewcommand{\bibname}{References}
+\renewcommand{\theequation}{\mbox{\thechapter--\arabic{equation}}}
+\newtheorem{thm}{Theorem}
+\newtheorem{Thmproof}{Proof of Theorem}
+\newcommand{\dmg}{$\mathcal{DMG}$~}
+\newcommand{\gpops}{$\mathcal{GPOPS}$~}
+
+\newfixedcaption{\examplecaption}{figure}
+
+\theorembodyfont{\upshape}
+%\addtolength{\headwidth}{\marginparsep}
+%\addtolength{\headwidth}{\marginparwidth}
+%\addtolength{\headwidth}{-0.35in}
+%\addtolength{\headwidth}{-2.07in}
+
+% \pagestyle{fancyplain}
+% \renewcommand{\chaptermark}[1]%
+%                  {\markboth{#1}{#1}}
+% \renewcommand{\sectionmark}[1]%
+%                  {\markright{\thesection\ #1}}
+% \lhead[\fancyplain{}{\footnotesize\scshape\thepage}]%
+%       {\fancyplain{}{\footnotesize\scshape\rightmark}}
+% \rhead[\fancyplain{}{\footnotesize\scshape\leftmark}]%
+%       {\fancyplain{}{\footnotesize\scshape\thepage}}
+% \cfoot{}
+
+\pagestyle{fancy}
+\usepackage{calc}
+% \fancyheadoffset[LE,RO]{\marginparsep+\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{Chapter \thechapter{.}\: #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\small\bfseries\thepage}
+\fancyhead[LO]{\small\bfseries\rightmark}
+\fancyhead[RE]{\small\bfseries\leftmark}
+\fancypagestyle{plain}{%
+\fancyhead{} % get rid of headers
+\renewcommand{\headrulewidth}{0pt} % and the line
+}
+
+% \pagestyle{fancy}
+% \fancyhead{}
+% \fancyfoot{}
+% \fancyhead[LO]{\footnotesize\bfseries\MakeUppercase\rightmark}
+% \fancyhead[RO,LE]{\footnotesize\bfseries\thepage}
+% \fancyhead[RE]{\footnotesize\bfseries\MakeUppercase\leftmark}
+
+\title{{\bf User's Manual for \dmg Version 1.0:} \vspace{12pt} \\
+  {\bf A MATLAB$^{\textregistered}$ Software for Solving Multiple-Phase Optimal Control Problems based on \gpops}}
+  \author{David Morante Gonz\'alez\\ {\em Universidad Carlos III de Madrid} \\ Avenida de la Universidad 30, Legan\'es, Madrid 28911 } 
+%\author{Anil V.~Rao \\ {\em University of Florida} \\ Gainesville, FL 32607 \\ \\ David Benson \\ {\em The Charles Stark Draper Laboratory, Inc.} \\
+%  Cambridge, MA 02139 \\ \\ Christopher L.~Darby \\ Camila Francolin \\ Michael Patterson \\ Ilyssa Sanders \\ {\em University of Florida} %\\ Gainesville, FL 32607 \\ \\ Geoffrey T.~Huntington \\ {\em Blue Origin, LLC} \\ Seattle, WA \\ \\ 
+%\vspace{24pt}  April 2019
+\date{}
+
+\oddsidemargin=0in
+\evensidemargin=0in
+\topmargin=1in
+\hoffset=0in
+\voffset=-1.5in
+\textheight=9in
+\textwidth=6.5in
+
+\headwidth=\textwidth
+\renewcommand{\headrulewidth}{0.25pt}
+\raggedbottom
+
+\renewcommand*\captionlabeldelim{\hspace{12pt}}
+\newfloat{pfigure}{thp}{lop}[chapter]
+\floatname{pfigure}{Figure P\hspace{-2pt}}
+
+\newcounter{example}[chapter]
+\newcounter{question}[chapter]
+\theoremheaderfont{\bfseries\large\vspace{12pt}}
+\theorempreskipamount=1pt
+% \theorempostskipamount=0pt
+{\theoremstyle{break}\theorembodyfont{\upshape}\newtheorem{example}{Example}[chapter]}
+{\theoremstyle{break}\theorembodyfont{\upshape}\newtheorem{solution}{Solution to Example}[chapter]}
+% {\theoremstyle{break}\theorembodyfont{\upshape}\newtheorem{question}{Question}[chapter]}
+% {\theoremstyle{margin}\theorembodyfont{\upshape}\newtheorem{question}{}[chapter]}
+{\theoremstyle{plain}\theoremheaderfont{\normalsize\bfseries}\theorembodyfont{\upshape}\newtheorem{question}{\hspace{-0.25em}}[chapter]}
+
+\newcommand{\examplenumber}{\thechapter--\theexample}
+\renewcommand{\theexample}{\thechapter--\arabic{example}}
+\renewcommand{\thesolution}{\thechapter--\arabic{solution}}
+\renewcommand{\thequestion}{\thechapter--\arabic{question}}
+%\newcommand\example{\noindent\vspace{12pt}\stepcounter{example}\bfseries Example \examplenumber\vspace{12pt}\normalfont}
+%\newcommand\exchapter{\@startsection{exchapter}{3}{\z@}%
+%                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+%                                     {1.5ex \@plus .2ex}%
+%                                     {\normalfont\normalsize\bfseries}}
+%\newcommand{\example}{\stepcounter{example}\vspace{12pt}\noindent
+%  \bfseries Example \theexample \vspace{12pt}\normalfont}
+%\newcommand{\solution}{\noindent {\bfseries\large Solution:}}
+\newcommand{\ecaption}[1]{\addcontentsline{loe}{example}{\protect\numberline{\theexample}#1}}
+
+% \renewcommand{\theequation}{\thechapter-\arabic{equation}}
+
+\usepackage{color}
+
+\definecolor{shadecolor}{gray}{0.97}
+\FrameRule=0.75pt
+\FrameSep=5pt
+\setlength{\fboxrule}{\FrameRule}
+\setlength{\fboxsep}{\FrameSep}
+
+\newenvironment{ovalframe}{%
+  \cornersize*{20pt}%
+  \setlength{\fboxsep}{6pt}%
+  \def\FrameCommand{\ovalbox}%
+  \MakeFramed{\advance\hsize-\width \FrameRestore}}%
+{\endMakeFramed}
+
+\newenvironment{shadedframe}{%
+  \def\FrameCommand{\fcolorbox{black}{shadecolor}}%
+%  \MakeFramed {\addtolength{\hsize}{-\width}\FrameRestore}}
+  \MakeFramed {\FrameRestore}}
+{\endMakeFramed}
+
+\newcommand{\bfblue}[1]{\textcolor{blue}{\bf #1}}
+\newcommand{\slred}[1]{\textcolor{red}{\sl #1}}
+
+\makeindex
+
+\begin{document}
+
+\setcounter{tocdepth}{1}
+\citationstyle{dcu}
+
+\input{shortcuts}
+
+\maketitle
+\clearpage
+
+\thispagestyle{empty}
+\vspace*{6.75in}
+\begin{center}
+  THIS PAGE IS INTENTIONALLY LEFT BLANK
+\end{center}
+
+\chapter*{Acknowledgments}
+
+The software \dmg was developed in response to a demand from
+the research and academic community for a complete open-source tool
+for solving optimal control problems.\\
+
+This distribution is a derived work from the open-source project "\gpops 2.2" (Gauss Pseudospectral Optimization Software). The \gpops version was downloaded in October 2009 from SourceForge. It was developed at MIT, Draper Laboratory, and The University of Florida, and was published under the Simple Public License. However, the open-source version of \gpops was designed to interface with the NLP solver SNOPT, which is a proprietary software. Therefore, we have modified \gpops in such a way that now is able to work with the open-source solver IPOPT. Additionally, the authors have included the Hermite-Simpson collocation scheme to further expand \gpops features.\\
+
+
+The \dmg software follows the same philosophy than \gpops, which is an
+attempt to fill that void and enable researchers, educators, and
+others involved in solving complex optimal control problems to take
+advantage of a code that can be customized to one's particular needs.
+The authors of \dmg hope sincerely that the code is useful.
+
+\chapter*{Disclaimer}
+
+This software is provided ``as is'' and free-of-charge.  Neither the
+authors nor their employers assume any responsibility for any harm
+resulting from the use of this software.  The authors do, however,
+hope that users will find this software useful for research and other
+purposes.
+
+
+\chapter*{Preface to The \dmg Software}
+
+This Manual is only intended to serve as a quick usage guide. It is highly based on the \gpops Manual, which can be found in this folder, but it includes the changes that has been included withing the \dmg version.
+
+The main \gpops features are:
+\begin{itemize}
+\item Implements Gauss Pseudospectral Collocation Method for Transcribing the continuous optimal control problem into an Nonlinear Optimization Problem.
+\item Interfaces with SNOPT
+\item Includes Automatic, Forward Numerical, Complex-Step and Analytical Derivatives for gradient and jacobian computations.
+\end{itemize}
+The new features \dmg includes:
+\begin{itemize}
+\item Implements Hermite Simpson Collocation Method for Transcribing the continuous optimal control problem into a Nonlinear Optimization Problem.
+\item Interfaces with IPOPT
+\item Multi-core computation of Forward numerical derivatives and Complex Step differentiation.
+\end{itemize}
+
+For further information about \gpops and about the test cases, see the \gpops manual.
+
+%It is noted that \gpops has been designed to work with the nonlinear programming solver SNOPT \cite{Gill1}.  SNOPT can be obtained from one of the following three sources:  (1) for government, commercial, or institutional academic use from Stanford Business Software, Inc.; (2) for individual research use by contacting Professor Philip Gill via e-mail at pgill@ucsd.edu; (3) For redistribution by contacting the Office of Technology Licensing at Stanford University. 
+
+
+\chapter*{Licensing Agreement}
+
+The software \dmg is distributed under the General Public license. Every use of \dmg software MUST also abide by the terms and conditions of \gpops license:
+
+\verbatiminput{../../LICENSE.GPOPS}
+
+\tableofcontents
+
+\newpage
+
+
+\chapter{Constructing an Optimal Control Problem}
+
+We now proceed to describe the constructs required to specify an
+optimal control problem.  We note that the key
+MATLAB programming elements used in constructing an optimal control
+problem are {\em structure} and {\em arrays of structures}.
+
+\section{Organization}
+ In order to specify the optimal control
+problem that is to be solved, the user must write MATLAB functions that
+define the following functions in each phase of the problem:
+\begin{enumerate}[(1)]
+  \item the cost functional
+  \item the right-hand side of the differential equations and the path constraints(\ie the differential-algebraic equations)
+  \item the boundary conditions (\ie event conditions)
+  \item the linkage constraints (\ie how the phases are connected)
+\end{enumerate}
+In addition, the user must also specify the lower and upper limits on every component of the following quantities:
+\begin{enumerate}[(1)]
+  \item initial and terminal time of the phase
+  \item the state at the following points in time:
+    \begin{itemize}
+    \item at the beginning of the phase
+    \item during the phase
+    \item at the end of the phase
+    \end{itemize}
+  \item the control
+  \item the static parameters
+  \item the path constraints
+  \item the boundary conditions
+  \item the phase duration (\ie total length of phase in time)
+  \item the linkage constraints (\ie phase-connect conditions)
+\end{enumerate}
+It is noted that each of the functions must be defined for each phase
+of the problem. The remainder of this document is devoted to describing in detail the
+MATLAB${}^{\textregistered}$ syntax for describing the optimal control problem and each of the constituent functions.
+
+\section{Notation Used Throughout Remainder of This Manual}
+
+The following notation is adopted for use throughout the remainder of this
+manual.  First, all user-specified names will be denoted by {\sl slanted}
+characters (not {\em italic}, but {\sl slanted}).  Second, any item denoted by
+{\bf boldface characters}  are pre-defined and cannot be changed by the user.
+Finally, users with color capability will see the slanted characters in
+\slred{red} and will see the boldface characters in \bfblue{blue}.
+
+\section{Preliminary Information}
+
+Before proceeding to the details of setting up a problem, the following few preliminary details are useful.  First,
+it is important to understand that the interface is laid
+out in {\bf\em phases}.  Using a phase-based approach, it is possible
+to describe each segment of the problem independently of the other
+segments.  The segments are then {\em linked} together using linkage
+conditions (or phase-connect conditions).  Second, it is important to
+note that it uses the vectorization capabilities of MATLAB.
+In this vein all matrices and vectors are oriented
+{\bf\em column-wise} for maximum efficiency.  As you read through this
+chapter, please keep in mind the column-wise orientation of all
+matrices used.
+
+\section{Call to \dmg}
+
+The call to \dmg is deceptively simple and is given as follows:
+\begin{center}
+\noindent{\bf output=DMG(setup)}
+\end{center}
+The input \slred{setup} is a user-defined structure that contains all
+of the information about the optimal control problem to be solved
+\footnote{see the detailed description of \slred{setup} in Section
+\ref{sect: structure syntax}}.  Finally, the variable
+\slred{output} is a structure that contains all of the information
+from the original problem {\em plus} the information from the run
+itself (\ie the solution)\footnote{See the detailed description of the
+  output in Section \ref{sect: output}.}.  The remainder of this
+chapter is devoted to describing the fields in the structure \slred{setup}.
+
+\section{Syntax for Setup Structure  \label{sect: structure syntax}}
+
+The user-defined structure \slred{setup} contains required fields and
+optional fields.  The required fields in the structure \slred{setup}
+are as follows:
+\begin{itemize}
+\item \bfblue{name}:  a string containing the name of the problem.
+\item \bfblue{funcs}:  a structure whose elements contain the names
+  of the user-defined function in the problem (see Section \ref{sect:_Func_Names} below).
+\item \bfblue{limits}:  an array of structures that contains the
+  information about the lower and upper limits on the variables and
+  constraints in each phase of the problem (see Section \ref{sect: limits} below).
+\item \bfblue{guess}:  an array of structures that contains
+  contains a guess of the solution in each phase of the problem (see Section
+  \ref{sect: guess} below).
+\end{itemize}
+The optional fields (and their default values) are as follows:
+\begin{itemize}
+\item \bfblue{linkages}: an array of structures that contains the
+  information about the lower and upper limits of the linkage constraints (see Section \ref{sect: linkages} below).
+\item \bfblue{direction}:  a string that indicates the direction of
+  the independent variable.  The two possible values for this string
+  are ``increasing'' and ``decreasing''. (default=``increasing'')
+\item \bfblue{autoscale}: a string that indicates whether or not
+  the user would like the optimal control problem to be scaled
+  automatically before it is solved. (default=``off'') (see Section \ref{sect:_scaling} below).
+\item \bfblue{derivatives}:  a string indicating differentiation method to be used.  Possible values for this   string are ``numerical'', ``complex'', ``automatic'', ``analytic'' (default=``numerical'') (see Section \ref{sect:_derivatives} below).
+\item \bfblue{checkDerivatives}: a flag to check user defined analytic derivatives (default=``0'') (see Section \ref{sect:_derivatives} below).
+\item \bfblue{maxIterations}:  a positive integer indicating the maximum number of iterations that can be taken by the NLP solver.  
+\item \bfblue{method}:   a string indicating transcription method to be used. Possible values for this string are ``hermite-simpson'', ``pseudospectral'.
+\item \bfblue{solver}:   a string indicating nonlinear-programming solver to be used. Possible values for this string are ``ipopt'', and ``snopt'.
+\item \bfblue{parallel}:   a string indicating if multi-core computation of derivatives is to be used. Possible values for this string are ``yes', and ``now'. This option only applies when numerical or complex derivatives options are selected.
+\end{itemize}
+
+\section{Specifying Function Names Used in Optimal Control Problem}\label{sect:_Func_Names}
+
+The syntax for specifying the names of the MATLAB functions is done by
+setting the fields in the structure \bfblue{FUNCS} and is given as follows:
+\begin{displaymath}
+  \begin{array}{lcl}
+    \slred{setup}.\bfblue{funcs.cost} & = & \slred{`costfun.m'} \\
+    \slred{setup}.\bfblue{funcs.dae} & = & \slred{`daefun.m'} \\
+    \slred{setup}.\bfblue{funcs.event} & = & \slred{`eventfun.m'} \\
+    \slred{setup}.\bfblue{funcs.link} & = & \slred{`linkfun.m'}
+  \end{array}
+\end{displaymath}
+
+\begin{shadedframe}
+
+{\noindent}{\bf Example of Specifying Function Names}
+
+\vspace{12pt}
+
+{\noindent}Suppose we have a problem whose cost functional,
+differential-algebraic equations, event constraints,
+and linkage constraints are defined, respectively, via the
+\slred{user-defined} functions \slred{mycostfun.m},
+\slred{mydaefun.m}, \slred{myeventfun.m}, and
+\slred{mylinkfun.m}.  Then the syntax for specifying these functions is given as follows:
+\begin{verbatim}
+setup.funcs.cost    = 'mycostfun';
+setup.funcs.dae     = 'mydaefun';
+setup.funcs.event   = 'myeventfun';
+setup.funcs.link    = 'mylinkfun';
+\end{verbatim}
+
+\end{shadedframe}
+
+
+\section{Syntax for \bfblue{limits} Structure \label{sect: limits}}
+
+Once the user-defined structure \slred{setup} has been defined, the next
+step in setting up a problem is to create
+an array of structures of length $P$ (where $P$ is the number of
+phases) called \bfblue{limits}, where \bfblue{limits} is a
+field of the structure \slred{setup}.  The array of structures
+\bfblue{limits} is specified as follows:
+\begin{itemize}
+  \item \bfblue{limits($p$).nodes}: scalar value specifying the number of nodes in phase $p\in[1,\ldots,P]$.
+  \item \bfblue{limits($p$).time.min} and \bfblue{limits($p$).time.max}:
+    row vectors, each of length two, that contain the information
+    about the lower and upper limits, respectively, on the initial and terminal time in phase
+    $p\in[1,\ldots,P]$.  The row vectors
+    \bfblue{limits($p$).time.min} and \bfblue{limits($p$).time.max} have the following form:
+    \begin{displaymath}
+      \begin{array}{lcl}
+        \bfblue{limits(\textit{p}).time.min} & = & \left[\begin{array}{cc} t_0^{\textrm{min}} &
+            t_f^{\textrm{min}} \end{array} \right] \\
+        \bfblue{limits(\textit{p}).time.max} & = & \left[\begin{array}{cc} t_0^{\textrm{max}} &
+            t_f^{\textrm{max}} \end{array} \right]
+      \end{array}
+    \end{displaymath}
+  \item \bfblue{limits($p$).state.min} and \bfblue{limits($p$).state.max}:
+    matrices, each of size $n_p \times 3$,
+    that contain the lower and upper limits, respectively, on the
+    state in phase $p\in[1,\ldots,P]$.  Each of the columns of the
+    matrices \bfblue{limits($p$).state.min} and
+    \bfblue{limits($p$).state.max} are given as follows:
+    \begin{itemize}
+      \item \bfblue{limits($p$).state.min(:,1)}: a column vector
+        containing the lower (upper) limits on the state at the {\em
+          start} of phase $p\in[1,\ldots,P]$.
+      \item \bfblue{limits($p$).state.min(:,2)}: a column vector
+        containing the lower (upper) limits on the state at the {\em
+          during} phase $p\in[1,\ldots,P]$.
+      \item \bfblue{limits($p$).state.min(:,3)}: a column vector
+        containing the lower (upper) limits on the state at the {\em
+          terminus} of phase $p\in[1,\ldots,P]$.
+      \end{itemize}
+      The matrices \bfblue{limits($p$).state.min} and
+      \bfblue{limits($p$).state.max} then have the following form:
+    \begin{displaymath}
+      \begin{array}{lcl}
+        \bfblue{limits(\textit{p}).state.min} & = & \left[\begin{array}{ccc} x_{10}^{\textrm{min}}
+            & x_{1}^{\textrm{min}} & x_{1f}^{\textrm{min}} \\
+            \vdots & \vdots & \vdots \\
+            x_{n0}^{\textrm{min}} & x_{n}^{\textrm{min}} & x_{nf}^{\textrm{min}} \\
+          \end{array} \right] \\ \\
+        \bfblue{limits(\textit{p}).state.max} & = & \left[\begin{array}{ccc} x_{10}^{\textrm{max}}
+            & x_{1}^{\textrm{max}} & x_{1f}^{\textrm{max}} \\
+            \vdots & \vdots & \vdots \\
+            x_{n0}^{\textrm{max}} & x_{n}^{\textrm{max}} & x_{nf}^{\textrm{max}} \\
+          \end{array} \right]
+      \end{array}
+    \end{displaymath}
+  \item \bfblue{limits($p$).control.min} and \bfblue{limits($p$).control.max}:  column vectors, each of length
+    $m_p$, that contain the lower and upper limits, respectively, on the
+    controls in phase $p\in[1,\ldots,P]$.  The column vectors
+    \bfblue{limits($p$).control.min} and \bfblue{limits($p$).control.max}
+    have the following form:
+      \begin{displaymath}
+        \begin{array}{lcl}
+          \bfblue{limits(\textit{p}).control.min} & = & \left[\begin{array}{c} u_{1}^{\textrm{min}}
+              \\ \vdots \\ u_{m}^{\textrm{min}} \end{array} \right] \\ \\
+              \bfblue{limits(\textit{p}).control.max} & = & \left[\begin{array}{c} u_{1}^{\textrm{max}}
+                  \\ \vdots \\ u_{m}^{\textrm{max}} \end{array} \right]
+            \end{array}
+        \end{displaymath}
+  \item \bfblue{limits($p$).parameter.min} and
+    \bfblue{limits($p$).parameter.max}:  column vectors, each of length
+    $q_p$, that contain the lower and upper limits, respectively, on the static
+    parameters in phase $p\in[1,\ldots,P]$.  The column vectors
+    \bfblue{limits($p$).parameter.min} and \bfblue{limits($p$).parameters.max}
+    have the following form:
+      \begin{displaymath}
+        \begin{array}{lcl}
+          \bfblue{limits(\textit{p}).parameter.min} & = & \left[\begin{array}{c}
+            q_{1}^{\textrm{min}} \\ \vdots \\ q_{q_p}^{\textrm{min}} \\
+          \end{array} \right] \\ \\
+        \bfblue{limits(\textit{p}).parameter.max} & = & \left[\begin{array}{c}
+            q_{1}^{\textrm{max}} \\ \vdots \\ q_{q_p}^{\textrm{max}} \\
+          \end{array} \right]
+        \end{array}
+      \end{displaymath}
+  \item \bfblue{limits($p$).path.min} and \bfblue{limits($p$).path.max}: column vectors, each of length
+    $r_p$, that contain the lower and upper limits, respectively, on the
+    path constraints in phase $p\in[1,\ldots,P]$.   The column vectors
+    \bfblue{limits($p$).path.min} and \bfblue{limits($p$).path.max}
+    have the following form:
+      \begin{displaymath}
+        \begin{array}{lcl}
+          \bfblue{limits(\textit{p}).path.min} & = & \left[\begin{array}{c}
+            c_{1}^{\textrm{min}} \\ \vdots \\ c_{r_p}^{\textrm{min}} \\
+          \end{array} \right] \\ \\
+        \bfblue{limits(\textit{p}).path.max} & = & \left[\begin{array}{c}
+            c_{1}^{\textrm{max}} \\ \vdots \\ c_{r_p}^{\textrm{max}} \\
+          \end{array} \right]
+        \end{array}
+      \end{displaymath}
+  \item \bfblue{limits($p$).event.min} and \bfblue{limits($p$).event.max}: column vectors, each of length
+    $e_p$, that contain the lower and upper limits on the event
+    constraints in phase $p\in[1,\ldots,P]$. The column vectors
+    \bfblue{limits($p$).event.min} and \bfblue{limits($p$).event.max}
+    have the following form:
+    \begin{displaymath}
+      \begin{array}{lcl}
+        \bfblue{limits(\textit{p}).event.min} & = & \left[\begin{array}{c} \phi_{1}^{\textrm{min}}
+            \\ \vdots \\ \phi_{e_p}^{\textrm{min}} \\
+          \end{array} \right] \\ \\
+        \bfblue{limits(\textit{p}).event.max} & = & \left[\begin{array}{c} \phi_{1}^{\textrm{min}}
+            \\ \vdots \\ \phi_{e_p}^{\textrm{min}} \\
+          \end{array} \right]
+      \end{array}
+    \end{displaymath}
+  \item \bfblue{limits($p$).duration.min} and
+    \bfblue{limits($p$).duration.max}: scalars that contain the lower
+    and upper limits on the duration of phase $p\in[1,\ldots,P]$. The
+    scalars \bfblue{limits($p$).duration.min} and
+    \bfblue{limits($p$).duration.max} have the following form:
+    \begin{displaymath}
+      \begin{array}{lcl}
+        \bfblue{limits(\textit{p}).duration.min} & = & T^{\min} \\
+        \bfblue{limits(\textit{p}).duration.max} & = & T^{\max}
+      \end{array}
+    \end{displaymath}
+
+\end{itemize}
+{\noindent}{\bf Note:} any fields that do not apply to a problem (i.e. a problem without event constraints, path constraints, etc.) may be omitted or left as empty matrices (``[]'').
+
+\begin{shadedframe}
+{\noindent}{\bf Example of Setting Up a Limits Cell Array}
+\vspace{12pt}
+
+As an example of setting up a limits cell array,
+consider the following two-phase optimal control problem.  In
+particular, suppose that {\em phase 1} of the problem has 3 states, 2
+controls, 2 path constraints, and 5 event constraints.  Suppose
+further that the lower and upper limits on the initial and terminal
+time in the first phase are given as
+\begin{displaymath}
+  \begin{array}{rcccr}
+    0 & \leq  & t_0^{(1)} & \leq & 0 \\
+    50 & \leq & t_f^{(1)} & \leq & 100
+  \end{array}
+\end{displaymath}
+Next, suppose that the lower and upper limits on the states at the
+{\em start} of the first phase are given, respectively, as
+\begin{displaymath}
+  \begin{array}{rcccr}
+    1 & \leq & x_1(t_0^{(1)}) & \leq & 1 \\
+    -3 & \leq & x_2(t_0^{(1)}) & \leq & 0 \\
+    0 & \leq & x_2(t_0^{(1)}) & \leq & 5
+  \end{array}
+\end{displaymath}
+Similarly, suppose that the lower and upper limits on the states
+{\em during}  the first phase are given, respectively, as
+\begin{displaymath}
+  \begin{array}{rcccr}
+    1 & \leq & x_1(t^{(1)}) & \leq & 10 \\
+    -50 & \leq & x_2(t^{(1)}) & \leq & 50 \\
+    -20 & \leq & x_2(t^{(1)}) & \leq & 20
+  \end{array}
+\end{displaymath}
+Finally, suppose that the lower and upper limits on the states at the
+{\em terminus} of the first phase are given, respectively, as
+\begin{displaymath}
+  \begin{array}{rcccr}
+    5 & \leq & x_1(t_f^{(1)}) & \leq & 7 \\
+    2 & \leq & x_2(t_f^{(1)}) & \leq & 2.5 \\
+    -\pi & \leq & x_2(t_f^{(1)}) & \leq & \pi
+  \end{array}
+\end{displaymath}
+Next, suppose that the lower and upper limits on the controls
+{\em during} the first phase are given, respectively, as
+\begin{displaymath}
+  \begin{array}{rcccr}
+    -50 & \leq & u_1(t^{(1)}) & \leq & 50 \\
+    -100 & \leq & u_2(t^{(1)})& \leq & 100
+  \end{array}
+\end{displaymath}
+Next, suppose that the lower and upper limits on the path constraints
+{\em during} the first phase are given, respectively, as
+\begin{displaymath}
+  \begin{array}{rcccr}
+    -10 & \leq & p_1(t^{(1)}) & \leq & 10 \\
+     1 & \leq & p_2(t^{(1)})& \leq & 1
+  \end{array}
+\end{displaymath}
+Next, suppose that the lower and upper limits on the event constraints
+of the first phase are given, respectively, as
+\begin{displaymath}
+  \begin{array}{rcccr}
+    0 & \leq & \phi_1^{(1)} & \leq & 1 \\
+     -2 & \leq & \phi_2^{(1)} & \leq & 4 \\
+    8 & \leq & \phi_3^{(1)} & \leq & 20 \\
+    3 & \leq & \phi_4^{(1)} & \leq & 3 \\
+    10 & \leq & \phi_5^{(1)} & \leq & 10
+  \end{array}
+\end{displaymath}
+In a similar manner, suppose that {\em phase 2} of the problem contains the
+following information:  4 states, 3 controls, 1 path constraint, and 4
+event constraints.  Also, suppose now that the lower and upper limits
+on the initial and terminal time in the first phase are given,
+respectively, as
+\begin{displaymath}
+  \begin{array}{rcccr}
+    50 & \leq  & t_0^{(2)} & \leq & 100 \\
+    100 & \leq & t_f^{(2)} & \leq & 200
+  \end{array}
+\end{displaymath}
+Next, suppose that the lower and upper limits on the states at the
+{\em start} of the second phase are given, respectively, as
+\begin{displaymath}
+  \begin{array}{rcccr}
+     3 & \leq & x_1(t_0^{(2)}) & \leq & 3 \\
+    -10 & \leq & x_2(t_0^{(2)}) & \leq & 4 \\
+    7 & \leq & x_3(t_0^{(2)}) & \leq & 18 \\
+   25 & \leq & x_4(t_0^{(2)}) & \leq & 75
+  \end{array}
+\end{displaymath}
+Similarly, suppose that the lower and upper limits on the states
+{\em during} the second phase are given, respectively, as
+\begin{displaymath}
+  \begin{array}{rcccr}
+    -200 & \leq & x_1(t^{(2)}) & \leq & 200 \\
+    -50 & \leq & x_2(t^{(2)}) & \leq & 50 \\
+    -20 & \leq & x_3(t^{(2)}) & \leq & 20 \\
+    -80 & \leq & x_4(t^{(2)}) & \leq & 80
+  \end{array}
+\end{displaymath}
+Finally, suppose that the lower and upper limits on the states at the
+{\em terminus} of the second phase are given, respectively, as
+\begin{displaymath}
+  \begin{array}{rcccr}
+    12 & \leq & x_1(t_f^{(2)}) & \leq & 12 \\
+    -60 & \leq & x_2(t_f^{(2)}) & \leq & 30 \\
+    -90 & \leq & x_3(t_f^{(2)}) & \leq & 10 \\
+   100 & \leq & x_4(t_f^{(2)}) & \leq & 500
+  \end{array}
+\end{displaymath}
+Next, suppose that the lower and upper limits on the controls
+{\em during} the second phase are given, respectively, as
+\begin{displaymath}
+  \begin{array}{rcccr}
+    -90 & \leq & u_1(t^{(2)}) & \leq & 90 \\
+    -120 & \leq & u_2(t^{(2)})& \leq & 120
+  \end{array}
+\end{displaymath}
+Next, suppose that the lower and upper limits on the path constraints
+{\em during} the second phase are given, respectively, as
+\begin{displaymath}
+  \begin{array}{rcccr}
+    -10 & \leq & p_1(t^{(2)}) & \leq & 10 \\
+     1 & \leq & p_2(t^{(2)})& \leq & 1
+  \end{array}
+\end{displaymath}
+Finally, suppose that the lower and upper limits on the events
+constraints of the second phase phase are given, respectively, as
+\begin{displaymath}
+  \begin{array}{rcccr}
+    0 & \leq & \phi_1^{(2)}  & \leq & 1 \\
+     -2 & \leq & \phi_2^{(2)} & \leq & 4 \\
+    8 & \leq & \phi_3^{(2)} & \leq & 20 \\
+    3 & \leq & \phi_4^{(2)} & \leq & 3
+  \end{array}
+\end{displaymath}
+Then a MATLAB code that would generate the above specification is
+given as follows:
+\begin{verbatim}
+
+iphase = 1; % Set the phase number to 1
+limits(iphase).nodes = 10;
+limits(iphase).time.min = [0 50];
+limits(iphase).time.max = [0 100];
+limits(iphase).state.min = [1 1 5; -3 -50 2; 0 -20 -pi];
+limits(iphase).state.max = [1 10  7; 0  50 2.5; 5 20 pi];
+limits(iphase).control.min = [-50; -100];
+limits(iphase).control.max = [ 50;  100];
+limits(iphase).parameter.min = [];
+limits(iphase).parameter.max = [];
+limits(iphase).path.min = [-10; 1];
+limits(iphase).path.max = [10; 1];
+limits(iphase).event.min = [0; -2; 8; 3; 10];
+limits(iphase).event.max = [1; 4; 20; 3; 10];
+
+iphase = 2; % Set the phase number to 2
+limits(iphase).nodes = 10;
+limits(iphase).time.min = [50 100];
+limits(iphase).time.max = [100 200];
+limits(iphase).state.min = [3 -200 12; -10 -50 -60; 7 -20 -90; 25 -80 100];
+limits(iphase).state.max = [3 200 12; 4 50 30; 18 20 10; 75 80 500];
+limits(iphase).control.min = [-90; -120];
+limits(iphase).control.max = [ 90;  120];
+limits(iphase).parameter.min = [];
+limits(iphase).parameter.max = [];
+limits(iphase).path.min = [-10; 10];
+limits(iphase).path.max = [1; 1];
+limits(iphase).event.min = [0; -2; 8; 3];
+limits(iphase).event.max = [1; 4; 20; 3];
+
+setup.limits = limits;
+
+\end{verbatim}
+\end{shadedframe}
+{\noindent}{\bf Note:}  in order to make the coding easier, we have
+introduced the auxiliary integer variable{\bf iphase} so that the user
+can more easily reuse code from phase to phase.
+
+\section{Syntax for \bfblue{linkages} Array of Structures \label{sect: linkages}}
+
+Another required field in the structure \slred{setup} is an array of
+structures called \bfblue{linkages} that defines the way that the
+phases are to be linked.  If there is only one phase in the problem, then
+\slred{setup}.\bfblue{linkages} may be set to ``[]''.  If the problem
+contains more than a single phase, then \bfblue{linkages} is an array
+of structures of length $L$ (where $L$ is the number of pairs of phases
+to be linked).  The array of structures \bfblue{linkages} is specified
+as follows:
+\begin{itemize}
+\item \bfblue{linkages($s$).min}: a column vector of length $l_s$
+  containing the lower limits on the $s^{th}$ pair of linkages.
+\item \bfblue{linkages($s$).max}: a column vector of length $l_s$
+  containing the upper limits on the $s^{th}$ pair of linkages.
+\item \bfblue{linkages($s$).left.phase}: an integer containing the
+  ``left'' phase in the pair of phases to be connected
+\item \bfblue{linkages($s$).right.phase}: an integer containing the
+  ``right'' phase in the pair of phases to be connected
+\end{itemize}
+Note that we use the terminology ``left'' and ``right'' in the sense
+of viewing a graph of the trajectory on a page where time is
+increasing to the right.  Thus, the ``left'' phase corresponds to the
+terminus of a phase while the ``right'' phase corresponds to the
+start of a phase.
+
+\section{Syntax of Each Function in Optimal Control Problem}
+
+Now that we know {\em which} functions will be used, the next step is to
+discuss the syntax of each of these functions.  In general, the syntax for
+each function will differ because the quantities being evaluated are different
+in nature.  In this section we will explain the syntax of each function.
+
+\subsection{Syntax of Function Used to Evaluate Cost}\label{sect:_Cost_syntax}
+
+The syntax used to evaluate a user-defined cost functional is given as follows:
+\begin{center}
+\noindent{\bf function [Mayer,Lagrange]=mycostfun(solcost);}
+\end{center}
+{\noindent}where \slred{mycostfun.m} is the name of the MATLAB function,
+\slred{solcost} is the input to the function, and
+\slred{Mayer} and \slred{Lagrange} are the outputs.  The input
+\slred{solcost} is a structure while the outputs
+\slred{Mayer} and \slred{Lagrange} are the endpoint cost and the
+integrand of the integrated cost, respectively.  The input structure
+\slred{solcost} has the following fields (note that $N$=number of LG points which are on the interior of the time interval):
+\begin{itemize}
+  \item \slred{solcost}.\bfblue{phase}:  the phase number
+  \item \slred{solcost}.\bfblue{initial.time}:  the initial time in phase \slred{solcost}.\bfblue{phase}
+  \item \slred{solcost}.\bfblue{initial.state}:  the initial state in phase \slred{solcost}.\bfblue{phase}
+  \item \slred{solcost}.\bfblue{terminal.time}:  the terminal time in phase \slred{solcost}.\bfblue{phase}
+  \item \slred{solcost}.\bfblue{terminal.state}:  the terminal state in phase \slred{solcost}.\bfblue{phase}
+  \item \slred{solcost}.\bfblue{time}:  a column vector of length $N$ that
+    contains the time (excluding the initial and terminal points) in
+    phase \slred{solcost}.\bfblue{phase}
+  \item \slred{solcost}.\bfblue{state}:  a matrix of size $N\times n$ (where $n$
+    is the number of states) that contains the values of the state (excluding the initial and
+    terminal points) in phase \slred{solcost}.\bfblue{phase}
+  \item \slred{solcost}.\bfblue{control}:  a matrix of size $N\times m$ (where $m$
+    is the number of controls) that contains the values of the control (excluding the initial and
+    terminal points) in phase \slred{solcost}.\bfblue{phase}
+  \item \slred{solcost}.\bfblue{parameter}:  a column vector of length $q$ that contains the values of the static parameters in phase \slred{solcost}.\bfblue{phase}
+\end{itemize}
+Finally, the outputs of \slred{mycostfun} are as follows:
+\begin{itemize}
+  \item \slred{Mayer}: a {\em scalar}, \ie size $1\times 1$
+  \item \slred{Lagrange}: a {\em column} vector of size $N\times 1$
+\end{itemize}
+
+\subsection{Warning About Outputs to Cost Function}
+
+For many optimal control problems the output \slred{Lagrange} in the
+user-defined cost function \slred{mycostfun} is {\bf\em zero}.  As such, it is
+appealing to set \slred{Lagrange} to zero by the MATLAB command
+\begin{equation}
+  \textrm{Lagrange=0;}
+\end{equation}
+However, {\bf\em the integrand cannot be set to a scalar value!}.  Instead,
+the integrand {\bf\em must} be set to a {\bf\em column vector of zeros!}.  The
+way to set the integrand to zero and that {\bf\em will work in all cases} (\ie
+numerical or automatic differentiation) is as follows:
+\begin{equation}\label{integrand correct syntax zero}
+  \boxed{
+    \textrm{Lagrange=zeros(size(\slred{solcost}.\bfblue{time});}
+  }
+\end{equation}
+The user is urged to use the syntax of Eq.~(\ref{integrand correct syntax zero})
+whenever the integrand is identically zero.
+
+\begin{shadedframe}
+{\noindent}{\bf Example of a Cost Functional}
+\vspace{12pt}
+
+Suppose we have a two-phase optimal control problem that uses a cost
+functional named ``mycostfun.m''.  Suppose further that the dimension of the
+state in each phase is 2 while the dimension of the control in each phase is
+2.  Also, suppose that the endpoint and integrand cost in phase 1 are
+given, respectively, as
+\begin{displaymath}
+  \begin{array}{lcl}
+    \Phi^{(1)}(\bfx^{(1)}(t_0),t_0^{(1)},\bfx^{(1)}(t_f),t_f^{(1)}) & = & \bfx^T(t_f)\bfS\bfx(t_f) \\
+    \mcL^{(1)}(\bfx^{(1)}(t),\bfu^{(1)}(t),t) & = & \bfx^T\bfQ\bfx + \bfu^T\bfR\bfu
+  \end{array}
+\end{displaymath}
+while the endpoint and integrand in phase 2 are given, respectively, as
+\begin{displaymath}
+  \begin{array}{lcl}
+    \Phi^{(2)}(\bfx^{(2)}(t_0^{(2)}),t_0^{(2)},\bfx^{(2)}(t_f^{(2)}),t_f^{(2)}) & = & \bfx^T(t_f)\bfx(t_f) \\
+    \mcL^{(2)}(\bfx^{(2)}(t),\bfu^{(2)}(t),t) & = & \bfu^T\bfR\bfu
+  \end{array}
+\end{displaymath}
+Then the syntax of the above cost functional is given as follows:
+\begin{verbatim}
+function [endpoint,integrand]=mycostfun(solcost);
+
+Q = [5 0; 0 2];
+R = [1 0; 0 3];
+S = [1 5; 5 1];
+iphase = solcost.phase;
+t0 = solcost.initial.time;
+x0 = solcost.initial.state;
+tf = solcost.terminal.time;
+xf = solcost.terminal.state;
+t  = solcost.time;
+x  = solcost.state;
+u  = solcost.control;
+p  = solcost.parameter;
+
+if iphase==1,
+  Mayer  = dot(xf',S*xf');
+  Lagrange = dot(x,x*Q',2)+dot(u,u*R',2); % Note transposes
+elseif iphase==2,
+  Mayer  = dot(xf,xf);
+  Lagrange = dot(u,u*R',2); % Note transposes
+end;
+\end{verbatim}
+It is noted in the above function call that the third argument in the
+command {\bf dot} takes the dot product across the {\em rows}, thereby
+producing a {\em column vector}.
+\end{shadedframe}
+
+\subsection{Syntax of Function Used to Evaluate Differential-Algebraic Equations\label{sect:_Dae_syntax}}
+
+The calling syntax used evaluate the right-hand side of a user-defined vector
+of differential equations is given as follows:
+\begin{center}
+  \noindent{\bf function dae=mydaefun(soldae);}
+\end{center}
+{\noindent}where \slred{mydaefun.m} is the name of the MATLAB function,
+\slred{soldae} is the input to the function, and
+\slred{dae} is the output (\ie the right-hand side of the
+differential equations and the values of the path constraints).  The
+input \slred{soldae} is a structure while the output \slred{dae} is a
+matrix of size $N \times (n+c)$ where $n$ is the number of
+differential equations, $c$ is the number of path constraints, and $N$
+is the number of LG points.  The input structure \slred{soldae} has
+the following fields:
+\begin{itemize}
+  \item \slred{soldae}.\bfblue{phase}:  the phase number
+  \item \slred{soldae}.\bfblue{time}:  a column vector of length $N$ that
+    contains the time (excluding the initial and terminal points) in phase \slred{soldae}.\bfblue{phase}
+  \item \slred{soldae}.\bfblue{state}:  a matrix of size $N\times n$ (where $n$
+    is the number of states) that contains the values of the state (excluding the initial and
+    terminal points) in phase \slred{soldae}.\bfblue{phase}
+  \item \slred{soldae}.\bfblue{control}:  a matrix of size $N\times m$ (where $m$
+    is the number of controls) that contains the values of the control (excluding the initial and
+    terminal points) in phase \slred{soldae}.\bfblue{phase}
+  \item \slred{soldae}.\bfblue{parameter}:  a column vector of length $q$ that
+    contains the values of the static parameters in phase \slred{soldae}.\bfblue{phase}
+\end{itemize}
+Finally, the output of \slred{myodefun} are as follows:
+\begin{itemize}
+  \item \slred{dae}: a {\em matrix} of size $N\times (n+c)$ containing
+    the values of the right-hand side of the $n$ differential
+    equations and the $c$ path constraints evaluated at the $N$ LG points
+\end{itemize}
+
+\begin{shadedframe}
+  {\noindent}{\bf Example of a Differential-Algebraic Equation}
+\vspace{12pt}
+
+Suppose we have a two-phase optimal control problem that uses a differential
+equation function called ``mydaefun.m''.  Suppose further that the dimension
+of the state in each phase is 2, the dimension of the control in each
+phase is 2.  Furthermore, suppose that there are no path constraints
+in phase 1 and one path constraint in phase 2.  Next, suppose that
+the differential equations in phase 1 are given as
+\begin{displaymath}
+  \begin{array}{lcl}
+    \dx_1 & = & -x_1^2-x_2^2 + u_1 u_2 \\
+    \dx_2 & = & -x_1x_2 + 2(u_1+u_2)
+  \end{array}
+\end{displaymath}
+Also, suppose that the differential equations in phase 2 are given as
+\begin{displaymath}
+  \begin{array}{lcl}
+    \dx_1 & = & \sin(x_1^2+x_2^2) + u_1 u_2^2 \\
+    \dx_2 & = & -\sin x_1 \cos x_2 + 2u_1u_2
+  \end{array}
+\end{displaymath}
+Finally, suppose that the path constraint in phase 2 is given as
+\begin{displaymath}
+  u_1^2+u_2^2 = 1
+\end{displaymath}
+Then a MATLAB code that will evaluate the above system of
+differential-algebraic equations is given as follows:
+\begin{verbatim}
+function dae = mydaefun(soldae);
+
+iphase = soldae.phase;
+t = soldae.time;
+x = soldae.state;
+u = soldae.control;
+p = soldae.parameter;
+
+if iphase==1,
+  x1dot = -x(:,1).^2-x(:,2).^2 + u(:,1).*u(:,2);
+  x2dot = -x(:,1).*x(:,2) + 2*(u(:,1)+u(:,2));
+  path = [];
+elseif iphase==2,
+  x1dot = sin(x(:,1).^2 + x(:,2).^2) + u(:,1).*u(:,2).^2;
+  x2dot = -sin(x(:,1)).*cos(x(:,2))+2*u(:,1).*u(:,2);
+  path  = u(:,1).^2+u(:,2).^2;
+end;
+dae = [x1dot x2dot path];
+\end{verbatim}
+
+\end{shadedframe}
+
+\subsection{Syntax of Function Used to Evaluate Event Constraints\label{sect:_Event_syntax}}
+
+The syntax used to evaluate a user-defined vector of event constraints
+is given as follows:
+\begin{center}
+\noindent{\bf function events=myeventfun(solevents,iphase);}
+\end{center}
+{\noindent}where \slred{myeventfun.m} is the name of the MATLAB function,
+\slred{solevents} and \slred{iphase} are the inputs to the function, and
+\slred{event} is the output (\ie the value of the event constraints).
+The inputs \slred{solevents} and \slred{iphase} are a cell array and
+an integer, respectively, while the output \slred{event} is a
+{\em column vector} of length $e$ where $e$ is the number of event
+constraints.  The input cell array \slred{solevents} has the following elements:
+\begin{itemize}
+  \item \slred{solevents}.\bfblue{phase}:  the phase number
+  \item \slred{solevents}.\bfblue{initial.time}:  the time at the start of the phase
+  \item \slred{solevents}.\bfblue{initial.state}:  the state at the start of the phase
+  \item \slred{solevents}.\bfblue{terminal.time}:  the time at the terminus of the phase
+  \item \slred{solevents}.\bfblue{terminal.state}:  the state at the terminus of the phase
+  \item \slred{solevents}.\bfblue{parameter}:  the static parameters in the phase
+\end{itemize}
+
+\begin{shadedframe}
+{\noindent}{\bf Example of Event Constraints}
+\vspace{12pt}
+
+{\noindent}Suppose we have a one-phase optimal control problem that has two
+initial event constraints and three terminal event constraints.  Suppose
+further that the number of states in the phase is six and that the function
+that computes the values of these constraints is called ``myeventfun.m''.
+Finally, let the two initial event constraints be given as
+\begin{displaymath}
+  \begin{array}{lcl}
+    \phi_{01} & = & x_1(t_0)^2+x_2(t_0)^2+x_3(t_0)^2 \\
+    \phi_{02} & = & x_4(t_0)^2+x_5(t_0)^2+x_6(t_0)^2
+  \end{array}
+\end{displaymath}
+while the three terminal event constraints are given as
+\begin{displaymath}
+  \begin{array}{lcl}
+    \phi_{f1} & = & \sin(x_1(t_f))\cos(x_2(t_f)+x_3(t_f)) \\
+    \phi_{f2} & = & \tan(x_4^2(t_f)+x_5^2(t_f)+x_6^2(t_f)) \\
+    \phi_{f3} & = & x_4(t_f)+x_5(t_f)+x_6(t_f)
+  \end{array}
+\end{displaymath}
+Then the syntax of the above event function is given as
+\begin{verbatim}
+function events = myeventfun(solevents);
+
+iphase = solevents.phase;
+t0 = solevents.initial.time;
+x0 = solevents.initial.state;
+tf = solevents.terminal.time;
+xf = solevents.terminal.state;
+
+ei1 = dot(x0(1:3),x0(1:3));
+ei2 = dot(x0(4:6),x0(4:6));
+ef1 = sin(xf(1))*cos(xf(2)+xf(3));
+ef2 = tan(dot(xf(4:6),xf(4:6)));
+ef3 = xf(4)+xf(5)+xf(6);
+
+events = [ei1;ei2;ef1;ef2;ef3];
+\end{verbatim}
+
+\end{shadedframe}
+
+Finally, it is noted that each event constraint need not be a function of
+either the initial or the terminal state, but can also be functions that
+contain {\em both} the initial and terminal state and/or the initial and
+terminal time.  As an example of an event constraint that contains both the
+initial and terminal state, consider the following example.
+
+\begin{shadedframe}
+{\noindent}{\bf Example of Event Constraint Containing Both Initial and Terminal State}
+\vspace{12pt}
+
+{\noindent}Suppose we have a one-phase optimal control problem that contains
+only a single state.  Furthermore, suppose that the problem contains a single
+event constraint on the {\em difference} between the terminal value of the
+state and the initial value of the state.  Finally, suppose that the function
+that computes the values of these constraints is called ``myeventfun.m''.
+Then the event constraint is evaluated as
+\begin{displaymath}
+  \phi = x(t_f)-x(t_0)
+\end{displaymath}
+Then the syntax of the above event function is given as
+\begin{verbatim}
+function events = myeventfun(solevents);
+
+t0 = solevents.initial.time;
+x0 = solevents.initial.state;
+tf = solevents.terminal.time;
+xf = solevents.terminal.state;
+
+events = xf-x0;
+\end{verbatim}
+
+\end{shadedframe}
+
+\subsection{Syntax of Function Used to Evaluate Linkage Constraints\label{sect:_Link_syntax}}
+
+The syntax used to define the user defined vector of linkage
+constraints between two phases is given as follows:
+\begin{center}
+\noindent{\bf function links=mylinkfun(sollink);}
+\end{center}
+{\noindent}where \slred{mylinkfun.m} is the name of the MATLAB function,
+\slred{sollink} is the input to the function, and \slred{links} is the output (\ie the value of the linkage
+constraints).  The input \slred{sollink} is a structure while the output \slred{links} is a {\em column vector} of length $l$,
+where $l$ is the number of event constraints. The input structure \slred{sollink} has the following fields:
+\begin{itemize}
+  \item \slred{sollink}.\bfblue{left.phase}:  the left phase of the
+    pair of phases to be linked
+  \item \slred{sollink}.\bfblue{right.phase}:  the right phase of the pair of phases to be linked
+  \item \slred{sollink}.\bfblue{left.state}: the state at the terminus of phase \slred{sollink}.\bfblue{left.phase}
+  \item \slred{sollink}.\bfblue{right.state}: the state at the start of phase \slred{sollink}.\bfblue{right.phase}
+  \item \slred{sollink}.\bfblue{left.parameter}: the static parameters in phase \slred{sollink}.\bfblue{left.phase}
+  \item \slred{sollink}.\bfblue{right.state}: the static parameters in phase \slred{sollink}.\bfblue{right.phase}
+\end{itemize}
+The terms {\em left} and {\em right} are conventions adopted to help
+the user orient the phases on a page from left to right.
+
+\begin{shadedframe}
+{\noindent}{\bf Example of Linkage Constraint}
+\vspace{12pt}
+
+{\noindent}Suppose we have a multiple phase optimal control problem with a simple link between the phases, i.e. the state of the end of the phase is equal to the state at the beginning of the next phase.  \begin{displaymath}
+\bfP = x^l(t_f) - x^r(t_0)
+\end{displaymath}
+Then the syntax of the above linkage is given as
+\begin{verbatim}
+function links = mylinkagefun(sollink);
+
+left_phase = sollink.left.phase;
+right_phase = sollink.right.phase;
+xf_left = sollink.left.state;
+p_left  = sollink.left.parameter;
+x0_left = sollink.right.phase;
+p_left  = sollink.right.parameter;
+
+links = xf_left - x0_right;
+\end{verbatim}
+\end{shadedframe}
+
+\section{Specifying an Initial Guess of The Solution \label{sect: guess}}
+
+The field \bfblue{guess} of the user-defined structure \slred{setup}
+contains the initial guess for the problem.  The field
+\bfblue{guess} is an array of structures of length $P$ (where $P$ is the
+number of phases in the problem).  The $p^{th}$ element of the array
+of structures \bfblue{guess} contains the initial guess of the problem in phase
+$p\in[1,\ldots,P]$.  The fields of each element of array of structures
+\bfblue{guess} are given as follows:
+\begin{itemize}
+\item \bfblue{guess(\textit{p}).time}:  a {\em column} vector of
+  length $s$ where $s$ is the number of time points used in the guess
+\item \bfblue{guess(\textit{p}).state}:  a matrix of size $s \times n$
+  where $s$ is the number of time points and $n$ is the number of
+  states in the phase
+\item \bfblue{guess(\textit{p}).control}:  a matrix of size $s \times m$
+  where $s$ is the number of time points and $m$ is the number of controls in the phase
+\item \bfblue{guess(\textit{p}).parameter}:  a column vector of length $q$
+  where $q$ is the number of static parameters in the phase
+\end{itemize}
+It is noted that the element \bfblue{guess(\textit{p}).time} must be
+monotonic and in the same direction as that specified by the field
+\bfblue{direction} of the structure \slred{setup}.
+Schematically, in each phase of the problem the guess for the time,
+states, controls, and parameters is structured as follows:
+\begin{displaymath}
+  \begin{array}{lcl}
+    \bfblue{guess(\textit{p}).time} & = &
+    \left[\begin{array}{c} t_0 \\ t_1 \\ t_2 \\ \cdots \\
+        t_{s} \end{array} \right] \\ \\
+    \bfblue{guess(\textit{p}).state} & = &
+    \left[\begin{array}{cccc} x_{10} & x_{20} & \cdots & x_{n0} \\
+        x_{11} & x_{21} & \cdots & x_{n1} \\
+        \vdots & \vdots & \vdots & \vdots \\
+        x_{1s} & x_{2s} & \cdots & x_{ns}
+        \end{array} \right] \\ \\
+    \bfblue{guess(\textit{p}).control} & = &
+    \left[\begin{array}{cccc} u_{10} & x_{20} & \cdots & x_{m0} \\
+        u_{11} & u_{21} & \cdots & x_{m1} \\
+        \vdots & \vdots & \vdots & \vdots \\
+        u_{1s} & u_{2s} & \cdots & u_{ms}
+        \end{array}
+      \right] \\ \\
+    \bfblue{guess(\textit{p}).parameter} & = &
+    \left[\begin{array}{c} q_1 \\ q_2 \\ \vdots \\ q_q \end{array} \right]
+  \end{array}
+\end{displaymath}
+\begin{shadedframe}
+
+{\noindent}{\bf Example of Specifying an Initial Guess}
+
+\vspace{12pt}
+Suppose we have a two-phase problem that has three states and two controls in
+phase 1 while it has two states and one control in phase 2.  Furthermore,
+suppose that we choose five time points for the guess in phase 1 while we
+choose 3 time points for the guess in phase 2.  A MATLAB code that would
+create such an initial guess is given below.
+\begin{verbatim}
+
+iphase = 1;
+guess(iphase).time  = [0; 1; 3; 5; 7];
+guess(iphase).state(:,1) = [1.27; 3.1; 5.8; 9.6; -13.7272];
+guess(iphase).state(:,2) = [-4.2; -9.6; 8.5; 25.73; 100.00];
+guess(iphase).state(:,3) = [18.727; 1.827; 25.272; -14.272; 26.84];
+guess(iphase).control(:,1) = [8.4; -13.7; -26.5; 19; 87];
+guess(iphase).control(:,2) = [-1.2; 5.8; -3.77; 14; 19.787];
+guess(iphase).parameter = [];
+
+iphase = 2;
+guess(iphase).time = [7; 7.5; 8];
+guess(iphase).state(:,1) = [0.5; 1.5; 8];
+guess(iphase).state(:,2) = [-0.5; -2.5; 19];
+guess(iphase).control(:,1) = [8.4; -13.7; -26.5; 19; 87];
+guess(iphase).parameter = [];
+
+setup.guess = guess;
+
+\end{verbatim}
+\end{shadedframe}
+It is noted again that, for the above example, auxiliary integer
+variables were used to minimize the cumbersomeness of coding and to
+minimize the chance of error.
+
+\section{Scaling of Optimal Control Problem\label{sect:_scaling}}
+
+As with any numerical optimization procedure, a well-scaled optimal control problem is required.  In general, it is
+recommended that the user scale the problem in accordance with any known large
+discrepancies either in the sizes of various quantities (\ie state, control)
+or the sizes of the derivatives of such quantities.  While it is beyond the
+scope of this user's manual to provide a general procedure for scaling, in an
+attempt to reduce the burden on the user an automatic scaling procedure has
+been developed.  This procedure is based on the scaling
+algorithm developed in \cite{Betts1}.  In order to invoke the automatic
+scaling routine, the user must set the field \bfblue{autoscale} in the
+user-defined structure \slred{setup} to the string ``on''.
+
+The automatic scaling procedure operates as follows.  The bounds on the
+variables are used to scale all components of the state, control, parameters,
+and time to lie between -1 and 1.  As a result, it is essential that the user
+provide {\em sensible} bounds on all quantities (\eg do not provide
+unreasonably large bounds as this will result in a poorly scaled problem).
+Next, the constraints are scaled to make the row norms of the Jacobians of the
+respective functions approximately unity.  The automatic scaling procedure is
+by no means foolproof, but it has been found in practice to work well on many
+problems that otherwise would require scaling by hand.  The advice given here
+is to try the automatic scaling procedure, but not to use it for too long if
+it is proving to be unsuccessful.
+
+\section{Different Options for Specification of Derivatives\label{sect:_derivatives}}
+
+The user has six choices for the computation of the derivatives of
+the objective function gradient and the constraint Jacobian for use
+within the NLP solver.  As stated above, the choices for
+\bfblue{derivatives} are ``numerical'', ``complex'', ``automatic'', and ``analytic'' and correspond to the following differentiation methods:
+\begin{itemize}
+\item \slred{setup}.\bfblue{derivatives}=``numerical'':  default
+  finite-differencing algorithm within SNOPT is used.
+\item \slred{setup}.\bfblue{derivatives}=``complex'': the {\em
+    built-in} complex-step differentiation method is used.
+\item \slred{setup}.\bfblue{derivatives}=``automatic'', the {\em
+    built-in} automatic differentiator is used.
+\item \slred{setup}.\bfblue{derivatives}=``analytic'': analytic derivatives
+(supplied by the user) are used.
+\end{itemize}
+
+\subsection{Complex-Step Differentiation}
+
+Of the differentiation methods given above, either the built-in automatic
+differentiator or the complex-step differentiator most preferred
+because these two methods provide highly accurate derivatives and are
+both included (\ie the user
+does not have to obtain any third-party software). One drawback with
+complex-step differentiation, however, is that certain functions need
+to be handled with great care.  In particular, the functions {\bf
+  min}, {\bf max}, {\bf abs}, and {\bf dot} need to be redefined for
+use in complex-step differentiation (see Ref.~\citeasnoun{Martins1} and the URL
+\url{http://mdolab.utias.utoronto.ca/resources/complex-step/complexify.f90}
+for details).  Finally, the transpose operator must be replaced with a
+dot-transpose (\ie a {\em real transpose}) because the standard
+transpose in MATLAB produces a complex conjugate transpose and it is
+necessary to maintain a real transpose when computing derivatives via
+complex-step differentiation.
+
+\subsection{Analytic Differentiation}
+Analytic differentiation has the advantage that it is the fasted and most accurate of the four methods, however, it is by far the most complex for the user to compute, code, and verify.  The derivatives for the objective function gradient and the constraint Jacobian are computed from the user defined analytic derivatives.  These derivatives are supplied as an additional output of the user functions for the cost, dae functions, event constraints, and linkage constraints (if applicable).
+The user defined derivatives can be checked relative to a finite-difference approximation by setting the flag \slred{setup}.\bfblue{checkDerivatives} equal to one. Upon execution, the derivatives will be computed at the user supplied initial guess using a finite-difference approximation and compared to the analytic derivatives with the results printed to the screen.  It is recommended that the user run the derivative checking algorithm a least one time to verify that the derivatives are correct, however, it should be noted that the algorithm is not guaranteed to find any incorrect derivatives.  The user must take special care to ensure that the analytic derivatives are coded correctly in order to take advantage of the speed and accuracy of analytic differentiation.
+
+\subsubsection{Syntax of Function Used to Evaluate Cost with Derivatives}
+
+The syntax used to evaluate the user-defined cost derivatives is given as follows:
+\begin{center}
+\noindent{\bf function [Mayer,Lagrange,DerivMayer,DerivLagrange]=mycostfun(solcost);}
+\end{center}
+See Section \ref{sect:_Cost_syntax} for the definition of the regular inputs/outputs.
+The additional outputs of \slred{mycostfun} are as follows:
+\begin{itemize}
+  \item \slred{DerivMayer}: a {\em row} vector of size $1\times (2n+2+q)$
+  \item \slred{DerivLagrange}: a {\em matrix} of size $N\times (n+m+q+1)$
+\end{itemize}
+where $n$ is the number of states, $m$ is the number of controls, $q$ is the number of parameters, and $N$ is the number of LG points in the phase. The row vector \slred{DerivMayer} defines the partial derivatives of the Mayer cost with respect to the initial state, initial time, final state, final time, and finally the parameters:
+\begin{center}
+\noindent{\bf DerivMayer = $\left[\displaystyle \pd{\Phi}{\bfx(t_0)}, \quad \pd{\Phi}{t_0}, \quad \pd{\Phi}{\bfx(t_f)}, \quad \pd{\Phi}{t_f}, \quad \pd{\Phi}{p}\right]$}
+\end{center}
+The matrix \slred{DerivLagrange} defines the partial derivatives of the Lagrange cost with respect to the state, control, parameters, and time at each of the $N$ LG points:
+\begin{center}
+\noindent{\bf DerivLagrange = $\left[\displaystyle \pd{\mcL}{\bfx}, \quad \pd{\mcL}{\bfu}, \quad \pd{\mcL}{p}, \quad \pd{\mcL}{t}\right]$}
+\end{center}
+It is important to provide all the derivatives in the correct order {\em even if} they are zero.
+
+\begin{shadedframe}
+{\noindent}{\bf Example of a Cost Functional with Derivatives}
+\vspace{12pt}
+
+Suppose we have a two-phase optimal control problem that uses a cost
+functional named ``mycostfun.m''.  Suppose further that the dimension of the
+state in each phase is 2 while the dimension of the control in each phase is
+2.  Also, suppose that the endpoint and integrand cost in phase 1 are
+given, respectively, as
+\begin{displaymath}
+  \begin{array}{lcl}
+    \Phi^{(1)}(\bfx^{(1)}(t_0),t_0^{(1)},\bfx^{(1)}(t_f),t_f^{(1)}) & = & \bfx^T(t_f)\bfS\bfx(t_f) \\
+    \mcL^{(1)}(\bfx^{(1)}(t),\bfu^{(1)}(t),t) & = & \bfx^T\bfQ\bfx + \bfu^T\bfR\bfu
+  \end{array}
+\end{displaymath}
+while the endpoint and integrand in phase 2 are given, respectively, as
+\begin{displaymath}
+  \begin{array}{lcl}
+    \Phi^{(2)}(\bfx^{(2)}(t_0^{(2)}),t_0^{(2)},\bfx^{(2)}(t_f^{(2)}),t_f^{(2)}) & = & \bfx^T(t_f)\bfx(t_f) \\
+    \mcL^{(2)}(\bfx^{(2)}(t),\bfu^{(2)}(t),t) & = & \bfu^T\bfR\bfu
+  \end{array}
+\end{displaymath}
+Then the syntax of the above cost functional is given as follows:
+\begin{verbatim}
+function [Mayer,Lagrange,DerivMayer,DerivLagrange]=mycostfun(solcost,iphase);
+
+Q = [5 0; 0 2];
+R = [1 0; 0 3];
+S = [1 5; 5 1];
+t0 = solcost.initial.time;
+x0 = solcost.initial.state;
+tf = solcost.terminal.time;
+xf = solcost.terminal.state;
+t  = solcost.time;
+x  = solcost.state;
+u  = solcost.control;
+p  = solcost.parameter;
+
+if iphase==1,
+  Mayer  = dot(xf',S*xf');
+  Lagrange = dot(x,x*Q',2)+dot(u,u*R',2); % Note transposes
+  DerivMayer = [zeros(1,length(x0)), zeros(1,length(t0)), ...
+                xf'*S, zeros(1,length(tf), zeros(1,length(p))];
+  DerivLagrange = [x*Q', u*R', ...
+                   zeros(length(t),length(p)), zeros(size(t))];
+elseif iphase==2,
+  Mayer  = dot(xf,xf);
+  Lagrange = dot(u,u*R',2); % Note transposes
+  DerivMayer = [zeros(1,length(x0)), zeros(1,length(t0)), ...
+                xf', zeros(1,length(tf), zeros(1,length(p))];
+  DerivLagrange = [zeros(size(x)), u*R', ...
+                   zeros(length(t),length(p)), zeros(size(t))];
+end;
+\end{verbatim}
+It is noted in the above function call that the third argument in the
+command {\bf dot} takes the dot product across the {\em rows}, thereby
+producing a {\em column vector}.
+
+\end{shadedframe}
+
+\subsubsection{Syntax of Function Used to Evaluate Differential-Algebraic Equations with Derivatives}
+
+
+The calling syntax used evaluate the derivatives of the right-hand side of a user-defined vector
+of differential equations is given as follows:
+\begin{center}
+  \noindent{\bf function [dae,Derivdae]=mydaefun(soldae);}
+\end{center}
+See Section \ref{sect:_Dae_syntax} for the definition of the regular inputs/outputs.
+The additional output of \slred{myodefun} is as follows:
+\begin{itemize}
+  \item \slred{Derivdae}: a {\em matrix} of size $N(n+c) \times (n+m+q+1)$
+\end{itemize}
+where $n$ is the number of states, $m$ is the number of controls, $q$ is the number of parameters, $c$ is the number of path constraints, and $N$ is the number of LG points in the phase.  The matrix \slred{Derivdae} defines the partial derivatives of the differential equations and path constraints with respect to the state, control, parameters, and time at each of the $N$ LG points:
+\begin{center}
+\noindent{\bf Derivdae = $\left[\begin{array}{rrrr}
+\displaystyle \pd{\bff_1}{\bfx}, &\quad \displaystyle\pd{\bff_1}{\bfu}, &\quad \displaystyle\pd{\bff_1}{p}, &\quad \displaystyle\pd{\bff_1}{t} \vspace{6pt}\\
+ \vdots, &\quad \vdots, &\quad \vdots, &\quad \vdots \vspace{6pt}\\
+\displaystyle \pd{\bff_n}{\bfx}, &\quad \displaystyle\pd{\bff_n}{\bfu}, &\quad \displaystyle\pd{\bff_n}{p}, &\quad \displaystyle\pd{\bff_n}{t}\vspace{6pt}\\
+\displaystyle \pd{\bfC_1}{\bfx}, &\quad \displaystyle\pd{\bfC_1}{\bfu}, &\quad \displaystyle\pd{\bfC_1}{p}, &\quad \displaystyle\pd{\bfC_1}{t}\vspace{6pt}\\
+\vdots, &\quad \vdots, &\quad \vdots, &\quad \vdots\vspace{6pt}\\
+\displaystyle \pd{\bfC_r}{\bfx}, &\quad \displaystyle\pd{\bfC_r}{\bfu}, &\quad \displaystyle\pd{\bfC_r}{p}, &\quad \displaystyle\pd{\bfC_r}{t}
+\end{array}\right]$}
+\end{center}
+where $\bff_i$, ($i = 1,\ldots,n$) is the right-hand side of the $i^{th}$ differential equation, and $\bfC_j$, ($j = 1,\ldots,r$) is the $j^{th}$ path constraint. It is important to provide all the derivatives in the correct order {\em even if} they are zero.
+
+\begin{shadedframe}
+  {\noindent}{\bf Example of a Differential-Algebraic Equation with Derivatives}
+\vspace{12pt}
+
+Suppose we have a two-phase optimal control problem that uses a differential
+equation function called ``mydaefun.m''.  Suppose further that the dimension
+of the state in each phase is 2, the dimension of the control in each
+phase is 2.  Furthermore, suppose that there are no path constraints
+in phase 1 and one path constraint in phase 2.  Next, suppose that
+the differential equations in phase 1 are given as
+\begin{displaymath}
+  \begin{array}{lcl}
+    \dx_1 & = & -x_1^2-x_2^2 + u_1 u_2 \\
+    \dx_2 & = & -x_1x_2 + 2(u_1+u_2)
+  \end{array}
+\end{displaymath}
+Also, suppose that the differential equations in phase 2 are given as
+\begin{displaymath}
+  \begin{array}{lcl}
+    \dx_1 & = & \sin(x_1^2+x_2^2) + u_1 u_2^2 \\
+    \dx_2 & = & -\sin x_1 \cos x_2 + 2u_1u_2
+  \end{array}
+\end{displaymath}
+Finally, suppose that the path constraint in phase 2 is given as
+\begin{displaymath}
+  u_1^2+u_2^2 = 1
+\end{displaymath}
+Then a MATLAB code that will evaluate the above system of
+differential-algebraic equations is given as follows:
+\begin{verbatim}
+function [dae, Derivdae] = mydaefun(soldae);
+
+iphase = soldae.phase;
+t = soldae.time;
+x = soldae.state;
+u = soldae.control;
+p = soldae.parameter;
+
+if iphase==1,
+  x1dot = -x(:,1).^2-x(:,2).^2 + u(:,1).*u(:,2);
+  x2dot = -x(:,1).*x(:,2) + 2*(u(:,1)+u(:,2));
+  path = [];
+  df1_dx1 = -2*x(:,1);
+  df1_dx2 = -2*x(:,2);
+  df1_du1 = u(:,2);
+  df1_du2 = u(:,1);
+  df2_dx1 = -x(:,2);
+  df2_dx2 = -x(:,1);
+  df2_du1 = 2*ones(size(t));
+  df2_du2 = 2*ones(size(t));
+  dpath_dx1 = [];
+  dpath_dx2 = [];
+  dpath_du1 = [];
+  dpath_du2 = [];
+  dpath_dp = [];
+  dpath_dt = [];
+elseif iphase==2,
+  x1dot = sin(x(:,1).^2 + x(:,2).^2) + u(:,1).*u(:,2).^2;
+  x2dot = -sin(x(:,1)).*cos(x(:,2)) + 2*u(:,1).*u(:,2);
+  path  = u(:,1).^2+u(:,2).^2;
+  df1_dx1 = 2*x(:,1)*cos(x(:,1).^2 + x(:,2).^2);
+  df1_dx2 = 2*x(:,2)*cos(x(:,1).^2 + x(:,2).^2);
+  df1_du1 = u(:,2).^2;
+  df1_du2 = 2*u(:,1).*u(:,2);
+  df2_dx1 = -cos(x(:,1)).*cos(x(:,2));
+  df2_dx2 = sin(x(:,1)).*sin(x(:,2));
+  df2_du1 = 2*u(:,2);
+  df2_du2 = 2*u(:,1);
+  dpath_dx1 = zeros(size(x(:,1)));
+  dpath_dx2 = zeros(size(x(:,2)));
+  dpath_du1 = 2*u(:,1);
+  dpath_du2 = 2*u(:,2);
+  dpath_dp = zeros(length(t),length(p));
+  dpath_dt = zeros(size(t));
+end;
+df1_dp = zeros(length(t),length(p));
+df1_dt = zeros(size(t));
+df2_dp = zeros(length(t),length(p));
+df2_dt = zeros(size(t));
+
+dae = [x1dot x2dot path];
+
+Derivdae = [df1_dx1,   df1_dx2,   df1_du1,   df1_du2,   df1_dp,   df1_dt; ...
+            df2_dx1,   df2_dx2,   df2_du1,   df2_du2,   df2_dp,   df2_dt; ...
+          dpath_dx1, dpath_dx2, dpath_du1, dpath_du2, dpath_dp, dpath_dt];
+\end{verbatim}
+\end{shadedframe}
+
+\subsubsection{Syntax of Function Used to Evaluate Event Constraints with Derivatives}
+
+
+The syntax used to evaluate the derivative of a user-defined vector of event constraints
+is given as follows:
+\begin{center}
+\noindent{\bf function [events, Derivevents]=myeventfun(solevents);}
+\end{center}
+See Section \ref{sect:_Event_syntax} for the definition of the regular inputs/outputs.  The additional output of \slred{myeventfun} is as follows:
+\begin{itemize}
+  \item \slred{Derivevents}: a {\em matrix} of size $e\times (2n+2+q)$
+\end{itemize}
+where $n$ is the number of states, $q$ is the number of parameters, and $e$ is the number of event constraints in the phase.  The matrix \slred{Derivevents} defines the partial derivatives of each event constraint with respect to the initial state, initial time, final state, final time, and parameters:
+\begin{center}
+\noindent{\bf Derivevents = $\left[\begin{array}{rrrrr}
+\displaystyle \pd{\phi_1}{\bfx(t_0)}, &\quad \displaystyle\pd{\phi_1}{t_0}, &\quad \displaystyle\pd{\phi_1}{\bfx(t_f)}, &\quad \displaystyle\pd{\phi_1}{t_f}, &\quad \displaystyle\pd{\phi_1}{p} \vspace{6pt}\\
+ \vdots, &\quad \vdots, &\quad \vdots, &\quad \vdots, &\quad \vdots \vspace{6pt}\\
+\displaystyle \pd{\phi_e}{\bfx(t_0)}, &\quad \displaystyle\pd{\phi_e}{t_0}, &\quad \displaystyle\pd{\phi_e}{\bfx(t_f)}, &\quad \displaystyle\pd{\phi_e}{t_f}, &\quad \displaystyle\pd{\phi_e}{p}
+\end{array}\right]$}
+\end{center}
+where $\phi_i$, ($i = 1,\ldots,e$) is the $i^{th}$ event constraint. It is important to provide all the derivatives in the correct order {\em even if} they are zero.
+
+\begin{shadedframe}
+{\noindent}{\bf Example of Event Constraints with Derivatives}
+\vspace{12pt}
+
+{\noindent}Suppose we have a one-phase optimal control problem that has two
+initial event constraints and three terminal event constraints.  Suppose
+further that the number of states in the phase is six and that the function
+that computes the values of these constraints is called ``myeventfun.m''.
+Finally, let the two initial event constraints be given as
+\begin{displaymath}
+  \begin{array}{lcl}
+    \phi_{01} & = & x_1(t_0)^2+x_2(t_0)^2+x_3(t_0)^2 \\
+    \phi_{02} & = & x_4(t_0)^2+x_5(t_0)^2+x_6(t_0)^2
+  \end{array}
+\end{displaymath}
+while the three terminal event constraints are given as
+\begin{displaymath}
+  \begin{array}{lcl}
+    \phi_{f1} & = & \sin(x_1(t_f))\cos(x_2(t_f)+x_3(t_f)) \\
+    \phi_{f2} & = & \tan(x_4^2(t_f)+x_5^2(t_f)+x_6^2(t_f)) \\
+    \phi_{f3} & = & x_4(t_f)+x_5(t_f)+x_6(t_f)
+  \end{array}
+\end{displaymath}
+Then the syntax of the above event function is given as
+\begin{verbatim}
+function [events, Derivevents] = myeventfun(solevents);
+
+iphase = solevents.phase;
+t0 = solevents.initial.time;
+x0 = solevents.initial.state;
+tf = solevents.terminal.time;
+xf = solevents.terminal.state;
+
+ei1 = dot(x0(1:3),x0(1:3));
+ei2 = dot(x0(4:6),x0(4:6));
+ef1 = sin(xf(1))*cos(xf(2)+xf(3));
+ef2 = tan(dot(xf(4:6),xf(4:6)));
+ef3 = xf(4)+xf(5)+xf(6);
+
+events = [ei1;ei2;ef1;ef2;ef3];
+
+dei1_dx0 = [2*x0(1:3).' zeros(1,3)];
+dei1_dt0 = 0;
+dei1_dxf = zeros(1,6);
+dei1_dtf = 0;
+dei1_dp = [];
+dei1_dt = 0;
+dei2_dx0 = [zeros(1,3), 2*x0(4:6).'];
+dei2_dt0 = 0;
+dei2_dxf = zeros(1,6);
+dei2_dtf = 0;
+dei2_dp = [];
+def1_dx0 = zeros(1,6);
+def1_dt0 = 0;
+def1_dxf = [cos(xf(1))*cos(xf(2)+xf(3)), -sin(xf(1))*sin(xf(2)+xf(3)), ...
+           -sin(xf(1))*sin(xf(2)+xf(3)), zeros(1,3)];
+def1_dtf = 0;
+def1_dp = [];
+def2_dx0 = zeros(1,6);
+def2_dt0 = 0;
+def2_dxf = [zeros(1,3), 2*xf(4:6).']/(cos(dot(xf(4:6),xf(4:6))))^2;
+def2_dtf = 0;
+def2_dp = [];
+def3_dx0 = zeros(1,6);
+def3_dt0 = 0;
+def3_dxf = [zeros(1,3), ones(1,3)];
+def3_dtf = 0;
+def3_dp = [];
+
+Derivevents = [dei1_dx0, dei1_dt0, dei1_dxf, dei1_dtf, dei1_dp, dei1_dt; ...
+               dei2_dx0, dei2_dt0, dei1_dxf, dei2_dtf, dei2_dp, dei2_dt; ...
+               def1_dx0, def1_dt0, def1_dxf, def1_dtf, def1_dp, def1_dt; ...
+               def2_dx0, def2_dt0, def2_dxf, def2_dtf, def2_dp, def2_dt; ...
+               def3_dx0, def3_dt0, def3_dxf, def3_dtf, def3_dp, def3_dt];
+\end{verbatim}
+\end{shadedframe}
+
+\subsubsection{Syntax of Function Used to Evaluate Linkage Constraints with Derivatives}
+
+The syntax used to define the user defined vector of linkage
+constraints between two phases is given as follows:
+\begin{center}
+\noindent{\bf function [links,Derivlinks]=mylinkfun(sollink);}
+\end{center}
+See Section \ref{sect:_Link_syntax} for the definition of the regular inputs/outputs. The additional output of \slred{mylinkfun} is as follows:
+\begin{itemize}
+  \item \slred{Derivlinks}: a {\em matrix} of size $l\times (n^l+q^l+n^r+q^r)$
+\end{itemize}
+where $l$ is the number of linkages in the constraint, $n^l$ is the number of states in the left phase, $q^l$ is the number of parameters in the left phase, $n^r$ is the number of states in the right phase, and $q^r$ is the number of parameters in the right phase. The matrix \slred{Derivlinks} defines the partial derivatives of each linkage with respect to the left state, left parameters, right state, and right parameters:
+\begin{center}
+\noindent{\bf Derivlinks = $\left[\begin{array}{rrrr}
+\displaystyle \pd{\bfP_1}{\bfx^l(t_f)}, &\quad \displaystyle\pd{\bfP_1}{p^l}, &\quad \displaystyle \pd{\bfP_1}{\bfx^r(t_0)}, &\quad \displaystyle\pd{\bfP_1}{p^r} \vspace{6pt}\\
+ \vdots, &\quad \vdots, &\quad \vdots, &\quad \vdots \vspace{6pt}\\
+\displaystyle \pd{\bfP_l}{\bfx^l(t_f)}, &\quad \displaystyle\pd{\bfP_l}{p^l}, &\quad \displaystyle \pd{\bfP_l}{\bfx^r(t_0)}, &\quad \displaystyle\pd{\bfP_l}{p^r}
+\end{array}\right]$}
+\end{center}
+where $\bfP_i$, ($i = 1,\ldots,l$) is the $i^{th}$ linkage constraint. It is important to provide all the derivatives in the correct order {\em even if} they are zero.
+
+\begin{shadedframe}
+{\noindent}{\bf Example of Linkage Constraint with Derivatives}
+\vspace{12pt}
+
+{\noindent}Suppose we have a multiple phase optimal control problem with a simple link between the phases, i.e. the state of the end of the phase is equal to the state at the beginning of the next phase.  \begin{displaymath}
+\bfP = x^l(t_f) - x^r(t_0)
+\end{displaymath}
+Then the syntax of the above linkage is given as
+\begin{verbatim}
+function [links, Derivlinks] = mylinkagefun(sollink,left_phase,right_phase);
+
+xf_left = sollink.left.state;
+p_left  = sollink.left.parameter;
+x0_right = sollink.right.state;
+p_right  = sollink.right.parameter;
+
+links = xf_left - x0_right;
+
+nlink = length(xf_left); %number of linkages
+Derivlinks = [ eye(nlink), zeros(nlink,length(p_left)), ...
+              -eye(nlink), zeros(nlink,length(p_right))];
+\end{verbatim}
+\end{shadedframe}
+
+
+\section{Output of Execution\label{sect: output}}
+
+Upon execution of the software, new fields are created in the output structure
+\slred{output}.  In particular, upon completion of the execution, the following new fields are created (in addition to the fields
+that were created prior to running the software on the problem):
+\begin{itemize}
+  \item \bfblue{solution:}  an array of structures of length $P$
+    (where $P$ is the number of phases) containing the solution in each phase
+\end{itemize}
+The $p^{th}$ element in the array of structures \bfblue{solution}
+contains the solution in phase $p\in[1,\ldots,P]$.  The fields of the
+array of structures \bfblue{solution} are as follows:
+\begin{itemize}
+  \item \bfblue{solution(\textit{p}).time:} a column vector of size $M\times 1$
+    containing the time at each point along the trajectory (where
+    $M=N+2$ is the number of time points and $N$ is the number of LG points)
+  \item  \bfblue{solution(\textit{p}).state:}  a matrix of size $M\times n$ such
+    that the rows contain the state at the time points along the trajectory
+  \item \bfblue{solution(\textit{p}).control:}  a matrix of size $M\times m$ such that the
+    rows contain the state at the time points along the trajectory
+  \item \bfblue{solution(\textit{p}).parameter:}  a column vector of length $q$
+    containing the static parameters
+  \item  \bfblue{solution(\textit{p}).costate:}  a matrix of size $M\times n$ such
+    that the rows contain the costate at each time point along the trajectory
+  \item \bfblue{solution(\textit{p}).pathmult:}  a structure containing the Lagrange
+    multipliers of the path constraints
+  \item  \bfblue{solution(\textit{p}).Hamiltonian:}  a column vector of size $M\times 1$
+    that contains the Hamiltonian at each time point along the trajectory
+  \item  \bfblue{solution(\textit{p}).Mayer\_cost:}  The Mayer part of the cost along the trajectory
+  \item  \bfblue{solution(\textit{p}).Lagrange\_cost:}  The Lagrange (integrated) cost along the trajectory
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,14 @@
+\BOOKMARK [0][-]{chapter.1}{Constructing an Optimal Control Problem}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Organization}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Notation Used Throughout Remainder of This Manual}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Preliminary Information}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{Call to DMG }{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.5}{Syntax for Setup Structure }{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.6}{Specifying Function Names Used in Optimal Control Problem}{chapter.1}% 7
+\BOOKMARK [1][-]{section.1.7}{Syntax for limits Structure }{chapter.1}% 8
+\BOOKMARK [1][-]{section.1.8}{Syntax for linkages Array of Structures }{chapter.1}% 9
+\BOOKMARK [1][-]{section.1.9}{Syntax of Each Function in Optimal Control Problem}{chapter.1}% 10
+\BOOKMARK [1][-]{section.1.10}{Specifying an Initial Guess of The Solution }{chapter.1}% 11
+\BOOKMARK [1][-]{section.1.11}{Scaling of Optimal Control Problem}{chapter.1}% 12
+\BOOKMARK [1][-]{section.1.12}{Different Options for Specification of Derivatives}{chapter.1}% 13
+\BOOKMARK [1][-]{section.1.13}{Output of Execution}{chapter.1}% 14
