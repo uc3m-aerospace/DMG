@@ -52,7 +52,7 @@ input.derivatives = 'automatic';        % Method for computing gradients and jac
 input.parallel    = 'no';               % Multicore computation of numerical and complex differentiation: yes/no
 input.autoscale   = 'off';              % Automatic Scaling: yes/no
 input.solver      = 'ipopt';            % NonLinear Programming Solver: ipopt/snopt
-input.method      = 'collocation';      % Transcription method: collocation/pseudospectral
+input.method      = 'hermite-simpson';  % Transcription method: hermite-simpson/pseudospectral
 
 % RUN DMG TOOL
 output  = DMG(input)
