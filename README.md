@@ -60,7 +60,7 @@ output  = DMG(input)
 
 
 
-**NOTE**: Ensure that all the folders and subfolders are in the matlab path.
+**NOTE**: For a detailed description on how to define each input, please refer to the documentation that can be found in the *documentation* folder.
 
 ## Important Note
 Any use of DMG Tool MUST abide by the GPOPS license
