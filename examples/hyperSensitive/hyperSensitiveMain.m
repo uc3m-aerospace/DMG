@@ -57,6 +57,7 @@ setup.derivatives = 'automatic';
 setup.checkDerivatives = 0;
 setup.direction = 'increasing';
 setup.autoscale = 'off';
+setup.method = 'pseudospectral';
 
 output = gpops(setup);
 

@@ -67,7 +67,7 @@ setup.linkages = [];
 setup.autoscale = 'off';
 
 setup.solver ='ipopt';
-setup.method ='hermite-simpson';
+setup.method ='hermite-s';
 
 
 

@@ -71,7 +71,7 @@ setup.autoscale  = 'off';
 setup.derivatives = 'automatic';
 
 setup.solver ='ipopt';
-setup.method ='collocation';
+setup.method ='hermite-simpson';
 setup.checkDerivatives = 1;
 
 %%

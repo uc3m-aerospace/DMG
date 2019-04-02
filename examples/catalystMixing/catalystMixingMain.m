@@ -54,7 +54,7 @@ setup.limits      = limits;
 setup.linkages    = linkages;
 setup.guess       = guess;
 setup.solver ='ipopt';
-setup.method ='pseudospectral';
+setup.method ='hermite-simpson';
 
 
 output            = DMG(setup);

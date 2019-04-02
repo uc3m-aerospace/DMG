@@ -66,14 +66,14 @@ end
 
 if isfield(setup,'method')
     
-    if isequal(setup.method,'collocation')
+    if isequal(setup.method,'hermite-simpson')
         disp('-------------------------------------------------------------------------------------------');
         disp('Applying Hermite Simpson Collocation Method');
         disp('-------------------------------------------------------------------------------------------');
         disp('    ');
         
         if isequal(setup.autoscale,'on')
-            error('Collocation method does not support automatic scaling. Select setup.autoscale == offs')
+            error('Hermite-Simpson method does not support automatic scaling. Select setup.autoscale == offs')
         end
         output=dmg_coll(setup);
         
@@ -87,12 +87,12 @@ if isfield(setup,'method')
         output=dmg_pseudo(setup);
     else
         
-        error('A METHOD must be selected. Select setup.method=collocation or setup.method=pseudospectral in the main file')
+        error('A METHOD must be selected. Select setup.method=hermite-simpson or setup.method=pseudospectral in the main file')
         
     end
 else
     
-    error('A METHOD must be selected. Use setup.method=collocation or setup.method=pseudospectral in the main file');
+    error('A METHOD must be selected. Use setup.method=hermite-simpson or setup.method=pseudospectral in the main file');
     
 end
 

@@ -97,6 +97,6 @@ setup.derivatives = 'automatic';
 setup.autoscale = 'off';
 setup.parallel  = 'no';
 setup.solver ='ipopt';
-setup.method ='collocation';
+setup.method ='hermite-simpson';
 output = DMG(setup);
 solution = output.solution;

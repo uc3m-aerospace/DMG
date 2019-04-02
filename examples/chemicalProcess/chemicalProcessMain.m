@@ -69,7 +69,7 @@ setup.linkages = [];
 setup.derivatives = 'analytic';
 setup.autoscale = 'off';
 setup.solver ='ipopt';
-setup.method ='collocation';
+setup.method ='hermite-simpson';
 
 
 output = DMG(setup);

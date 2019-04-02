@@ -58,7 +58,7 @@ setup.derivatives = 'automatic'; %numerical/complex/automatic
 setup.parallel    = 'no';
 setup.autoscale = 'off'; %on/off
 setup.solver ='ipopt';% snopt /ipopt
-setup.method ='collocation'; %pseudospectral/collocation
+setup.method ='hermite-simpson'; %pseudospectral/collocation
 
 output = DMG(setup);
 

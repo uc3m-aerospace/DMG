@@ -59,7 +59,7 @@ setup.linkages = linkages;
 setup.derivatives = 'automatic';
 setup.autoscale = 'off';
 setup.solver ='ipopt';
-setup.method ='pseudospectral';
+setup.method ='hermite-simpson';
 
 
 output = DMG(setup);
