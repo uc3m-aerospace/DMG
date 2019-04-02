@@ -54,7 +54,7 @@ input.autoscale   = 'off';              % Automatic Scaling: yes/no
 input.solver      = 'ipopt';            % NonLinear Programming Solver: ipopt/snopt
 input.method      = 'collocation';      % Transcription method: collocation/pseudospectral
 
-% RUN DMG SOLVER
+% RUN DMG TOOL
 output  = DMG(input)
 ```
 **NOTE**: Ensure that all the folders and subfolders are in the matlab path.
