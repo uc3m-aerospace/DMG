@@ -8,9 +8,9 @@ This version of GPOPS was downloaded in October 2009 from [SourceForge](https://
 
 The main GPOPS features are:
 
- * Implements Gauss Pseudospectral Collocation Method for Transcribing the continuous optimal control problem into an Nonlinear Optimization Problem.
+ * Implements Gauss Pseudospectral Collocation Method for Transcribing the continuous optimal control problem into a Nonlinear Optimization Problem.
  * Interfaces with SNOPT
- * Includes Automatic, Forward Numerical, Complex-Step and Analytical Derivatives for gradient and jacobian computations.
+ * Includes Automatic, Forward Numerical, Complex-Step and user-supplied Analytical Derivatives for gradient and jacobian computations.
 
 The new features DMG includes:
 
