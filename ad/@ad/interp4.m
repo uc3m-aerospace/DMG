@@ -10,9 +10,9 @@ function yi = interp4(pp,xi,varargin)
 % Inputs and Outputs
 %      x: known vector of x's for interpolation
 %      y: known vector of y's for interpolation
-%      xi: object of AD class 
+%      xi: object of AD class
 %      method: 'spline'
-%      yi: object of AD class 
+%      yi: object of AD class
 
 %% Process METHOD in
 % YI = INTERP1(X,Y,XI,METHOD,...)
@@ -24,12 +24,27 @@ else
 end
 
 switch method(1)
-   case 's'  % 'spline'       
-
-       yi = ppval(pp,xi);
-
+    case 's'  % 'spline'
+        if isa(xi,'ad')
+        yi.value = ppval(pp,xi.value);   
+        % compute derivative poly values
+        ppDer = pp;
+        numCoef = size(pp.coefs,2);
+        ppDer.coefs(:,1) = 0;
+        for i = 1:numCoef-1
+            ppDer.coefs(:,i+1) = (numCoef - i) * pp.coefs(:,i);
+        end
+        
+        % eval derivatives
+        outerDerivative = ppval(ppDer,xi.value(:));
+        
+        yi = compositeDerivative(xi,yi,outerDerivative);
+        yi = class(yi,'ad');
+        else
+          yi = ppval(pp,xi);
+        end
     otherwise % 'nearest', 'linear', 'v5cubic'
-       error('GPOPS:interp1:InvalidMethod','Invalid method. Only ''spline'' interpolation supported for automatic derivatives') 
+        error('GPOPS:interp1:InvalidMethod','Invalid method. Only ''spline'' interpolation supported for automatic derivatives')
 end
 
 

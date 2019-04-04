@@ -127,8 +127,8 @@ options.cu = [cupp;setup.Alinmax];
 options.lb = xlow;
 options.ub = xupp;
 options.ipopt.tol=1e-6;
-options.ipopt.bound_push = 1e-6;
-options.ipopt.mu_init= 1e-2;
+%options.ipopt.bound_push = 1e-6;
+%options.ipopt.mu_init= 1e-2;
 options.ipopt.hessian_approximation = 'limited-memory';
 
 if isfield(setup,'derivatives')
