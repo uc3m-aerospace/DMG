@@ -180,7 +180,7 @@ for iphase=1:numphases
     end
     if ncontrols>0
         
-        uinterp = interp1(tinit,uinit,tinterp,'linear');
+        uinterp = interp1(tinit,uinit,tinterp,'nearest');
         
     else
         uinterp = [];
