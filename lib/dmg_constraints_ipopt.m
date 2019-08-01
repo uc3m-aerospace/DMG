@@ -6,7 +6,7 @@ y = x./mysetup.column_scales;
 
 Alinear_augmented = [mysetup.DF*mysetup.sparsity_constant; mysetup.Alinear];
 %setup.Alinear_augmented 
-C =constraints(y,mysetup);
+C =dmg_constraints(y,mysetup);
 
 %% Scale the constraints
 C(1:mysetup.numnonlin) = mysetup.DF*C(1:mysetup.numnonlin);

@@ -72,6 +72,9 @@ ry_max = 2*r_callisto_ad;
 vx_max = 2*v_ganymede_ad;
 vy_max = 2*v_ganymede_ad;
 m_max = m_0;
+%
+
+
 
 %% Control Variables
 throttle_min = 1;
