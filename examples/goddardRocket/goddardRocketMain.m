@@ -34,7 +34,7 @@ CONSTANTS.dragk = 0.7110*Tmax/CONSTANTS.csqrd;
 %  mf = CONSTANTS.mc*m0;
 
 iphase = 1;
-limits(iphase).nodes = 25;
+limits(iphase).nodes = 20;
 limits(iphase).time.min = [t0 tfMin];
 limits(iphase).time.max = [t0 tfMax];
 limits(iphase).state.min(1,:)   = [h0 hmin hmin];
@@ -59,7 +59,7 @@ guess(iphase).control(:,1) = [Tmax; Tmax];
 guess(iphase).parameter = [];
 
 iphase = 2;
-limits(iphase).nodes = 25;
+limits(iphase).nodes = 20;
 limits(iphase).time.min = [tfMin tfMin];
 limits(iphase).time.max = [tfMax tfMax];
 limits(iphase).state.min(1,:)   = [hmin hmin hmin];
@@ -86,7 +86,7 @@ guess(iphase).control(:,1) = [Tmax; Tmax];
 guess(iphase).parameter = [];
 
 iphase = 3;
-limits(iphase).nodes = 25;
+limits(iphase).nodes = 20;
 limits(iphase).time.min = [tfMin tfMin];
 limits(iphase).time.max = [tfMax tfMax];
 limits(iphase).state.min(1,:)   = [hmin hmin hmin];

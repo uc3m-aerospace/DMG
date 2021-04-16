@@ -78,32 +78,32 @@
  
 
    Itns Major Minors    Step   nObj Feasible  Optimal      Objective     L+U BSwap     nS  condHz
-      0     0      0              1          (0.0E+00)-6.9312953E+05       1                      _  r   c
- 
-
-   Itns Major Minors    Step   nObj Feasible  Optimal      Objective     L+U BSwap     nS  condHz
-      0     0      0              1          (0.0E+00)-6.9312953E+05       1                      _  r   c
+      1     0      1              1           4.6E+08  8.9184886E+11       1                      _  r
+      1     1      0 1.0E-02      2           4.6E+08  8.9092305E+11       1                      _n rl
+      1     2      0 1.0E-02      3           4.6E+08  8.8999724E+11       1                      _n rl
+      1     3      0 1.0E+00      4          (0.0E+00) 8.0022342E+11       1                      _n r   c
+      1     3      0 1.0E+00      4          (0.0E+00) 8.0022342E+11       1                      _n r   c
 1
  
  SNOPTA EXIT   0 -- finished successfully
  SNOPTA INFO   1 -- optimality conditions satisfied
 
  Problem name
- No. of iterations                   0   Objective value     -6.9312952526E+05
- No. of major iterations             0   Linear objective     0.0000000000E+00
- Penalty parameter           0.000E+00   Nonlinear objective -6.9312952526E+05
- No. of calls to funobj              4   No. of calls to funcon              4
- Calls with modes 1,2 (known g)      1   Calls with modes 1,2 (known g)      1
- Calls for forward differencing      1   Calls for forward differencing      1
+ No. of iterations                   1   Objective value      8.0022341599E+11
+ No. of major iterations             3   Linear objective     0.0000000000E+00
+ Penalty parameter           0.000E+00   Nonlinear objective  8.0022341599E+11
+ No. of calls to funobj             17   No. of calls to funcon             17
+ Calls with modes 1,2 (known g)      4   Calls with modes 1,2 (known g)      4
+ Calls for forward differencing      4   Calls for forward differencing      4
  Calls for central differencing      2   Calls for central differencing      2
  No. of degenerate steps             0   Percentage                       0.00
- Max x                       1 0.0E+00   Max pi                      1 1.0E+00
- Max Primal infeas           0 0.0E+00   Max Dual infeas             0 0.0E+00
+ Max x                       1 1.9E+02   Max pi                      1 1.0E+00
+ Max Primal infeas           1 5.8E-11   Max Dual infeas             0 0.0E+00
 1
  
- Name                                    Objective Value     -6.9312952526E+05
+ Name                                    Objective Value      8.0022341599E+11
 
- Status         Optimal Soln             Iteration      0    Superbasics     0
+ Status         Optimal Soln             Iteration      1    Superbasics     0
 
  Objective               (Min)
  RHS
@@ -121,10 +121,10 @@
 
   Number  .Column. State  ...Activity...  .Obj Gradient.  ..Lower Limit.  ..Upper Limit.  Reduced Gradnt    m+j
  
-       1  x      1    LL          .             22.54130          .            193.04400        22.54130      2
+       1  x      1    UL       193.04400-925809725.69097          .            193.04400-925809725.69097      2
  
  Time for MPS input                             0.00 seconds
- Time for solving problem                       0.00 seconds
+ Time for solving problem                       0.02 seconds
  Time for solution output                       0.00 seconds
- Time for constraint functions                  0.00 seconds
+ Time for constraint functions                  0.02 seconds
  Time for objective function                    0.00 seconds

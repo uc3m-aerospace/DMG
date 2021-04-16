@@ -19,4 +19,29 @@ if iphase==2,
 else
     event = [];
 end;
+%
+DV  = p(1);
+angle = p(2);
+%
+Dv_r = DV*cos(angle);
+Dv_o = DV*sin(angle);
+v0_r = x0(3);
+v0_o = x0(4);
+
+theta_Target_sinodico = setup.theta_target_sinodico;
+% calcular el theta en inercial
+theta = xf(2);
+theta_tierra = tf*tc;
+
+event = [v0_r - Dv_r, v0_o - wE*1AU -Dv0,theta_Target_sinodico-theta-theta_tierra, ]
+
+
+
+
+
+
+
+
+
+
 
